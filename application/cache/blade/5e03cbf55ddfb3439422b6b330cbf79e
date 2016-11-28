@@ -1,0 +1,202 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+    <aside class="right-side">
+        <section class="content-header">
+            <h1>
+                Penilaian
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#"> Fit &amp; Proper</a></li>
+            </ol>
+        </section>
+        <br>
+        <!-- Main content -->
+        <section class="content" style="margin-top:-15px">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Penilaian Makalah</h3>
+                        </div><!-- /.box-header -->
+                        <form action="<?php echo $base_url; ?>fitnproper/evaluation/store_makalah/<?php echo $peserta->nipeg; ?>/<?php echo $undangan->kode_undangan; ?>" method="post">
+                        <div class="box-body table-responsive">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5><strong>Nama Lengkap</strong></h5>
+                                    <p class="text-aqua"><?php echo $peserta->nama; ?></p>
+                                </div>
+                                <div class="col-md-3">
+                                    <h5><strong>NIP</strong></h5>
+                                    <p class="text-aqua"><?php echo $peserta->nipeg; ?></p>
+                                </div>
+                                <div class="col-md-3">
+                                    <h5><strong>Unit Induk</strong></h5>
+                                    <p class="text-aqua"><?php echo $peserta->kantor()->nama_kantor; ?></p>
+                                </div>
+                                <div class="col-md-3">
+                                    <h5><strong>Judul Makalah</strong></h5>
+                                    <p class="text-aqua"><?php echo $peserta->materi()->judul_makalah; ?></p>
+                                </div>
+                            </div>
+                            <br/>
+                            <table id="example1q" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th width="25%">Kriteria</th>
+                                        <th width="7%">Bobot</th>
+                                        <th width="10%">Nilai (0 - 100)</th>
+                                        <th width="10%">Total Nilai</th>
+                                        <th>Komentar</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($nilai as $key => $element): ?>
+                                    <tr>
+                                        <td colspan="5"><b>Penulisan</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Issue Stratejik (Pemilihan Topik)</td>
+                                        <td>10 %</td>
+                                        <td>
+                                            <input type="text" class="form-control inps tis 10" name="issue_stratejik" readonly value="<?php echo $element->nilai_issue_stratejik * 10; ?>">
+                                        </td>
+                                        <td>
+                                            <input disabled type="text" id ="tis" class="form-control totx" name="data[issue_stratejik]" readonly value="<?php echo $element->nilai_issue_stratejik; ?>">
+                                            <input type="hidden" id ="tiss" class="form-control totxs" name="data[issue_stratejik]" readonly value="<?php echo $element->nilai_issue_stratejik; ?>">
+                                        </td>
+                                        <td>
+                                            <input type="text" value="<?php echo $element->komentar_1; ?>" class="form-control" readonly name="komentar[issue_stratejik]"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>OFI</td>
+                                        <td>30 %</td>
+                                        <td>
+                                            <input type="text" value="<?php echo round($element->nilai_ofi * (100/30)); ?>" readonly class="form-control inps ofi 30" name="ofi">
+                                        </td>
+                                        <td>
+                                            <input disabled value="<?php echo $element->nilai_ofi; ?>" type="text" id ="ofi" readonly class="form-control totx" name="data[ofi]">
+                                            <input type="hidden" value="<?php echo $element->nilai_ofi; ?>" id ="ofis"  readonly class="form-control totxs" name="data[ofi]"></td>
+                                        <td>
+                                            <input type="text" value="<?php echo $element->komentar_2; ?>" class="form-control" readonly name="komentar[ofi]"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>AFI</td>
+                                        <td>20 %</td>
+                                        <td>
+                                            <input type="text" value="<?php echo round($element->nilai_afi * (100/20)); ?>" readonly class="form-control inps afi 20" name="afi"></td>
+                                        <td>
+                                            <input disabled value="<?php echo $element->nilai_afi; ?>" type="text" id="afi" readonly class="form-control totx" name="data[afi]">
+                                            <input type="hidden" value="<?php echo $element->nilai_afi; ?>" id="afis" readonly class="form-control totxs" name="data[afi]"></td>
+                                        <td>
+                                            <input type="text" value="<?php echo $element->komentar_3; ?>" class="form-control" readonly name="komentar[afi]"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5"><b>Persentasi</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Penguasaan Materi</td>
+                                        <td>25 %</td>
+                                        <td>
+                                            <input type="text" value="<?php echo round($element->nilai_penguasaan_materi * (100/25)); ?>"  readonly class="form-control inps peng 25" name="penguasaan"></td>
+                                        <td>
+                                            <input disabled value="<?php echo $element->nilai_penguasaan_materi; ?>" type="text" id="peng"  readonly class="form-control totx" name="data[penguasaan]">
+                                            <input type="hidden" value="<?php echo $element->nilai_penguasaan_materi; ?>" id="pengs"  readonly class="form-control totxs" name="data[penguasaan]"></td>
+                                        <td>
+                                            <input type="text" value="<?php echo $element->komentar_4; ?>" class="form-control"  readonly name="komentar[penguasaan]"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Teknik Persentasi</td>
+                                        <td>15 %</td>
+                                        <td>
+                                            <input type="text" value="<?php echo round($element->nilai_teknik_presentasi * (100/15)); ?>"  readonly class="form-control inps pres 15" name="persentasi"></td>
+                                        <td>
+                                            <input disabled value="<?php echo $element->nilai_teknik_presentasi; ?>" readonly type="text" id="pres" class="form-control totx" name="data[persentasi]">
+                                            <input type="hidden" value="<?php echo $element->nilai_teknik_presentasi; ?>" readonly id="press" class="form-control totxs" name="data[persentasi]"></td>
+                                        <td>
+                                            <input type="text" value="<?php echo $element->komentar_5; ?>" class="form-control" readonly name="komentar[persentasi]"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"><b>NILAI AKHIR</b></td>
+                                        <td>
+                                            <input disabled value="<?php echo $element->nilai_total; ?>" id="totalx" type="text" readonly class="form-control" name="data[nilai_akhir]">
+                                            <input id="totalxs" value="<?php echo $element->nilai_total; ?>" type="hidden" readonly class="form-control" name="data[nilai_akhir]"></td>
+                                        <td>
+                                            <input type="text" value="<?php echo $element->komentar_6; ?>" class="form-control" readonly name="komentar[akhir]"></td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        </form>
+                        <hr>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="col-xs-6">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label><h4><b>Keterangan</b></h4></label>
+                                        </div>
+                                        <table>
+                                            <tbody><tr>
+                                                <td>Sangat Baik</td>
+                                                <td> : </td>
+                                                <td> 90 - 100 </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Baik</td>
+                                                <td> : </td>
+                                                <td> 80 - 89 </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cukup</td>
+                                                <td> : </td>
+                                                <td> 70 - 79 </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tidak Baik</td>
+                                                <td> : </td>
+                                                <td> &lt; 70 </td>
+                                            </tr>
+                                        </tbody></table>
+                                        <br>
+                                        <div>
+                                            <label><b>Total Nilai = Bobot x Nilai</b></label>
+                                        </div>
+                                        <div>
+                                            <label><b>Nilai Akhir = Penjumlahan dari total nilai</b></label>
+                                        </div>
+                                        </div>
+                                </div>
+                                <div class="col-xs-2">
+                                </div>
+
+                                <div class="col-xs-4">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label></label>
+                                        </div>
+                                        <div>
+                                            <label><h4><b>Penguji</b></h4></label>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <div>
+                                            <label><h4><b><?php echo $user->employee()->nama; ?></b></h4></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div>
+        </section><!-- /.content -->
+
+    </aside>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

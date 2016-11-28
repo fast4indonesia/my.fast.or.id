@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Aplikasi Talent Management System | Management SDM</title>
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <!-- bootstrap 3.0.2 -->
+        <link href="<?php echo $base_url; ?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!-- font Awesome -->
+        <link href="<?php echo $base_url; ?>assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <!-- Ionicons -->
+        <link href="<?php echo $base_url; ?>assets/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $base_url; ?>assets/css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+        <!-- Theme style -->
+        <link href="<?php echo $base_url; ?>assets/css/jquery.jOrgChart.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $base_url; ?>assets/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.../../js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+        <script type="text/javascript">
+            function addNewRowPegawai(){
+
+                var jml     = document.getElementById("Pegawai").getElementsByTagName("tr").length;
+                nomor       = jml+1;
+
+                var table   = document.getElementById("Pegawai");
+                var row     = document.createElement('tr');
+
+                var no              = document.createElement('td');
+                var nama            = document.createElement('td');
+                var jabatan         = document.createElement('td');
+                var grade_sejak     = document.createElement('td');
+                var tkt_org         = document.createElement('td');
+
+                var hasil_int       = document.createElement('td');
+                var hasil_lds       = document.createElement('td');
+                var hasil_cfo       = document.createElement('td');
+                var hasil_ach       = document.createElement('td');
+                var rekomendasi     = document.createElement('td');
+
+                var demosi          = document.createElement('td');
+                var rotasi          = document.createElement('td');
+                var promosi         = document.createElement('td');
+                var definitif       = document.createElement('td');
+                var lm_total        = document.createElement('td');
+                var lm_area         = document.createElement('td');
+
+                var t1              = document.createElement('td');
+                var t2              = document.createElement('td');
+                var t3              = document.createElement('td');
+                var t4              = document.createElement('td');
+                var alamat          = document.createElement('td');
+                var sppd            = document.createElement('td');
+                var bpfp            = document.createElement('td');
+
+                var jabat_diisi     = document.createElement('td');
+                var tkt_orgdiisi    = document.createElement('td');
+                var catatan         = document.createElement('td');
+                var kesimpulan      = document.createElement('td');
+
+                //-------------------------------------------------
+
+                var nodata          = document.createElement('label');
+                var namadata        = document.createElement('select');
+                var jabatandata     = document.createElement('input');
+                var grade_sejakdata = document.createElement('input');
+                var tkt_orgdata     = document.createElement('input');
+
+                var hasil_intdata   = document.createElement('input');
+                var hasil_ldsdata   = document.createElement('input');
+                var hasil_cfodata   = document.createElement('input');
+                var hasil_achdata   = document.createElement('input');
+                var rekomendasidata = document.createElement('input');
+
+                var demosidata      = document.createElement('input');
+                var rotasidata      = document.createElement('input');
+                var promosidata     = document.createElement('input');
+                var definitifdata   = document.createElement('input');
+                var lm_totaldata    = document.createElement('input');
+                var lm_areadata     = document.createElement('input');
+
+                var t1data          = document.createElement('input');
+                var t2data          = document.createElement('input');
+                var t3data          = document.createElement('input');
+                var t4data          = document.createElement('input');
+                var alamatdata      = document.createElement('input');
+                var sppddata        = document.createElement('input');
+                var bpfpdata        = document.createElement('input');
+
+                var jabat_diisidata = document.createElement('select');
+                var tkt_orgdiisidata= document.createElement('input');
+                var catatandata     = document.createElement('textarea');
+                var kesimpulandata  = document.createElement('select');
+
+
+                //-------------------------------------------------
+                nodata.setAttribute('id', 'nopegawai'+nomor);
+
+                namadata.setAttribute('id', 'nama'+nomor);
+                namadata.setAttribute('name', 'nama'+nomor);
+                namadata.setAttribute('class', 'select2-container form-control');
+
+                <?php
+
+                    if(isset($karyawan)){
+                        foreach ($karyawan as $key => $element){
+                            echo "var optionnama      = document.createElement('option');";
+                            echo "optionnama.value    = optionnama.innerHTML=\"".$element->nipeg."\";";
+                            echo "optionnama.text     = \"".$element->nama."\";";
+                            echo "namadata.appendChild(optionnama);";                        
+                        }
+                    }
+                ?>
+
+                jabatandata.setAttribute('id', 'jabatan'+nomor);
+                jabatandata.setAttribute('name', 'jabatan'+nomor);
+                jabatandata.setAttribute('type', 'text');
+                grade_sejakdata.setAttribute('id', 'grade_sejak'+nomor);
+                grade_sejakdata.setAttribute('name', 'grade_sejak'+nomor);
+                grade_sejakdata.setAttribute('type', 'text');
+                tkt_orgdata.setAttribute('id', 'tkt_org'+nomor);
+                tkt_orgdata.setAttribute('name', 'tkt_org'+nomor);
+                tkt_orgdata.setAttribute('type', 'text');
+
+                hasil_intdata.setAttribute('id', 'hasil_int'+nomor);
+                hasil_intdata.setAttribute('name', 'hasil_int'+nomor);
+                hasil_intdata.setAttribute('type', 'text');
+                hasil_ldsdata.setAttribute('id', 'hasil_lds'+nomor);
+                hasil_ldsdata.setAttribute('name', 'hasil_lds'+nomor);
+                hasil_ldsdata.setAttribute('type', 'text');                
+                hasil_cfodata.setAttribute('id', 'hasil_cfo'+nomor);
+                hasil_cfodata.setAttribute('name', 'hasil_cfo'+nomor);
+                hasil_cfodata.setAttribute('type', 'text');               
+                hasil_achdata.setAttribute('id', 'hasil_ach'+nomor);
+                hasil_achdata.setAttribute('name', 'hasil_ach'+nomor);
+                hasil_achdata.setAttribute('type', 'text');
+                rekomendasidata.setAttribute('id', 'rekomendasi'+nomor);
+                rekomendasidata.setAttribute('name', 'rekomendasi'+nomor);
+                rekomendasidata.setAttribute('type', 'text');
+
+                demosidata.setAttribute('id', 'demosi'+nomor);
+                demosidata.setAttribute('name', 'demosi'+nomor);
+                demosidata.setAttribute('type', 'text');
+                rotasidata.setAttribute('id', 'rotasi'+nomor);
+                rotasidata.setAttribute('name', 'rotasi'+nomor);
+                rotasidata.setAttribute('type', 'text');
+                promosidata.setAttribute('id', 'promosi'+nomor);
+                promosidata.setAttribute('name', 'promosi'+nomor);
+                promosidata.setAttribute('type', 'text');
+                definitifdata.setAttribute('id', 'definitif'+nomor);
+                definitifdata.setAttribute('name', 'definitif'+nomor);
+                definitifdata.setAttribute('type', 'text');                
+                lm_totaldata.setAttribute('id', 'lm_total'+nomor);
+                lm_totaldata.setAttribute('name', 'lm_total'+nomor);
+                lm_totaldata.setAttribute('type', 'text');            
+                lm_areadata.setAttribute('id', 'lm_area'+nomor);
+                lm_areadata.setAttribute('name', 'lm_area'+nomor);
+                lm_areadata.setAttribute('type', 'text');
+
+                t1data.setAttribute('id', 't1'+nomor);
+                t1data.setAttribute('name', 't1'+nomor);
+                t1data.setAttribute('type', 'text');
+                t2data.setAttribute('id', 't2'+nomor);
+                t2data.setAttribute('name', 't2'+nomor);
+                t2data.setAttribute('type', 'text');
+                t3data.setAttribute('id', 't3'+nomor);
+                t3data.setAttribute('name', 't3'+nomor);
+                t3data.setAttribute('type', 'text');
+                t4data.setAttribute('id', 't4'+nomor);
+                t4data.setAttribute('name', 't4'+nomor);
+                t4data.setAttribute('type', 'text');
+                sppddata.setAttribute('id', 'sppd'+nomor);
+                sppddata.setAttribute('name', 'sppd'+nomor);
+                sppddata.setAttribute('type', 'number');
+                bpfpdata.setAttribute('id', 'bpfp'+nomor);
+                bpfpdata.setAttribute('name', 'bpfp'+nomor);
+                bpfpdata.setAttribute('type', 'number');
+                alamatdata.setAttribute('id', 'alamat'+nomor);
+                alamatdata.setAttribute('name', 'alamat'+nomor);
+                alamatdata.setAttribute('type', 'text');
+
+                jabat_diisidata.setAttribute('id', 'jabat_diisi'+nomor);
+                jabat_diisidata.setAttribute('name', 'jabat_diisi'+nomor);
+                jabat_diisidata.setAttribute('class', 'select2-container form-control');
+
+                <?php
+                    $cek          = 0;
+                    if(isset($jabatan)){
+                        foreach ($jabatan as $key => $element){
+                            echo "var optionjbt      = document.createElement('option');";
+                            echo "optionjbt.value    = optionjbt.innerHTML=\"".$element->kode_jabatan."\";";
+                            echo "optionjbt.text     = \"".$element->nama_jabatan."\";";
+                            echo "jabat_diisidata.appendChild(optionjbt);";
+                        $cek++;
+                        }
+                    }
+                ?>
+
+                tkt_orgdiisidata.setAttribute('id', 'tkt_orgdiisi'+nomor);
+                tkt_orgdiisidata.setAttribute('name', 'tkt_orgdiisi'+nomor);
+                tkt_orgdiisidata.setAttribute('type', 'text');
+                catatandata.setAttribute('id', 'catatan'+nomor);
+                catatandata.setAttribute('name', 'catatan'+nomor);
+                kesimpulandata.setAttribute('id', 'kesimpulan'+nomor);
+                kesimpulandata.setAttribute('name', 'kesimpulan'+nomor);
+                kesimpulandata.setAttribute('class', 'select2-container form-control');
+
+                var optionkes      = document.createElement('option');
+                optionkes.value    = optionkes.innerHTML= "Memenuhi Syarat";
+                optionkes.text     = "Memenuhi Syarat";
+                kesimpulandata.appendChild(optionkes);
+
+                var optionkes      = document.createElement('option');
+                optionkes.value    = optionkes.innerHTML= "Tidak Memenuhi Syarat";
+                optionkes.text     = "Tidak Memenuhi Syarat";
+                kesimpulandata.appendChild(optionkes);
+
+                //-----------------------------------------------------------------
+    
+                no.appendChild(nodata);
+                nama.appendChild(namadata);
+                jabatan.appendChild(jabatandata);
+                grade_sejak.appendChild(grade_sejakdata);
+                tkt_org.appendChild(tkt_orgdata);
+                hasil_int.appendChild(hasil_intdata);
+                hasil_lds.appendChild(hasil_ldsdata);
+                hasil_cfo.appendChild(hasil_cfodata);
+                hasil_ach.appendChild(hasil_achdata);
+                rekomendasi.appendChild(rekomendasidata);
+                demosi.appendChild(demosidata);
+                rotasi.appendChild(rotasidata);
+                promosi.appendChild(promosidata);
+                definitif.appendChild(definitifdata);
+
+                lm_total.appendChild(lm_totaldata);
+                lm_area.appendChild(lm_areadata);
+                t1.appendChild(t1data);
+                t2.appendChild(t2data);
+                t3.appendChild(t3data);
+                t4.appendChild(t4data);
+
+                alamat.appendChild(alamatdata);
+                sppd.appendChild(sppddata);
+                bpfp.appendChild(bpfpdata);
+                jabat_diisi.appendChild(jabat_diisidata);
+                tkt_orgdiisi.appendChild(tkt_orgdiisidata);
+                catatan.appendChild(catatandata);
+                kesimpulan.appendChild(kesimpulandata);
+
+                //-----------------------------------------------------------
+
+                row.appendChild(no);
+                row.appendChild(nama);
+                row.appendChild(jabatan);
+                row.appendChild(grade_sejak);
+                row.appendChild(tkt_org);
+                row.appendChild(hasil_int);
+                row.appendChild(hasil_lds);
+                row.appendChild(hasil_cfo);
+                row.appendChild(hasil_ach);
+                row.appendChild(rekomendasi);
+
+                row.appendChild(demosi);
+                row.appendChild(rotasi);
+                row.appendChild(promosi);
+                row.appendChild(definitif);
+                row.appendChild(lm_total);
+                row.appendChild(lm_area);
+                row.appendChild(t1);
+                row.appendChild(t2);
+                row.appendChild(t3);
+                row.appendChild(t4);
+                row.appendChild(alamat);
+                row.appendChild(sppd);
+                row.appendChild(bpfp);
+
+                row.appendChild(jabat_diisi);
+                row.appendChild(tkt_orgdiisi);
+                row.appendChild(catatan);
+                row.appendChild(kesimpulan);
+
+                table.appendChild(row);
+                document.getElementById('nopegawai'+nomor).innerHTML = nomor;
+                document.getElementById('jumlahmutasi').value = nomor;
+
+            }
+
+            function deleteRowPegawai(){
+                var jml     = document.getElementById("Pegawai").getElementsByTagName("tr").length;
+                // var i=row.parentNode.parentNode.rowIndex;
+                rowselect   = jml-1;                
+                // alert(rowselect);
+                if (rowselect>=0){
+                    document.getElementById('Pegawai').deleteRow(rowselect);
+                }else{
+                    alert("Data Kosong");
+                }                   
+                var jml     = document.getElementById("Pegawai").getElementsByTagName("tr").length;
+                document.getElementById('jumlahmutasi').value = jml;    
+            }
+
+            function cek_komite(element){
+                var jumlah = element.value;
+
+                var isi    = "";
+                var content= "";
+
+                for (var i = 1; i <= jumlah; i++) {
+                    isi         = "<div class='box-body col-xs-12'><div class='form-group col-xs-3'><label>Pilih Jabatan</label><div class='input-group'><select class='form-control'>";
+                    var gabung  = content.concat(isi);
+                    <?php
+                        $isi2 = "";
+                        if(isset($jabatan)){
+                            foreach ($jabatan as $key => $element){
+                                $isi2 = $isi2."<option value='".$element->kode_jabatan."'>".$element->nama_jabatan."</option>";
+                            }                            
+                        }
+                        echo "var gabung2 = gabung.concat(\"".$isi2."\");";
+                    ?>
+                    // isi2         = "<option value='1'>1</option>";
+                    // var gabung2  = gabung.concat(isi2);
+
+                    isi3         = "</select></div></div><div class='form-group col-xs-3'><label>Nama Pegawai</label><div class='input-group'><input type='text' name='pegawai"+i+"' class='form-control'/></div></div><div class='form-group col-xs-3'><label>Jabatan Approval</label><div class='input-group'><select class='form-control' name='jabatan"+i+"'><option value='ketua'>Ketua</option><option value='sekretaris'>Sekretaris</option><option value='anggota'>Anggota</option></select></div></div></div>";
+                    var gabung3  = gabung2.concat(isi3);
+
+                    content     = gabung3;
+                    console.log(gabung3);
+
+                }
+                document.getElementById("datakomite").innerHTML = gabung3;
+
+                
+
+            }
+        </script>
+    </head>
+    <body class="skin-blue">
+        <!-- header logo: style can be found in header.less -->
+        <?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <div class="wrapper row-offcanvas row-offcanvas-left">
+            <!-- Left side column. contains the logo and sidebar -->
+            <?php echo $__env->yieldContent('sidebar'); ?>
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <?php echo $__env->yieldContent('content'); ?>
+        </div><!-- ./wrapper -->
+
+        <script src="<?php echo $base_url; ?>assets/js/orgs/jquery.min.js"></script>
+        <script src="<?php echo $base_url; ?>assets/js/orgs/jquery-ui-1.9.2.js" type="text/javascript"></script>
+        <script src="<?php echo $base_url; ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="<?php echo $base_url; ?>assets/js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+        <script src="<?php echo $base_url; ?>assets/js/orgs/jquery.jOrgChart.js" type="text/javascript"></script>
+        <script src="<?php echo $base_url; ?>assets/js/orgs/taffy.js" type="text/javascript"></script>
+        <script src="<?php echo $base_url; ?>assets/js/orgs/setting.js" type="text/javascript"></script>
+
+        <script src="<?php echo $base_url; ?>assets/js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+        <script src="<?php echo $base_url; ?>assets/js/conf.js" type="text/javascript"></script>
+        <script src="<?php echo $base_url; ?>assets/js/datepicker.js" type="text/javascript"></script>
+        <script src="<?php echo $base_url; ?>assets/js/AdminLTE/app.js" type="text/javascript"></script>
+        <script src="<?php echo $base_url; ?>assets/js/AdminLTE/demo.js" type="text/javascript"></script>
+        <!-- page script -->
+        <script type="text/javascript">
+            $(function() {
+                $('[data-toggle="confirmation"]').confirmation({
+
+                });
+
+                $('#example2').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+            });
+        </script>
+    </body>
+</html>

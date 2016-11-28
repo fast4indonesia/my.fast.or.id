@@ -1,0 +1,69 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+    <aside class="right-side">
+        <section class="content-header">
+            <h1>
+                Master Data
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#"> Fit &amp; Proper</a></li>
+            </ol>
+        </section>
+
+        <section class="content">
+            <div class="row">
+                <div class="col-md-2">
+                    <a class="btn btn-custom btn-white " href="<?php echo $base_url; ?>fitnproper/master">Peserta</a>
+                </div><!-- /.col -->
+                <div class="col-md-2">
+                    <a class="btn btn-custom btn-white actives" href="<?php echo $base_url; ?>fitnproper/master/penguji">Penguji</a>
+                </div><!-- /.col -->
+
+            </div>
+        </section>
+
+        <!-- Main content -->
+        <section class="content" style="margin-top:-15px">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Data Penguji</h3>
+                        </div><!-- /.box-header -->
+
+                        <div class="box-body table-responsive">
+                            <?php foreach ($flash as $key => $value): ?>
+                            <?php if($value): ?>
+                            <div class="alert alert-<?php echo $key; ?> alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <?php echo $value; ?>
+                            </div>
+                            <?php endif; ?>
+                            <?php endforeach; ?>
+
+                            <a href="<?php echo $base_url.$uri_1; ?>/<?php echo $controller_name; ?>/create_penguji" class="btn btn-flat btn-primary">
+                                Tambah Penguji
+                            </a>
+
+                            <br/>
+                            <br/>
+                           
+                                    <?php if(isset($aktifitas)): ?>
+                                        <?php foreach ($aktifitas as $key => $element): ?>                                             
+                                                 <?php echo $c = $element->penguji; ?> 
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                             
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div>
+        </section><!-- /.content -->
+
+
+    </aside>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

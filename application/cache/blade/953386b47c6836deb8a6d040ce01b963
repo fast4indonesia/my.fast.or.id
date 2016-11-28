@@ -1,0 +1,110 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+   <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Data Survey Diklat
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="#"> Diklat</a></li>
+                    </ol>
+                </section>
+
+         <!--        <section class="content">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="box <?php echo $uri == '' ? 'box-info' : ''; ?> ">
+                                <div class="alert alert-dismissable">
+                                    <a href="<?php echo $base_url; ?>diklat/survey/"><h6><b>Evaluasi 3</b></h6></a>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="box <?php echo $uri == 'evaluasi4' ? 'box-info' : ''; ?>">
+                                <div class="alert alert-dismissable">
+                                    <a href="<?php echo $base_url; ?>diklat/survey/evaluasi4"><h6><b>Evaluasi 4</b></h6></a>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="box">
+                                <div class="alert alert-dismissable">
+                                    <a href="<?php echo $base_url; ?>diklat/survey/result"><h6><b>Result</b></h6></a>
+                                </div>
+                        </div>
+                    </div>
+                  </div>
+                </section> -->
+
+
+        <section class="content">
+            <div class="row">
+                <div class="col-md-2">
+                    <a class="btn btn-custom btn-white actives" href="<?php echo $base_url; ?>diklat/survey/">Evaluasi 3</a>
+                </div><!-- /.col -->
+                <div class="col-md-2">
+                    <a class="btn btn-custom btn-white" href="<?php echo $base_url; ?>diklat/survey/evaluasi4">Evaluasi 4</a>
+                </div><!-- /.col -->
+                 <div class="col-md-2">
+                    <a class="btn btn-custom btn-white" href="<?php echo $base_url; ?>diklat/survey/result">Result</a>
+                </div><!-- /.col -->
+
+            </div>
+        </section>
+
+        
+                <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <br/>
+                        </div>
+                        <div class="box-body table-responsive">
+                            <table id="example1" class=" right table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nipeg</th>
+                                        <th>Nama Pegawai</th>
+                                        <th>Tanggal Diklat</th>
+                                        <th>Jenis Diklat</th>
+                                        <th>Tempat</th>
+                                        <th>Action Menu</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <?php if(isset($survey)): ?>
+                                        <?php foreach ($survey as $key => $element): ?>
+                                            <tr>
+                                                <td><?php echo $key+1; ?></td>
+                                                <td><?php echo $element->nipeg; ?></td>
+                                                <td><?php echo $element->nama; ?></td>
+                                                <td><?php echo substr($element->mulai, 0, -15); ?></td>                                                
+                                                <td><?php echo $element->judul_diklat; ?></td>
+                                                <td><?php echo $element->tempat; ?></td>
+                                                 
+                                                <td>
+                                                    <a href="<?php echo $base_url; ?>diklat/survey/penilaian/<?php echo $element->kode_survey; ?> "><button class="fa fa-pencil" title="penilaian"></button></a>
+                                                 </td>
+                                            </tr>
+                                         <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div>
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+   
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,109 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                ICP Self Employee
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>/"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="<?php echo $base_url; ?>careers"> Career System</a></li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+       <section class="content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box box-info">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Form Input Integrated Career Planning</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="callout callout-info">
+                                            <div class="form-group">
+                                                    <label >Nama Pegawai :</label>
+                                                    <label ><?php echo $karyawan->nama; ?></label>
+                                            </div>
+                                            <div class="form-group">
+                                                    <label >Nipeg :</label>
+                                                    <label ><?php echo $karyawan->nipeg; ?></label>
+                                            </div>
+                                            <div class="form-group">
+                                                    <label >Kantor Unit :</label>
+                                                    <label >Disjaya</label>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.box-body -->
+
+                                    <?php echo Former::open()->action($base_url.'career/icps/viewplanning'); ?>
+                                        <div class="box-body">
+                                        	<?php if(!empty($flashdata)): ?>
+                                        		<div class="callout callout-danger">
+                                            		<h4>Gagal menyimpan data karena kesalahan berikut:</h4>
+                                             		<ul>
+                                                		<?php foreach ($flashdata as $val): ?>
+                                                    		<li><?php echo $val; ?></li>
+                                                		<?php endforeach; ?>
+                                            		</ul>
+                                        		</div>
+                                    		<?php endif; ?>
+                                            <div class="form-group">
+                                                <div class="col-xs-4">
+                                                	 <?php echo Former::select('career_planning')->options($listalternatif)->class('form-control'); ?>
+                                                                                           
+                                                </div>
+                                                <div class="col-xs-4">
+                                                	 <?php echo Former::select('jabatan')->options($listjabatan)->class('form-control'); ?>
+                                                                                           
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                                <br/>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    <?php echo Former::close(); ?>
+                                    <!-- end form --> 
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div><!-- /.col -->
+                        <!-- -->
+                        
+
+                    </div>
+
+
+							
+
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+    <div class="modal fade" id="uploads" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Insert data dari file excel</h4>
+          </div>
+          <div class="modal-body">
+            <form action="<?php echo $base_url; ?>career/icps/fileupload" method="post" enctype="multipart/form-data">
+                <input type="file" class="filestyle" data-buttonBefore="true" name="file">
+                <br >
+                <button type="submit" class="btn btn-success" style="margin-top:-15px">Submit</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

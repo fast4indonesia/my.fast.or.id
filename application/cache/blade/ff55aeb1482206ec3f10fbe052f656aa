@@ -1,0 +1,23 @@
+<div class="row">
+
+	<div class="col-md-2">
+		<a class="btn btn-custom btn-white <?php echo $cek_menu == 'Peserta' ? 'actives' : ''; ?>" href="<?php echo $base_url; ?>cmc/cmc/">Peserta</a>
+	</div>
+    <?php if($role == "karyawan"): ?>
+	<div class="col-md-2">
+		<a class="btn btn-custom btn-white <?php echo $cek_menu == 'Pelaksanaan' ? 'actives' : ''; ?>" href="<?php echo $base_url; ?>cmc/cmc/pelaksanaan">Pelaksanaan</a>
+	</div>
+	<?php endif; ?>
+<!-- 	<div class="col-md-2">
+		<a class="btn btn-custom btn-white <?php echo $cek_menu == 'Grafik' ? 'actives' : ''; ?>" href="<?php echo $base_url.$uri_1; ?>/<?php echo $controller_name; ?>/grafik">Grafik</a>
+	</div> -->
+<!-- 	<div class="col-md-2">
+		<a class="btn btn-custom btn-white <?php echo $cek_menu == 'Terjadwal' ? 'actives' : ''; ?>" href="<?php echo $base_url; ?>cmc/cmc/">Terjadwal</a>
+	</div>
+	<div class="col-md-2">
+		<a class="btn btn-custom btn-white <?php echo $cek_menu == 'Insidental' ? 'actives' : ''; ?>" href="<?php echo $base_url.$uri_1; ?>/<?php echo $controller_name; ?>/insidental">Insidental</a>
+	</div>
+	<div class="col-md-2">
+		<a class="btn btn-custom btn-white <?php echo $cek_menu == 'Grafik' ? 'actives' : ''; ?>" href="<?php echo $base_url.$uri_1; ?>/<?php echo $controller_name; ?>/grafik">Grafik</a>
+	</div> -->
+</div>

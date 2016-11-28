@@ -1,0 +1,248 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Tracer Candidate
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo local_path(''); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="<?php echo local_path('talent/TracerCandidate') ?>">Talent</a></li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <!-- <div class="box-header">
+                            <h3 class="box-title">Data Talent Dictionary</h3>
+                        </div> -->
+
+                        <br/>
+                        <div class="box-body table-responsive">
+                            <?php foreach ($flash as $key => $value): ?>
+                            <?php if($value): ?>
+                            <div class="alert alert-<?php echo $key; ?> alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <?php echo $value; ?>
+                            </div>
+                            <?php endif; ?>
+                            <?php endforeach; ?>
+                            <div class="wraps">
+                                <div class="left">
+                                    <button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#myModalAdd">
+                                    Tracer
+                                    </button>
+                                </div>
+                            </div>
+
+                            <br/>
+                            <br/>
+                            <br>
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nipeg</th>
+                                        <th>Nama</th>
+                                        <th>Kode Jabatan</th>
+                                        <th>Kode Grade</th>
+                                        <th>Tempat Lahir</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php if(isset($karyawan)): ?>
+                                        <?php foreach ($karyawan as $key => $element): ?>
+                                            <tr>
+                                                <td><?php echo $element->nipeg; ?></td>
+                                                <td><?php echo $element->nama; ?></td>
+                                                <td><?php echo $element->kode_jabatan; ?></td>
+                                                <td><?php echo $element->kode_grade; ?></td>
+                                                <td><?php echo $element->tempat_lahir; ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div>
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+
+     <!-- add new calendar event modal -->
+        <div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Tracer Option</h4>
+              </div>
+              <div class="modal-body">
+
+                    <?php echo form_open('talent/TracerCandidate/search'); ?>
+                    <div class="box-body">
+
+                    <!--
+                    <div class="form-group">
+                            <label>Profesi Pegawai</label>
+                            <div class="input-group">
+                                <select class="form-control" name="profesi_pegawai">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Pengangkatan</label>
+                            <div class="input-group">
+                                <select class="form-control" name="profesi_pegawai">
+                                    <option value="SMP">SMP</option>
+                                    <option value="SMA">SMA</option>
+                                    <option value="STM">STM</option>
+                                    <option value="D1">D1</option>
+                                    <option value="D2">D2</option>
+                                    <option value="D3">D3</option>
+                                    <option value="S1">S1</option>
+                                    <option value="S2">S2</option>
+                                </select>
+                            </div>
+                        </div>
+                        -->
+                        <div class="form-group">
+                            <label>Grade</label>
+                            <div class="input-group">
+                                <select class="form-control" name="kode_grade">
+                                     <?php if (isset($grade)): ?>
+                                        <?php foreach ($grade as $key => $element): ?>
+                                            <option value="<?php echo $key; ?>"><?php echo $element; ?></option>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Jabatan</label>
+                            <div class="input-group">
+                                <select class="form-control" name="kode_jabatan">
+                                     <?php if (isset($jabatan)): ?>
+                                        <?php foreach ($jabatan as $key => $element): ?>
+                                            <option value="<?php echo $key; ?>"><?php echo $element; ?></option>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Status Definitif</label>
+                            <div class="input-group">
+                                <select class="form-control" name="kode_status_definitif">
+                                     <?php if (isset($status_definitif)): ?>
+                                        <?php foreach ($status_definitif as $key => $element): ?>
+                                            <option value="<?php echo $key; ?>"><?php echo $element; ?></option>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Kelas Unit</label>
+                            <div class="input-group">
+                                <select class="form-control" name="kode_unit">
+                                    <?php if (isset($unit)): ?>
+                                        <?php foreach ($unit as $key => $element): ?>
+                                            <option value="<?php echo $key; ?>"><?php echo $element; ?></option>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <!--
+                        <div class="form-group">
+                            <label>Lama Manjabat</label>
+                            <div class="input-group">
+                                <select class="form-control" name="lama_menjabat">
+                                    <option value="">0 - <= 6 Bulan</option>
+                                    <option value="">> 6 - <= 12 Bulan</option>
+                                    <option value="">> 12 - <= 24 Bulan</option>
+                                    <option value="">> 24 - <= 36 Bulan</option>
+                                    <option value="">> 36 - <= 48 Bulan</option>
+                                    <option value="">> 48 - <= 60 Bulan</option>
+                                    <option value="">> 60 Bulan</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Lama di Area Tersebut</label>
+                            <div class="input-group">
+                                <select class="form-control" name="lama_di_organisasi">
+                                    <option value="">0 - <= 6 Bulan</option>
+                                    <option value="">> 6 - <= 12 Bulan</option>
+                                    <option value="">> 1 - <= 2 Tahun</option>
+                                    <option value="">> 2 - <= 3 Tahun</option>
+                                    <option value="">> 3 - <= 4 Tahun</option>
+                                    <option value="">> 4 - <= 5 Tahun</option>
+                                    <option value="">> 5</option>
+                                </select>
+                            </div>
+                        </div>
+                        -->
+                        <div class="form-group">
+                            <label>Tahun Pengangkatan</label>
+                            <div class="input-group">
+                                <select class="form-control" name="tahun_pengangkatan">
+                                    <option value="">Pilih Tahun Pengangkatan</option>
+                                    <?php for ($tahun=1990; $tahun < 2015 ; $tahun++) {
+                                        echo  '<option value='.$tahun.'>'.$tahun.'</option>';
+                                    } ?>
+                                </select>
+                            </div>
+                        </div>
+                        <!--
+                        <div class="form-group">
+                            <label>Diklat Penjenjangan</label>
+                            <div class="input-group">
+                                <select class="form-control" name="diklat_penjenjangan">
+                                    <option value="">EE I</option>
+                                    <option value="">EE II</option>
+                                    <option value="">EE III</option>
+                                    <option value="">SE I</option>
+                                    <option value="">SE II</option>
+                                    <option value="">SSE I</option>
+                                    <option value="">SSE II</option>
+                                    <option value="">SSE III</option>
+                                    <option value="">SPE-1</option>
+                                    <option value="">SPE-2</option>
+                                </select>
+                            </div>
+                        </div>
+                    -->
+                    <?php //echo form_select('Filter by', 'Select All', $search->listkategories, 'filter_categories', 'test')?>
+                    <?php //echo form_text("Isi Value", 'filter_categories_values', '') ?>
+
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Filter</button>
+                        <button type="reset" class="btn btn-primary">Reset</button>
+                    </div><!-- /.input group -->
+                </form>
+            </div>
+          </div>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

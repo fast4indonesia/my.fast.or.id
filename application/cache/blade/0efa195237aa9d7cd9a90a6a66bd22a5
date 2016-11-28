@@ -1,0 +1,123 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+ <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Master Data Employee
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="<?php echo local_path('') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="<?php echo local_path('master/employee') ?>">FTK</a></li>
+                    </ol>
+                </section>
+
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <h3 class="box-title">Form Input Data Employee</h3>
+                                </div>
+                               <?php echo Former::open()->action($base_url.'master/employee/store'); ?>
+                                <div class="box-body">
+                                    <?php if(!empty($flashdata)): ?>
+                                        <div class="callout callout-danger">
+                                            <h4>Gagal menyimpan data karena kesalahan berikut:</h4>
+                                             <ul>
+                                                <?php foreach ($flashdata as $val): ?>
+                                                    <li><?php echo $val; ?></li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
+                                    <?php endif; ?> 
+
+                                    <?php foreach ($data->attributes() as $key => $value): ?>
+                                        <?php if ($method == 'create'): ?>
+                                        	<?php if ($key == 'kode_kantor'): ?>
+                                                <?php echo Former::select($key)->options($listkantor)->class('form-control small-form'); ?>
+                                            <?php elseif ($key == 'kode_jabatan'): ?>
+                                                <?php echo Former::select($key)->options($listjabatan)->class('form-control small-form'); ?>
+                                            <?php elseif ($key == 'kode_grade'): ?>
+                                                <?php echo Former::select($key)->options($listgrade)->class('form-control small-form'); ?>
+                                            <?php elseif ($key == 'kode_posisi'): ?>
+                                                <?php echo Former::select($key)->options($listposisi)->class('form-control small-form'); ?>
+                                            <?php elseif ($key == 'kode_profesi_1'): ?>
+                                                <?php echo Former::select($key)->options($listprofesi)->class('form-control small-form'); ?>
+                                            <?php elseif ($key == 'kode_profesi_2'): ?>
+                                                <?php echo Former::select($key)->options($listprofesi)->class('form-control small-form'); ?>
+                                            <?php elseif ($key == 'kode_profesi_3'): ?>
+                                                <?php echo Former::select($key)->options($listprofesi)->class('form-control small-form'); ?>
+                                            <?php elseif ($key == 'kode_jenjang_kkj_soft'): ?>
+                                                <?php echo Former::select($key)->options($listjenjangkkj)->class('form-control small-form'); ?>
+                                            <?php elseif ($key == 'kode_jenjang_kkj_sub_grp'): ?>
+                                                <?php echo Former::select($key)->options($listjenjangjabatan)->class('form-control small-form'); ?>
+                                            <?php elseif ($key == 'jns_kelamin'): ?>
+                                                <?php echo Former::select($key)->options($data->listgender)->class('form-control small-form'); ?>
+                                            <?php elseif ($key == 'gol_darah'): ?>
+                                                <?php echo Former::select($key)->options($data->listgolongandarah)->class('form-control small-form'); ?>
+                                            <?php elseif ($key == 'status_definitif'): ?>
+                                                <?php echo Former::select($key)->options($liststatusdefinitif)->class('form-control small-form'); ?>
+                                            
+                                            <?php elseif ($key == 'tgl_mulai_jabatan' || $key == 'tgl_grade_terakhir' || $key == 'tgl_masuk' || $key == 'tgl_capeg' || $key == 'tgl_tetap' || $key == 'tgl_sk_penggajian_awal' || $key == 'tgl_sk_organizational_assi' || $key == 'tgl_mulai' || $key == 'tgl_berakhir' || $key == 'tgl_lahir'): ?>
+                                                <?php echo Former::text($key)->value($value)->class('form-control small-form dates'); ?>
+                                            <?php else: ?>
+                                                <?php echo Former::text($key)->value($value)->class('form-control small-form'); ?>
+                                            <?php endif; ?>
+                                        <?php else: ?>
+                                            <?php if ($key == 'kode_kantor'): ?>
+                                                <?php echo Former::select($key)->options($listkantor, $value)->class('form-control small-form')->state($data->errors->is_invalid($key) ? 'error' : ''); ?>
+                                            <?php elseif ($key == 'kode_jabatan'): ?>
+                                                <?php echo Former::select($key)->options($listjabatan, $value)->class('form-control small-form')->state($data->errors->is_invalid($key) ? 'error' : ''); ?>
+                                            <?php elseif ($key == 'kode_grade'): ?>
+                                                <?php echo Former::select($key)->options($listgrade, $value)->class('form-control small-form')->state($data->errors->is_invalid($key) ? 'error' : ''); ?>
+                                            <?php elseif ($key == 'kode_posisi'): ?>
+                                                <?php echo Former::select($key)->options($listposisi, $value)->class('form-control small-form')->state($data->errors->is_invalid($key) ? 'error' : ''); ?>
+                                            <?php elseif ($key == 'kode_profesi_1'): ?>
+                                                <?php echo Former::select($key)->options($listprofesi, $value)->class('form-control small-form')->state($data->errors->is_invalid($key) ? 'error' : ''); ?>
+                                            <?php elseif ($key == 'kode_profesi_2'): ?>
+                                                <?php echo Former::select($key)->options($listprofesi, $value)->class('form-control small-form')->state($data->errors->is_invalid($key) ? 'error' : ''); ?>
+                                            <?php elseif ($key == 'kode_profesi_3'): ?>
+                                                <?php echo Former::select($key)->options($listprofesi, $value)->class('form-control small-form')->state($data->errors->is_invalid($key) ? 'error' : ''); ?>
+                                             <?php elseif ($key == 'kode_jenjang_kkj_soft'): ?>
+                                                <?php echo Former::select($key)->options($listjenjangkkj, $value)->class('form-control small-form')->state($data->errors->is_invalid($key) ? 'error' : ''); ?>
+                                            <?php elseif ($key == 'kode_jenjang_kkj_sub_grp'): ?>
+                                                <?php echo Former::select($key)->options($listjenjangjabatan, $value)->class('form-control small-form')->state($data->errors->is_invalid($key) ? 'error' : ''); ?>
+                                            <?php elseif ($key == 'jns_kelamin'): ?>
+                                                <?php echo Former::select($key)->options($data->listgender, $value)->class('form-control small-form')->state($data->errors->is_invalid($key) ? 'error' : ''); ?>
+                                            <?php elseif ($key == 'gol_darah'): ?>
+                                                <?php echo Former::select($key)->options($data->listgolongandarah, $value)->class('form-control small-form')->state($data->errors->is_invalid($key) ? 'error' : ''); ?>
+
+                                            <?php elseif ($key == 'status_definitif'): ?>
+                                                <?php echo Former::select($key)->options($liststatusdefinitif, $value)->class('form-control small-form')->state($data->errors->is_invalid($key) ? 'error' : ''); ?>
+                                            <?php elseif ($key == 'tgl_mulai_jabatan' || $key == 'tgl_grade_terakhir' || $key == 'tgl_masuk' || $key == 'tgl_capeg' || $key == 'tgl_tetap' || $key == 'tgl_sk_penggajian_awal' || $key == 'tgl_sk_organizational_assi' || $key == 'tgl_mulai' || $key == 'tgl_berakhir' || $key == 'tgl_lahir'): ?>
+                                               <?php echo Former::text($key)->value($value)->class('form-control small-form dates')->state($data->errors->is_invalid($key) ? 'error' : ''); ?>
+                                            <?php else: ?>
+                                                <?php echo Former::text($key)->value($value)->class('form-control small-form')->state($data->errors->is_invalid($key) ? 'error' : ''); ?>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+
+                                    
+                                    
+                                </div>
+                            <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="reset" class="btn">Reset</button>
+                            </div><!-- /.input group -->
+                            <?php echo Former::close(); ?>
+
+                    </div>
+                </section>
+            </aside>
+           
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

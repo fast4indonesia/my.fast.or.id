@@ -1,0 +1,93 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+    <aside class="right-side">
+        <section class="content-header">
+            <h1>
+                Master Data
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#"> Fit &amp; Proper</a></li>
+            </ol>
+        </section>
+
+        <section class="content">
+            <div class="row">
+                <div class="col-md-2">
+                    <a class="btn btn-custom btn-white actives" href="<?php echo $base_url; ?>fitnproper/master">Peserta</a>
+                </div><!-- /.col -->
+                <div class="col-md-2">
+                    <a class="btn btn-custom btn-white" href="<?php echo $base_url; ?>fitnproper/master/penguji">Penguji</a>
+                </div><!-- /.col -->
+
+            </div>
+        </section>
+
+        <!-- Main content -->
+        <section class="content" style="margin-top:-15px">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Data Peserta</h3>
+                        </div><!-- /.box-header -->
+
+                        <div class="box-body table-responsive">
+                            <?php foreach ($flash as $key => $value): ?>
+                            <?php if($value): ?>
+                            <div class="alert alert-<?php echo $key; ?> alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <?php echo $value; ?>
+                            </div>
+                            <?php endif; ?>
+                            <?php endforeach; ?>
+
+                            <a href="<?php echo $base_url.$uri_1; ?>/<?php echo $controller_name; ?>/create_peserta" class="btn btn-flat btn-primary">
+                                Tambah Peserta
+                            </a>
+
+                            <br/>
+                            <br/>
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nama Peserta</th>
+                                        <th>Tanggal Mulai</th>
+                                        <th>Nama Penugasan</th>
+                                        <th>Workstream</th>
+                                        <th>Co-Mentor</th>
+                                        <th>Mentor</th>                                       
+                                        <th>Action Menu</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php if(isset($data)): ?>
+                                        <?php foreach ($data as $key => $element): ?>
+                                            <tr>
+                                                <td><?php echo $element->nama; ?></td>
+                                                <td><?php echo $element->tgl; ?></td>
+                                                <td><?php echo $element->penugasan; ?></td>
+                                                <td><?php echo $element->workstream; ?> </td>
+                                                <td><?php echo $element->comentor; ?></td>
+                                                <td><?php echo $element->mentor; ?></td>
+                                                <td>
+                                                    <a href="<?php echo $base_url; ?>fitnproper/master/edit_karyawan/<?php echo $element->kode; ?>"><button class="fa fa-pencil" title="edit"></button></a>  
+                                                    <a href="<?php echo $base_url; ?>fitnproper/master/destroy_karyawan/<?php echo $element->kode; ?>" data-toggle="confirmation" data-placement="top" data-original-title="" title=""><button class="fa fa-times"  title="delete"></button></a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div>
+        </section><!-- /.content -->
+
+      
+    </aside>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,329 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+   <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Project Assignment
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="#">ADMP</a></li>
+                        <li><a href="#">Project Assignment</a></li>
+                    </ol>
+                </section>
+
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Penilaian Project Assignment Individu</h3>                                    
+                                </div><!-- /.box-header -->
+                                <br/>
+                                <form action="" method="post">
+                                    <?php if(isset($data)): ?>
+                                            <?php foreach ($data as $key => $element): ?>
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label>Nama Lengkap</label>
+                                            <div class="input-group">
+                                                <p class="text-aqua"><?php echo $element->nama; ?></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>NIPEG</label>
+                                            <div class="input-group">
+                                                <p class="text-aqua"><?php echo $element->nipeg; ?></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Unit Induk</label>
+                                            <div class="input-group">
+                                                <p class="text-aqua"><?php echo $element->kantor; ?></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Judul Makalah</label>
+                                            <div class="input-group">
+                                                <p class="text-aqua"><?php echo $element->judul; ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box-body table-responsive">
+                                        <table class="table table-bordered table-striped">
+                                        
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Kriteria</th>
+                                                    <th>Max Score</th>
+                                                    <th>Score</th>
+                                                    <th>Keterangan</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td colspan="4"><b>Inisiatif PA</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td rowspan="5"></td>
+                                                    <td>Ada Masalah (Konflik)</td>
+                                                    <td><center>8</center></td>
+                                                    <td><input type="text" class="form-control" name="keterangan_konflik" value="<?php echo $element->s1a; ?>" readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_konflik" value="<?php echo $element->k1a; ?>" readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Ada Tahapan Solusi</td>
+                                                    <td><center>8</center></td>
+                                                    <td><input type="text" class="form-control" name="keterangan_solusi" value="<?php echo $element->s1b; ?>" readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_solusi" value="<?php echo $element->k1b; ?>" readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Ada langkah kegiatan untuk Mecapai</td>
+                                                    <td><center>10</center></td>
+                                                    <td><input type="text" class="form-control" name="afi" value="<?php echo $element->s1c; ?>" readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_kegiatan" value="<?php echo $element->k1c; ?>" readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Lain - Lain</td>
+                                                    <td><center>4</center></td>
+                                                    <td><input type="text" class="form-control" name="keterangan_lain" value="<?php echo $element->s1d; ?>" readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_lain" value="<?php echo $element->k1d; ?>"  readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b><center>Sub Total</center></b></td>
+                                                    <td><b><center>30</center></b></td>
+                                                    <td><b><center><input type="text" class="form-control" name="" value="<?php echo $element->jum1; ?>" readonly/></center></b></td>
+                                                    <td></td>
+                                                </tr>
+
+
+                                                <!-- PA 2  -->
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td colspan="4"><b>Eksekusi inisiatif</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td rowspan="6"></td>
+                                                    <td>Tindak Lanjut terhadap Solusi</td>
+                                                    <td><center>5</center></td>
+                                                    <td><input type="text" class="form-control" name="keterangan_konflik"  value="<?php echo $element->s2a; ?>" readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_konflik"  value="<?php echo $element->k2a; ?>" readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>ada realisasi kegiatan terstruktur untuk mencapai</td>
+                                                    <td><center>5</center></td>
+                                                    <td><input type="text" class="form-control" name="keterangan_solusi"  value="<?php echo $element->s2b; ?>" readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_solusi"  value="<?php echo $element->k2b; ?>"  readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Penyelesaian melalui CMC</td>
+                                                    <td><center>5</center></td>
+                                                    <td><input type="text" class="form-control" name="afi"  value="<?php echo $element->s2c; ?>" readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_kegiatan"  value="<?php echo $element->k2c; ?>" readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Semangat belajar</td>
+                                                    <td><center>3</center></td>
+                                                    <td><input type="text" class="form-control" name="afi"  value="<?php echo $element->s2d; ?>" readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_kegiatan"  value="<?php echo $element->k2d; ?>" readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Lain - Lain</td>
+                                                    <td><center>2</center></td>
+                                                    <td><input type="text" class="form-control" name="keterangan_lain"  value="<?php echo $element->s2e; ?>" readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_lain"  value="<?php echo $element->k2e; ?>" readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b><center>Sub Total</center></b></td>
+                                                    <td><b><center>20</center></b></td>
+                                                    <td><b><center><input type="text" class="form-control" name="" value="<?php echo $element->jum2; ?>"  readonly/></center></b></td>
+                                                    <td></td>
+                                                </tr>
+
+
+                                                <!-- PA 3  -->
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td colspan="4"><b>Efisiensi/manfaat (* isi salah satu</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td rowspan="4"></td>
+                                                    <td>Tidak Ada</td>
+                                                    <td><center>0</center></td>
+                                                    <td><input type="text" class="form-control" name="keterangan_konflik" value="<?php echo $element->s3a; ?>"  readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_konflik" value="<?php echo $element->k3a; ?>"  readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tidak relevan dengan kinerja</td>
+                                                    <td><center>5</center></td>
+                                                    <td><input type="text" class="form-control" name="keterangan_solusi" value="<?php echo $element->s3b; ?>"  readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_solusi" value="<?php echo $element->k3b; ?>"  readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Relevan dengan kinerja</td>
+                                                    <td><center>10</center></td>
+                                                    <td><input type="text" class="form-control" name="afi" value="<?php echo $element->s3c; ?>"  readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_kegiatan" value="<?php echo $element->k3c; ?>"  readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b><center>Sub Total</center></b></td>
+                                                    <td><b><center>10</center></b></td>
+                                                    <td><b><center><input type="text" class="form-control" name="" value="<?php echo $element->jum3; ?>"  readonly/></center></b></td>
+                                                    <td></td>
+                                                </tr>
+
+
+                                                <!-- PA 4  -->
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td colspan="4"><b>Dampak terhadap kinerja (* isi salah satu</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td rowspan="4"></td>
+                                                    <td>Tidak Ada</td>
+                                                    <td><center>0</center></td>
+                                                    <td><input type="text" class="form-control" name="keterangan_konflik" value="<?php echo $element->s4a; ?>"  readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_konflik" value="<?php echo $element->k4a; ?>"  readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tidak relevan dengan kinerja</td>
+                                                    <td><center>10</center></td>
+                                                    <td><input type="text" class="form-control" name="keterangan_solusi" value="<?php echo $element->s4b; ?>"  readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_solusi" value="<?php echo $element->k4b; ?>"  readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Relevan dengan kinerja</td>
+                                                    <td><center>20</center></td>
+                                                    <td><input type="text" class="form-control" name="afi" value="<?php echo $element->s4c; ?>"  readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_kegiatan" value="<?php echo $element->k4c; ?>"  readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b><center>Sub Total</center></b></td>
+                                                    <td><b><center>20</center></b></td>
+                                                    <td><b><center><input type="text" class="form-control" name="" value="<?php echo $element->jum4; ?>"  readonly/></center></b></td>
+                                                    <td></td>
+                                                </tr>
+
+
+                                                <!-- PA 5  -->
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td colspan="4"><b>Result (* isi salah satu</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td rowspan="4"></td>
+                                                    <td>Cukup Baik</td>
+                                                    <td><center>5</center></td>
+                                                    <td><input type="text" class="form-control" name="keterangan_konflik" value="<?php echo $element->s5a; ?>"  readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_konflik" value="<?php echo $element->k5a; ?>"  readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Baik</td>
+                                                    <td><center>8</center></td>
+                                                    <td><input type="text" class="form-control" name="keterangan_solusi" value="<?php echo $element->s5b; ?>"  readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_solusi" value="<?php echo $element->k5b; ?>"  readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Sangat Baik</td>
+                                                    <td><center>10</center></td>
+                                                    <td><input type="text" class="form-control" name="afi" value="<?php echo $element->s5c; ?>"  readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_kegiatan" value="<?php echo $element->k5c; ?>"  readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b><center>Sub Total</center></b></td>
+                                                    <td><b><center>10</center></b></td>
+                                                    <td><b><center><input type="text" class="form-control" name="" value="<?php echo $element->jum5; ?>"  readonly/></center></b></td>
+                                                    <td></td>
+                                                </tr>
+
+
+                                                <!-- PA 6  -->
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td colspan="4"><b>Perilaku (* isi salah satu</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td rowspan="4"></td>
+                                                    <td>Cukup Baik</td>
+                                                    <td><center>5</center></td>
+                                                    <td><input type="text" class="form-control" name="keterangan_konflik" value="<?php echo $element->s6a; ?>"  readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_konflik" value="<?php echo $element->k6a; ?>"  readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Baik</td>
+                                                    <td><center>8</center></td>
+                                                    <td><input type="text" class="form-control" name="keterangan_solusi" value="<?php echo $element->s6b; ?>"  readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_solusi" value="<?php echo $element->k6b; ?>"  readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Sangat Baik </td>
+                                                    <td><center>10</center></td>
+                                                    <td><input type="text" class="form-control" name="afi" value="<?php echo $element->s6c; ?>"  readonly/></td>
+                                                    <td><input type="text" class="form-control" name="score_kegiatan" value="<?php echo $element->k6c; ?>"  readonly/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b><center>Sub Total</center></b></td>
+                                                    <td><b><center>10</center></b></td>
+                                                    <td><b><center><input type="text" class="form-control" name="" value="<?php echo $element->jum6; ?>"  readonly/></center></b></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="4"></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td colspan="2"><b><center>Total Nilai</center></b></td>
+                                                    <td><b><center>100</center></b></td>
+                                                    <td><b><center><input type="text" class="form-control" name="" value="<?php echo $element->total; ?>" readonly/></center></b></td>
+                                                    <td></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                    <?php endif; ?>    
+                                        </table>
+                                    </div><!-- /.box-body -->
+                                </form>  
+                            </div><!-- /.box -->
+                        </div><!-- /.col -->
+                    </div>                      
+
+
+                    <div class="row">
+                        <div class="col-xs-12">                            
+                            <div class="col-xs-6">        
+                               
+                            </div>          
+                            <div class="col-xs-2">
+                            </div>
+
+                            <div class="col-xs-4">
+                                <div class="box-body">              
+                                    <div class="form-group">
+                                        <label></label>
+                                    </div>                                            
+                                    <div>
+                                        <label><h4><b>Tanda Tangan Atasan / Manager</b></h4></label>
+                                    </div>       
+                                    <br/> 
+                                    <br/> 
+                                    <div>
+                                        <label><h4><b>(____________________________)</b></h4></label>
+                                    </div>        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

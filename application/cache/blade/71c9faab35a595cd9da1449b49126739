@@ -1,0 +1,144 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Data M-KTP (EMPLOYEE DEVELOPMENT MOTIVATION AND CARE CENTRE)
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="<?php echo $base_url; ?>master/mktp">MKTP </a></li>
+                 
+            </ol>
+        </section>
+
+        <!-- Main content -->
+    <section class="content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Data Keluhan Pegawai</h3>                                    
+                                </div><!-- /.box-header -->
+                            </div>
+                            <div class="box">
+                                <div class="box-body col-xs-3">
+                                    <div class="form-group">
+                                        <label>Nama Pegawai</label>
+                                        <br/>
+                                        <label> <?php if(isset($dataKeluhana)): ?>
+                                        <?php foreach ($dataKeluhana as $key => $element): ?>
+                                                  <?php echo $element->nama_kar; ?>
+                                           <?php endforeach; ?>
+                                    <?php endif; ?>
+
+                                    </label>
+                                    </div>
+                                </div>
+                                <div class="box-body col-xs-3">
+                                    <div class="form-group">
+                                        <label>Nipeg</label>
+                                        <br/>
+                                        <label><?php if(isset($dataKeluhana)): ?>
+                                        <?php foreach ($dataKeluhana as $key => $element): ?>
+                                                  <?php echo $element->nipeg; ?>
+                                           <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </label>
+                                    </div>
+                                </div>
+                                <div class="box-body col-xs-3">
+
+                                    <div class="form-group">
+                                        <label>Kategori Keluhan</label>
+                                        <br/>
+                                        <label><?php if(isset($dataKeluhana)): ?>
+                                        <?php foreach ($dataKeluhana as $key => $element): ?>
+                                                  <?php echo $element->nama_keluhan; ?>
+                                           <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </label>
+                                    </div>
+                                </div>
+                                <div class="box-body col-xs-3">
+
+                                    <div class="form-group">
+                                        <label>Tanggal</label>
+                                        <br/>
+                                        <label><?php if(isset($dataKeluhana)): ?>
+                                        <?php foreach ($dataKeluhana as $key => $induk): ?>
+                                                  <?php echo substr($induk->tgl, 4, -15); ?>
+                                        
+                                </label>
+                                    </div>
+                                </div>
+                            </div><!-- /.box-body -->
+                            <br/>
+                            <br/> 
+                            <br/>
+                                <div class="box-body">
+                                    <table id="example3" class=" right table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th><center>No</center></th>
+                                                <th><center>Dari</center></th>
+                                                <th><center>Tanggal</center></th>
+                                                <th><center>Isi Pesan</center></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                    <?php if(isset($dataKeluhanaAll)): ?>
+                                        <?php foreach ($dataKeluhanaAll as $key => $element): ?>
+                                            <tr>
+                                                <td><?php echo $key+1; ?></td>
+                                                <td><?php if ($element->role=="sdm"): ?>
+                                                       <?php echo "SDM"; ?>
+                                                    <?php else: ?>
+                                                        <?php echo $element->nama_kar; ?>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td><?php echo substr($element->tgl, 4, -15); ?></td>
+                                                <td><?php echo $element->isi_keluhan; ?></td>
+                                            </tr>
+                                         <?php endforeach; ?>
+                                    <?php endif; ?>
+                                            <tr>
+                                            <?php echo Former::open()->action($base_url.'master/mktp/sendReplay/'.$induk->nipeg.'/'.$induk->id_mktp.'/'.$induk->kode_kel); ?>
+                                               <?php endforeach; ?>
+                                    <?php endif; ?>
+                                                <td>#</td>
+                                                <td> <?php echo Former::text(dari)->label()->value(11)->class('form-control' )->readonly(); ?> </td>
+                                                <td> <?php echo date('d M Y'); ?></td>
+                                                <td>
+                                                     <?php echo Former::textarea(isi_keluhan)->label()->value($value)->class('form-control'); ?>                                
+                                                     <?php echo Former::file('berkas')->class('form-control small-forms')->value($value); ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">
+                                                <td>   
+                                                    <div class="box-footer right">
+                                                        <button type="submit" class="btn btn-primary ">Balas</button>
+                                                    </div>
+                                                </td>
+                                            <?php echo Former::close(); ?>
+                                            </tr>                                                         
+                                    </table>
+                                </div><!-- /.box-body -->
+
+                        </div><!-- /.col -->
+                    </div>
+
+
+                            
+
+                </section
+    </aside><!-- /.right-side -->
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

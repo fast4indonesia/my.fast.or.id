@@ -1,0 +1,98 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Tambah Assessment
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="<?php echo $base_url; ?>master/assessment"> Master Assessment</a></li>
+                <li><a href="#"> Tambah Assessment</a></li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box box-danger">
+                            <div class="box-header">
+                                <h3 class="box-title">Form Input Assessment</h3>
+                            </div>
+                            <?php echo Former::open()->action($base_url.'master/assessment/store')->enctype("multipart/form-data"); ?>
+                                <div class="box-body">
+                                    <?php if(!empty($flashdata)): ?>
+                                        <div class="callout callout-danger">
+                                            <h4>Gagal menyimpan data karena kesalahan berikut:</h4>
+                                             <ul>
+                                                <?php foreach ($flashdata as $val): ?>
+                                                    <li><?php echo $val; ?></li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php if($method == 'create'): ?>
+                                        <?php echo Former::select('employee')->options($employee)->class('form-control small-form')->id('empSelect'); ?>
+                                        <span class="placeholds hide">mengambil data...</span>
+
+
+
+                                        <div id="softs"></div>
+
+                                        <?php echo Former::text("kode_assessment")->class('form-control small-form'); ?>
+                                        <?php echo Former::text("tanggal_assessment")->class('form-control small-form dates'); ?>
+
+                                        <?php echo Former::select('batch')->options(array('1' => '1','2' => '2','3' => '3','4' => '4','5' => '5', '6' => '6', '7' => '7', '8' => '8', '9' => '9', '10' => '10'))->class('form-control small-form'); ?>
+
+                                        <?php echo Former::file("file_assessment_versi_Atasan")->class('fform-control small-forms')->accept('application/pdf', 'application/x-pdf'); ?>
+                                        <?php echo Former::file("file_assessment_versi_SDM")->class('fform-control small-forms')->accept('application/pdf', 'application/x-pdf'); ?>
+                                        <?php echo Former::file("file_assessment_versi_Bawahan")->class('fform-control small-forms')->accept('application/pdf', 'application/x-pdf'); ?>
+                                    <?php else: ?>
+                                        <?php echo Former::select('employee')->options($employee, $data->employee->nipeg)->class('form-control small-form')->id('empSelect')->state($data->errors->is_invalid('nipeg') ? 'error' : ''); ?>
+                                        <span class="placeholds hide">mengambil data...</span>
+                                        <div id="softs">
+                                            <?php if (isset($kompetensi)): ?>
+                                                <?php foreach ($kompetensi as $element): ?>
+                                                    <div class="control-group control-group-alone">
+                                                    <?php echo Former::label("Kompetensi ".$element->kode_kompetensi.' ('.$element->nama_kompetensi.')'); ?>
+                                                    <?php echo Former::select('kompetensi['.$element->kode_kompetensi.']')->options(array('0' => '0','1' => '1','2' => '2','3' => '3','4' => '4','5' => '5', '6' => '6'))->class('form-control small-form')->raw(); ?>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
+                                        </div>
+
+                                        <?php echo Former::text("kode_assessment")->class('form-control small-form')->state($data->errors->is_invalid('kode_assessment') ? 'error' : ''); ?>
+                                        <?php echo Former::text("tanggal_assessment")->class('form-control small-form dates')->state($data->errors->is_invalid('tanggal_assessment') ? 'error' : ''); ?>
+
+                                        <?php echo Former::select('batch')->options(array('1' => '1','2' => '2','3' => '3','4' => '4','5' => '5', '6' => '6', '7' => '7', '8' => '8', '9' => '9', '10' => '10'))->class('form-control small-form'); ?>
+
+                                        <?php echo Former::file("file_assessment_versi_Atasan")->class('form-control small-forms')->accept('application/pdf', 'application/x-pdf'); ?>
+                                        <?php echo Former::file("file_assessment_versi_SDM")->class('form-control small-forms')->accept('application/pdf', 'application/x-pdf'); ?>
+                                        <?php echo Former::file("file_assessment_versi_Bawahan")->class('form-control small-forms')->accept('application/pdf', 'application/x-pdf'); ?>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="reset" class="btn">Reset</button>
+                                </div><!-- /.input group -->
+                            <?php echo Former::close(); ?>
+                        </div><!-- /.box-body -->
+                    </div>
+                </div><!-- /.col -->
+            </div>
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+    <style type="text/css">
+        .bootstrap-filestyle {
+            width: 400px;
+        }
+    </style>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

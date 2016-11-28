@@ -1,0 +1,60 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<style type="text/css">
+    .opciones {
+        display: none;
+    }
+</style>
+    <aside class="right-side strechss">
+        <section class="content-header">
+            <h1>
+                Atur Struktur Organisasi
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#"> Atur Struktur Organisasi</a></li>
+            </ol>
+        </section>
+
+
+        <ul id="orgs" style="display:none">
+            <?php if(!empty($atas)): ?>
+            <li data-kode="<?php echo $atas->kode_self; ?>" data-jabatan="<?php echo $atas->kode_jabatan; ?>" class="uniq1 root nrow" id="<?php echo substr(md5(rand()), 0, 7); ?>">
+                <p class="indikator"><?php echo $atas->employee()->kriteria_talent; ?></p>
+                <p class="titles"><?php echo $atas->jabatan()->nama_jabatan; ?></p>
+                <p class="names"><?php echo $atas->employee()->nama; ?></p>
+                <p class="nipes"><?php echo $atas->employee()->nipeg; ?></p>
+
+                <?php echo RecurseArrays($atas, $kode, 1, array($atas->employee()->nipeg)); ?>
+            </li>
+            <?php endif; ?>
+        </ul>
+        <br>
+        <div class="row wrappers">
+
+
+            <div class="col-md-12">
+                <div class="box box-solid">
+                    <div class="box-header">
+                        <h3 class="box-title" style="padding: 10px 0px 0 10px">
+                            <div class="input-group">
+                            <span class="input-group-addon">Pilih Kantor</span>
+                            <?php echo Former::select('kantor')->options($office)->class('form-control')->id('officeSel')->raw(); ?>
+                        </div>
+                        </h3>
+                    </div>
+                    <div  id="chart2" class="box-body">
+
+                <div id="charts" class="orgChart"></div>
+            </div>
+            </div>
+        </div>
+
+        <span id="kodes" class="hide"><?php echo $kode; ?></span>
+        <span id="urls" class="hide"><?php echo $base_url; ?></span>
+        <a href="" id="links" class="hide"></a>
+    </aside>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.orgs', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

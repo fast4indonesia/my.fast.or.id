@@ -1,0 +1,298 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Tambah Peserta Fit & Proper
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="<?php echo $base_url; ?>fitnproper"> Fit & Proper</a></li>
+                <li><a href="#"> Peserta</a></li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box box-primary">
+                            <div class="box-header">
+                                <h3 class="box-title">Form Input Peserta</h3>
+                            </div>
+                            <?php echo Former::open()->action($base_url.'fitnproper/master/store_peserta')->enctype("multipart/form-data"); ?>
+                                <div class="box-body">
+                                    <?php if(!empty($flashdata)): ?>
+                                        <div class="callout callout-danger">
+                                            <h4>Gagal menyimpan data karena kesalahan berikut:</h4>
+                                             <ul>
+                                                <?php foreach ($flashdata as $val): ?>
+                                                    <li><?php echo $val; ?></li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php if($method == 'create'): ?>
+
+                                            <div class="col-xs-12">
+                                                <div class="form-group col-xs-3"> 
+                                                    <label>Pilih Jabatan</label>                     
+                                                </div>
+                                                <div class="form-group col-xs-3">                        
+                                                    <div class="input-group" style="width: 100%;">
+                                                        <select class="select2-drop-mask form-control" required id="selJabatan" name="jabatan">
+                                                            <?php foreach ($jabatan as $jbtn => $valuejabatan): ?>
+                                                                <option value="<?php echo $jbtn; ?>"><?php echo $valuejabatan; ?></option>
+                                                            <?php endforeach; ?>
+                                                        </select>
+                                                    </div>                 
+                                                </div> 
+                                            </div>
+
+                                            <div class="col-xs-12">
+                                                <div class="form-group col-xs-3"> 
+                                                    <label>Pilih Peserta</label>                     
+                                                </div>
+                                                <div class="form-group col-xs-3">   
+                                                    <div id="isi">                   
+                                                    <div class="input-group" style="width: 100%;">
+                                                        <select class="select2-drop-mask form-control" required id="selPegawai" name="peserta">
+                                                            <?php foreach ($peserta as $psrta => $valuepeserta): ?>
+                                                                <option value="<?php echo $psrta; ?>"><?php echo $valuepeserta; ?></option>
+                                                            <?php endforeach; ?>
+                                                        </select>
+                                                    </div>       
+                                                    </div>          
+                                                </div> 
+                                            </div>
+
+                                            <div class="col-xs-12">
+                                              <div class="form-group col-xs-3"> 
+                                                  <label>Tanggal </label>                     
+                                              </div>
+                                              <div class="form-group col-xs-3">                        
+                                                <div class="input-group" style="width: 100%;">
+                                                    <input type="date" class="form-control" required name="tgl" value="" />
+                                                </div>                 
+                                              </div> 
+                                            </div> 
+
+                                            <div class="col-xs-12">
+                                              <div class="form-group col-xs-3"> 
+                                                  <label>Waktu </label>                     
+                                              </div>
+                                              <div class="form-group col-xs-3">                        
+                                                <div class="input-group" style="width: 100%;">
+                                                    <input type="time" class="form-control" required name="waktu" value="" />
+                                                </div>                 
+                                              </div> 
+                                            </div>                                                 
+                                        
+
+                                            <div class="col-xs-12">
+                                              <div class="form-group col-xs-3"> 
+                                                  <label>Ruang </label>                     
+                                              </div>
+                                              <div class="form-group col-xs-3">                        
+                                                <div class="input-group" style="width: 100%;">
+                                                    <input type="text" class="form-control" required name="ruang" value="" />
+                                                </div>                 
+                                              </div> 
+                                            </div>                                      
+                                        
+
+                                            <div class="col-xs-12">
+                                              <div class="form-group col-xs-3"> 
+                                                  <label>Jabatan yang Diajukan </label>                     
+                                              </div>
+                                              <div class="form-group col-xs-3">                        
+                                                <div class="input-group" style="width: 100%;">
+                                                    <select class="select2-drop-mask form-control" required  name="jabatan_diajukan">
+                                                        <?php foreach ($jabatan as $jbtn => $valuejabatan): ?>
+                                                            <option value="<?php echo $jbtn; ?>"><?php echo $valuejabatan; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                </div>                 
+                                              </div> 
+                                            </div>       
+
+
+
+                                            <div class="col-xs-12">
+                                                <div class="form-group col-xs-3"> 
+                                                    <label for="selPeng">Jumlah Penguji</label>                     
+                                                </div>
+                                                <div class="form-group col-xs-3">                        
+                                                    <div class="input-group" style="width: 100%;">
+                                                        <select class="select2-drop-mask form-control" required id="selPeng" name="jml" onchange="cekjml(this)">
+                                                                <?php for ($i = 1; $i < count($count_p) ; $i++): ?>
+                                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                                <?php endfor; ?>
+                                                        </select>
+                                                    </div>                 
+                                                </div> 
+                                            </div> 
+
+                                            <?php for ($i = 1; $i < count($count_p) ; $i++): ?>
+                                            <div class="control-group hide peng peng-<?php echo $i; ?>">
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-3"> 
+                                                        <label  for="peng[]">Pilih Penguji <?php echo $i; ?></label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <select class="select2-drop-mask form-control" required name="peng[]">
+                                                                    <?php foreach ($penguji as $pngji => $valuepenguji): ?>
+                                                                    <option value="<?php echo $pngji; ?>"><?php echo $valuepenguji; ?></option>
+                                                                    <?php endforeach; ?>
+                                                            </select>
+                                                        </div>                 
+                                                    </div> 
+                                                </div>
+                                            </div>
+                                            <?php endfor; ?>    
+
+
+                                            <div class="col-xs-12">
+                                              <div class="form-group col-xs-3"> 
+                                                  <label>Judul Makalah </label>                     
+                                              </div>
+                                              <div class="form-group col-xs-3">                        
+                                                <div class="input-group" style="width: 100%;">
+                                                    <textarea class="form-control" required name="judul_makalah"></textarea>
+                                                </div>                 
+                                              </div> 
+                                            </div>    
+
+
+                                            <div class="col-xs-12">
+                                              <div class="form-group col-xs-3"> 
+                                                  <label>Makalah </label>                     
+                                              </div>
+                                              <div class="form-group col-xs-3">                        
+                                                <div class="input-group" style="width: 100%;">
+                                                    <input type="file" class="form-control" required name="makalah" value="" />
+                                                </div>                 
+                                              </div> 
+                                            </div>      
+
+                                            <div class="col-xs-12">
+                                              <div class="form-group col-xs-3"> 
+                                                  <label>Portofolio </label>                     
+                                              </div>
+                                              <div class="form-group col-xs-3">                        
+                                                <div class="input-group" style="width: 100%;">
+                                                    <input type="file" class="form-control" required name="portofolio" value="" />
+                                                </div>                 
+                                              </div> 
+                                            </div>      
+
+                                            <div class="col-xs-12">
+                                              <div class="form-group col-xs-3"> 
+                                                  <label>Persentasi </label>                     
+                                              </div>
+                                              <div class="form-group col-xs-3">                        
+                                                <div class="input-group" style="width: 100%;">
+                                                    <input type="file" class="form-control" required name="presentasi" value="" />
+                                                </div>                 
+                                              </div> 
+                                            </div>      
+
+                                            <div class="col-xs-12">
+                                              <div class="form-group col-xs-3"> 
+                                                  <label>Jobdesk </label>                     
+                                              </div>
+                                              <div class="form-group col-xs-3">                        
+                                                <div class="input-group" style="width: 100%;">
+                                                    <input type="file" class="form-control" required name="jobdesk" value="" />
+                                                </div>                 
+                                              </div> 
+                                            </div>      
+
+                                            <div class="col-xs-12">
+                                              <div class="form-group col-xs-3"> 
+                                                  <label>CV </label>                     
+                                              </div>
+                                              <div class="form-group col-xs-3">                        
+                                                <div class="input-group" style="width: 100%;">
+                                                    <input type="file" class="form-control" required name="cv" value="" />
+                                                </div>                 
+                                              </div> 
+                                            </div>       
+                                  
+
+                                    <?php else: ?>
+                                        <?php echo Former::select('Pilih Jabatan')->options($jabatan)->class('form-control small-form')->id('selJabatan'); ?>
+                                        <!-- <?php echo Former::select('Pilih Kantor')->options($kantor)->class('form-control small-form')->id('selKantor'); ?> -->
+                                        <div id="isi">
+                                            <?php echo Former::select('peserta')->label('Pilih Peserta')->options($peserta, $data['peserta'])->class('form-control small-form')->id('selPegawai'); ?>
+                                        </div>
+
+                                        <?php echo Former::date('tgl')->label('Tanggal Presentasi')->class('form-control small-form')->value($data['tgl']); ?>
+
+                                        <?php echo Former::select('jml')->label('Pilih Jumlah Penguji')->options($count_p, $data['jml'])->class('form-control small-form')->id('selPeng'); ?>
+
+                                        <?php for ($i = 1; $i < count($count_p) ; $i++): ?>
+                                            <?php echo Former::select('peng[]')->label('Pilih Penguji '.$i)->options($penguji, $data['peng'][$i-1])->class('form-control small-form')->addGroupClass($data['jml'] >= $i ? 'peng peng-'.$i : 'hide peng peng-'.$i); ?>
+                                        <?php endfor; ?>
+
+                                        <?php echo Former::textarea('judul_makalah')->class('form-control small-forms')->value($data['judul_makalah']); ?>
+
+                                        <?php echo Former::file('makalah')->class('form-control small-forms')->value($data['makalah']); ?>
+
+                                        <?php echo Former::file('portofolio')->class('form-control small-forms')->value($data['portofolio']); ?>
+
+                                        <?php echo Former::file('presentasi')->class('form-control small-forms')->value($data['presentasi']); ?>
+                                        
+                                        <?php echo Former::file('jobdesk')->class('form-control small-forms')->value($data['jobdesk']); ?>
+                                        
+                                        <?php echo Former::file('CV')->class('form-control small-forms')->value($data['CV']); ?>
+
+                                    <?php endif; ?>
+
+                                </div>
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="reset" class="btn">Reset</button>
+                                </div><!-- /.input group -->
+                            <?php echo Former::close(); ?>
+                        </div><!-- /.box-body -->
+                    </div>
+                </div><!-- /.col -->
+            </div>
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+    <div id="holders" class="hide">
+        <div class="control-group">
+            <label for="selPegawai" class="control-label">Pilih Peserta</label>
+            <span id='labl' class="hide">Peserta</span>
+            <div class="controls">
+                <select class="form-control small-form" id="selPegawai" name="peserta">
+                    <option value="">Mengambil data...</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="holders2" class="hide">
+        <div class="control-group">
+            <label for="selPegawai" class="control-label">Pilih Peserta</label>
+            <div class="controls">
+                <select class="form-control small-form" id="selPegawai" name="peserta">
+                    <option value="">Gagal mengambil data coba lagi.</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <style type="text/css">
+        .bootstrap-filestyle {
+            width: 400px;
+        }
+    </style>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

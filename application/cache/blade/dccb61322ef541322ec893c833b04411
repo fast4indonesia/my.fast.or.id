@@ -1,0 +1,89 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        CMC
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="#">ADMP</a></li>
+                        <li><a href="#">CMC</a></li>
+                    </ol>
+                </section>
+
+
+                <section class="content">
+                    <?php echo $__env->make('includes.cmc', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Data Peserta CMC Terjadwal</h3>                                    
+                                </div>
+                                <div class="box-body table-responsive">
+                                   <div class="wraps">
+                                        <div class="left">
+                                             <a href="<?php echo $base_url.$uri_1; ?>/<?php echo $controller_name; ?>/create" class="btn btn-flat btn-primary">
+                                                Input Peserta
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <br/>
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th><center>Nama Pegawai</center></th>
+                                                <th><center>Jenjang Jabatan</center></th>
+                                                <th><center>Jabatan</center></th>
+                                                <th><center>Indikator Kinerja</center></th>
+                                                <th><center>Detail Pelaksanaan</center></th>
+                                                <th><center>Progress</center></th>
+                                                <th><center>Action</center></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php if(isset($data)): ?>
+                                             <?php foreach ($data as $key => $element): ?>
+                                            <tr>
+                                                <td><?php echo date_format($element->tanggal,'d-m-Y'); ?></td>
+                                                <td><?php echo $element->nama; ?></td>
+                                                <td><?php echo $element->nama; ?></td>
+                                                <td><?php echo $element->nama; ?></td>
+                                                <td><?php echo $element->jenis_penugasan; ?></td>
+                                                <td><?php echo $element->detail; ?></td>
+                                                <td>
+                                                    <a href="<?php echo $base_url; ?>cmc/cmc/editpeserta/<?php echo $element->kode; ?> "><button class="fa fa-pencil" title="detail"></button></a>
+                                                    <a href="<?php echo $base_url; ?>cmc/cmc/destroy/<?php echo $element->kode; ?> " data-toggle="confirmation" data-placement="top" data-original-title="" title=""><button class="fa fa-times"  title="delete"></button></a>
+                                                </td>
+                                            </tr>
+                                              <?php endforeach; ?>
+                                           <?php endif; ?>
+                                        </tbody>
+                                    </table>
+                                </div><!-- /.box-body -->
+                            </div>
+                        </div>
+                    </div>
+
+
+							
+
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+ 
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,99 @@
+<?php $__env->startSection('sidebar'); ?>
+<?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<aside class="right-side">
+    <section class="content-header">
+        <h1>
+            Job Enlargement
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="<?php echo $base_url; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">ADMP</a></li>
+            <li><a href="<?php echo $base_url; ?>JobEnlargement/JobEnlargement/">Job Enlargement</a></li>
+            <li><a href="<?php echo $base_url; ?>JobEnlargement/JobEnlargement/Pelaksanaan">Pelaksanaan</a></li>
+        </ol>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <?php echo $__env->make('includes.JobEnlargement', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Data Job Enlargement </h3>                                    
+                    </div>
+
+                    <div class="box-body table-responsive">
+                        <?php foreach ($flash as $key => $value): ?>
+                        <?php if($value): ?>
+                        <div class="alert alert-<?php echo $key; ?> alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <?php echo $value; ?>
+                        </div>
+                        <?php endif; ?>
+                        <?php endforeach; ?>
+
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Nama Peserta</th>
+                                    <th>Detail Jobdesk</th>
+                                    <th>Perintah Penugasan</th>
+                                    <th>Hasil</th>
+                                    <th>Berkas Terkait</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                             <?php if(isset($data)): ?>
+                             <?php foreach ($data as $key => $element): ?>
+                             <tr>
+                                <td><?php echo $element->tanggal; ?></td>
+                                <td><?php echo $element->nama; ?></td>
+                                <td><?php echo $element->jd; ?></td>
+                                <td><?php echo $element->perintah_penugasan; ?></td>
+                                <td><?php echo $element->hasil_pelaksanaan; ?></td>
+                                <td>
+                                    <center>
+                                        <?php if ($element->berkas_type != NULL): ?>
+                                            <a href="<?php echo $base_url; ?>JobEnlargement/JobEnlargement/files/<?php echo $element->id_job_enlargement; ?>" target="_blank" ><button class="fa fa-file" title="Makalah"></button></a>
+                                        <?php endif; ?>
+                                    </center>
+                                </td>
+                                <td>
+                                <?php if ($element->hasil == NULL): ?>
+                                    <a href="<?php echo $base_url; ?>JobEnlargement/JobEnlargement/editPelaksanaan/<?php echo $element->id_job_enlargement; ?> ">
+                                        <button class="fa fa-pencil" title="detail"></button>
+                                    </a>
+                                <?php endif; ?>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                            <?php endif; ?>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div>
+
+
+
+
+        </section><!-- /.content -->
+
+
+        
+
+
+    </aside>
+    <?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

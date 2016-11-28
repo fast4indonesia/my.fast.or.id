@@ -1,0 +1,118 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Catatan Kesehatan
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>/"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="<?php echo $base_url; ?>qa/kesehatan"> Quality Approach </a></li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Data Catatan Kesehatan</h3>
+                        </div><!-- /.box-header -->
+
+                        <div class="box-body table-responsive">
+                            <?php foreach ($flash as $key => $value): ?>
+                            <?php if($value): ?>
+                            <div class="alert alert-<?php echo $key; ?> alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <?php echo $value; ?>
+                            </div>
+                            <?php endif; ?>
+                            <?php endforeach; ?>
+                            <div class="wraps">
+                                <div class="left">
+                                     <a href="<?php echo $base_url; ?>qa/kesehatan/create" class="btn btn-flat btn-primary">
+                                        Tambah Catatan Kesehatan
+                                    </a>
+                                    <a href="<?php echo $base_url; ?>storage/kesehatan.xls" download class="btn btn-flat btn-success">
+                                        <i class="fa fa-download"></i> Download Template
+                                    </a>
+                                </div>
+                                <div class="right">
+
+                                    <a href="#" class="btn btn-flat btn-primary" data-toggle="modal" data-target="#uploads">
+                                        <i class="fa fa-upload"></i> Upload File
+                                    </a>
+                                </div>
+                            </div>
+
+                            <br/>
+                            <br/>
+                            <br>
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th><center>No</center></th>
+                                        <th><center>Nipeg</center></th>
+                                        <th><center>Nama</center></th>
+                                        <th><center>Jenis Penyakit</center></th>
+                                        <th><center>Keterangan Lanjutan</center></th>
+                                        <th><center>File Rekam Medis</center></th>
+                                        <th><center>Action Menu </center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                
+                                    <?php if(isset($kesehatan)): ?>
+
+                                        <?php foreach ($kesehatan as $key => $element): ?>
+                                            <tr>
+                                                <td><?php echo $key+1; ?></td>
+                                                <td><?php echo $element->nipeg; ?></td>
+                                                <td><?php echo $element->nama; ?></td>
+                                                <td><?php echo $element->jenis_penyakit; ?></td>
+                                                <td><?php echo $element->keterangan_lanjutan; ?></td>
+                                                <td><a href="<?php echo $base_url; ?>qa/kesehatan/files/<?php echo $element->id_kesehatan; ?>"><button class="fa fa-pencil" title="download file"></button></a></td>
+                                                <td>
+                                                    <a href="<?php echo $base_url; ?>qa/kesehatan/edit/<?php echo $element->id_kesehatan; ?>"><button class="fa fa-pencil" title="edit"></button></a>
+                                                    <a href="<?php echo $base_url; ?>qa/kesehatan/destroy/<?php echo $element->id_kesehatan; ?>" data-toggle="confirmation" data-placement="top" data-original-title="" title=""><button class="fa fa-times"  title="delete"></button></a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div>
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+    <div class="modal fade" id="uploads" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Insert data dari file excel</h4>
+          </div>
+          <div class="modal-body">
+            <form action="<?php echo $base_url; ?>qa/kesehatan/fileupload" method="post" enctype="multipart/form-data">
+                <input type="file" class="filestyle" data-buttonBefore="true" name="file">
+                <br >
+                <button type="submit" class="btn btn-success" style="margin-top:-15px">Submit</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

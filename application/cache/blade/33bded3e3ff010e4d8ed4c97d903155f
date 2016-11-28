@@ -1,0 +1,157 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Grafik MKTP
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>/"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="<?php echo $base_url; ?>mktp/mktpGrafik"> Grafik MKTP</a></li>
+            </ol>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Kategori Keluhan</h3>
+                                </div>
+                                <div class="box-body">
+                                    Manajemen Karir (<?php echo $karir; ?>%)
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $karir; ?>%">
+                                            <span class="sr-only"><?php echo $karir; ?>% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                    Kinerja Individu (<?php echo $individu; ?>%)
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $individu; ?>%">
+                                            <span class="sr-only"><?php echo $individu; ?>% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                    Renumerasi dan Benefit (<?php echo $benefit; ?>%)
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $benefit; ?>%">
+                                            <span class="sr-only"><?php echo $benefit; ?>% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                    Manajemen Diklat (<?php echo $diklat; ?>%)
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $diklat; ?>%">
+                                            <span class="sr-only"><?php echo $diklat; ?>% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                    Pengelolaan Data Kepegawaian (<?php echo $kepegawaian; ?>%)
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $kepegawaian; ?>%">
+                                            <span class="sr-only"><?php echo $kepegawaian; ?>% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                    Pengelolaan Organisasi dan Hubungan Industrial (<?php echo $organisasi; ?>%)
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $organisasi; ?>%">
+                                            <span class="sr-only"><?php echo $organisasi; ?>% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Status Penyelesaian</h3>
+                                </div>
+                                <div class="box-body">
+                                     
+                                         Pending (<?php echo $jumPending; ?> %)
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $jumPending; ?>%">
+                                            <span class="sr-only"><?php echo jumPending; ?> % Complete (success)</span>
+                                        </div>
+                                    </div>
+                                    
+                                         Open (<?php echo $jumOpen; ?> %)
+                                        
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $jumOpen; ?>%">
+                                            <span class="sr-only"> <?php echo $jumOpen; ?> % Complete (success)</span>
+                                        </div>
+                                    </div>
+                                     
+                                         Closed (<?php echo $jumClosed; ?> %)
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $jumClosed; ?>%">
+                                            <span class="sr-only"><?php echo jumClosed; ?> % Complete (success)</span>
+                                        </div>
+                                    </div>
+                                     
+                                </div>
+                            </div>
+                        </div>
+
+            <div class="row" style="margin-left:1px;margin-right:2px;">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">                        
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Kategori Keluhan</th>
+                                        <th>Isi Keluhan</th>
+                                        <th>Tanggal Keluhan</th>
+                                        <th>Berkas Terkait</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <?php if(isset($mktp)): ?>
+                                        <?php foreach ($mktp as $key => $element): ?>
+                                            <tr>
+                                                <td><?php echo $key+1; ?></td>
+                                                <td><?php echo $element->nama_keluhan; ?></td>
+                                                <td><?php echo $element->isi_keluhan; ?></td>
+                                                <td><?php echo substr($element->tgl, 0, -15); ?></td>
+                                                <td><?php echo $element->berkas; ?></td>
+                                                <td><?php echo $element->status; ?></td>                                           
+                                                 
+                                            </tr>
+                                         <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div>
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+    <div class="modal fade" id="uploads" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Insert data dari file excel</h4>
+          </div>
+          <div class="modal-body">
+            <form action="<?php echo $base_url; ?>mktp/mktpGrafik/fileupload" method="post" enctype="multipart/form-data">
+                <input type="file" class="filestyle" data-buttonBefore="true" name="file">
+                <br >
+                <button type="submit" class="btn btn-success" style="margin-top:-15px">Submit</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

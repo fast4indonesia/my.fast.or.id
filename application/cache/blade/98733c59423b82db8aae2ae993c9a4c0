@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Aplikasi Talent Management System | Log in</title>
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <!-- font Awesome -->
+        <link href="<?php echo $base_url; ?>assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <!-- Theme style -->
+        <link href="<?php echo $base_url; ?>assets/css/login/style.css" rel="stylesheet">
+        <link href="<?php echo $base_url; ?>assets/css/login/style-responsive.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/bootstrap.min.css">
+        <!-- Bootstrap responsive -->
+        <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/bootstrap-responsive.min.css">
+        <!-- jQuery UI -->
+        <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/plugins/jquery-ui/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/plugins/jquery-ui/smoothness/jquery.ui.theme.css">
+        <!-- jQuery -->
+        <script src="<?php echo $base_url; ?>assets/js/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="<?php echo $base_url; ?>assets/js/bootstrap.min.js"></script>
+        <script src="<?php echo $base_url; ?>assets/js/eakroko.js"></script>
+        <!-- Validation -->
+        <script src="<?php echo $base_url; ?>assets/js/plugins/validation/jquery.validate.min.js"></script>
+        <script src="<?php echo $base_url; ?>assets/s/plugins/validation/additional-methods.min.js"></script>
+
+
+    </head>
+    <body class="login-body">
+        <div class="container">
+            <?php echo $__env->yieldContent('content'); ?>
+        </div>
+
+
+    </body>
+</html>

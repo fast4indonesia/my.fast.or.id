@@ -1,0 +1,127 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+     <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Job Enlargement
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="<?php echo $base_url; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="<?php echo $base_url; ?>">ADMP</a></li>
+                        <li><a href="<?php echo $base_url; ?>/JobEnlargement/JobEnlargement">Job Enlargement</a></li>
+                        <li><a href="#">Peserta</a></li>
+                    </ol>
+                </section>
+
+
+                <section class="content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <h3 class="box-title">Form Input Peserta Job Enlargement</h3>
+                                </div>
+                                <?php echo Former::open()->action($base_url.'JobEnlargement/JobEnlargement/store')->enctype("multipart/form-data"); ?>
+                                 <!-- <form action="<?php echo $base_url; ?>/JobEnlargement/JobEnlargement/store" method="post"> -->
+                                    <div class="box-body">
+                                    <?php if(!empty($flashdata)): ?>
+                                        <div class="callout callout-danger">
+                                            <h4>Gagal menyimpan data karena kesalahan berikut:</h4>
+                                             <ul>
+                                                <?php foreach ($flashdata as $val): ?>
+                                                    <li><?php echo $val; ?></li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
+                                    <?php endif; ?>
+
+                                    <?php if($method == 'create'): ?>      
+
+                                        <div class="input-group" style="display:none">
+                                            <input type="text" class="form-control small-form" name="nipeg_atasan" readonly value="<?php echo $nipeg; ?>"/>
+                                        </div>
+
+                                        <?php echo Former::date('tanggal')->class('form-control small-form')->value($data['tanggal']); ?>
+                                    
+                                        <?php echo Former::select('Nama Peserta')->class('form-control small-form')->name('nipeg')->options($karyawan); ?>
+                                        
+                                        <?php echo Former::select('Nama Jabatan')->class('form-control small-form jabat')->name('kode_jabatan')->options($listjabatan)->id('selJabatanJEn'); ?>                                                                         
+                                    
+
+                                        <div id="isi">
+                                        <?php echo Former::select('jobdesk')->options($jobdesk, $data['jobdesk'])->class('form-control small-form')->id('jobdesk'); ?>
+                                        </div> 
+
+                                        <label>Perintah Penugasan</label>
+                                        <div class="input-group">
+                                            <textarea class="form-control small-form" name="perintah_penugasan"></textarea>
+                                        </div>
+                                    <?php else: ?>   
+
+                                        <div class="input-group" style="display:none">
+                                            <input type="text" class="form-control small-form" name="nipeg_atasan" readonly value="<?php echo $nipeg; ?>"/>
+                                        </div>
+                                        
+                                        <?php echo Former::date('tanggal')->class('form-control small-form')->value($data['tanggal']); ?>
+                                       
+                                        <?php echo Former::select()->label('Nama Peserta')->name('nipeg')->options($karyawan)->class('form-control small-form'); ?>
+                                        
+                                        <?php echo Former::select()->label('Nama Jabatan')->name('kode_jabatan')->options($listjabatan)->class('form-control small-form jabat')->id('selJabatanJEn'); ?>                                                                         
+                                        <div id="isi">
+                                            <?php echo Former::select('jobdesk')->options($jobdesk, $data['jobdesk'])->class('form-control small-form')->id('jobdesk'); ?>
+                                            <!-- <?php echo Former::select()->name('id_jobdesk')->options(array(''=>'Pilih Jobdesk'))->id('jobdesk')->class('form-control small-form')->state($data->is_invalid() ? 'error' : ''); ?> -->
+                                        </div>                                 
+                                        <div class="form-group">
+                                            <label>Perintah Penugasan</label>
+                                            <div class="input-group">
+                                                <textarea class="form-control small-form" name="perintah_penugasan"></textarea>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>  
+                                    </div>
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="reset" class="btn btn-primary">Reset</button>
+                                    </div>
+                                    <?php echo Former::close(); ?>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                            </div><!-- /.box -->
+                        </div><!-- /.col -->
+                    </div>
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+
+            <div id="holders" class="hide">
+                <div class="control-group">
+                    <label for="selJobdesk" class="control-label">Pilih Jobdesk</label>
+                    <span id='labl' class="hide">Jobdesk</span>
+                    <div class="controls">
+                        <select class="form-control small-form" id="selJobdesk" name="jobdesk">
+                            <option value="">Mengambil data...</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div id="holders2" class="hide">
+                <div class="control-group">
+                    <label for="selJobdesk" class="control-label">Pilih Jobdesk</label>
+                    <div class="controls">
+                        <select class="form-control small-form" id="selJobdesk" name="jobdesk">
+                            <option value="">Gagal mengambil data coba lagi.</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+    
+
+     
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

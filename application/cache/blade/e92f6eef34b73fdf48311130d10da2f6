@@ -1,0 +1,147 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Tambah Jenjang Jabatan
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="<?php echo $base_url; ?>master/jenjangjabatan"> Master Jenjang Jabatan</a></li>
+                <li><a href="#"> Tambah Jenjang Jabatan</a></li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box box-primary">
+                            <div class="box-header">
+                                <h3 class="box-title">Form Input Jenjang Jabatan</h3>
+                            </div>
+                            <?php echo Former::open()->action($base_url.'master/jenjangjabatan/store'); ?>
+                                <div class="box-body">
+                                    <?php if(!empty($flashdata)): ?>
+                                        <div class="callout callout-primary">
+                                            <h4>Gagal menyimpan data karena kesalahan berikut:</h4>
+                                             <ul>
+                                                <?php foreach ($flashdata as $val): ?>
+                                                    <li><?php echo $val; ?></li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php foreach ($data->attributes() as $key=>$value): ?>
+                                        <?php if($method == 'create'): ?>
+
+                                            <?php if($key == "kode_jenjang_jabatan"): ?>
+                                                <div class="col-xs-12">
+                                                  <div class="form-group col-xs-2"> 
+                                                      <label>Kode Jenjang Jabatan</label>                     
+                                                  </div>
+                                                  <div class="form-group col-xs-3">                        
+                                                    <div class="input-group" style="width: 100%;">
+                                                        <input type="text" class="form-control" required name="kode_jenjang_jabatan" value="<?php echo $value; ?>" />
+                                                    </div>                 
+                                                  </div> 
+                                                </div>    
+                                            <?php elseif($key == "group"): ?>
+                                                <div class="col-xs-12">
+                                                  <div class="form-group col-xs-2"> 
+                                                      <label>Group</label>                     
+                                                  </div>
+                                                  <div class="form-group col-xs-3">                        
+                                                    <div class="input-group" style="width: 100%;">
+                                                        <select id="select2-drop-mask" class="select2-drop-mask form-control" required name="group">
+                                                            <?php foreach ($listgroup as $group => $valuegroup): ?>
+                                                                <option value="<?php echo $group; ?>"><?php echo $valuegroup; ?></option>
+                                                            <?php endforeach; ?>
+                                                        </select>
+                                                    </div>                 
+                                                  </div> 
+                                                </div>  
+
+                                                <!-- <?php echo Former::select($key)->options($listjabatangroup)->class('form-control small-form'); ?> -->
+                                            <?php elseif ($key == 'nama_jenjang_jabatan'): ?>
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Nama Jenjang Jabatan</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <input type="text" class="form-control" required name="nama_jenjang_jabatan" value="<?php echo $value; ?>" />
+                                                        </div>                 
+                                                    </div>  
+                                                </div>  
+                                                <!-- <?php echo Former::select($key)->options($listjenjangjabatan)->class('form-control small-form'); ?> -->
+                                            <?php elseif ($key == 'keterangan'): ?>
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Keterangan</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <input type="text" class="form-control" required name="keterangan" value="<?php echo $value; ?>" />
+                                                        </div>                 
+                                                    </div>  
+                                                </div>  
+                                            <?php elseif ($key == 'kd_kewenangan'): ?>
+                                                <div class="col-xs-12">
+                                                  <div class="form-group col-xs-2"> 
+                                                      <label>KD Kewenangan</label>                     
+                                                  </div>
+                                                  <div class="form-group col-xs-3">                        
+                                                    <div class="input-group" style="width: 100%;">
+                                                        <input type="text" class="form-control" required name="kd_kewenangan" value="<?php echo $value; ?>" />
+                                                    </div>                 
+                                                  </div> 
+                                                </div> 
+                                            <?php elseif ($key == 'desc_sap'): ?>
+                                                <div class="col-xs-12">
+                                                  <div class="form-group col-xs-2"> 
+                                                      <label>Desc SAP</label>                     
+                                                  </div>
+                                                  <div class="form-group col-xs-3">                        
+                                                    <div class="input-group" style="width: 100%;">
+                                                            <span class="input-group-addon">SAP</span>
+                                                        <input type="text" class="form-control" required name="desc_sap" value="<?php echo $value; ?>" />
+                                                    </div>                 
+                                                  </div> 
+                                                </div> 
+                                            <?php elseif ($key == 'urutan'): ?>
+                                                <div class="col-xs-12">
+                                                  <div class="form-group col-xs-2"> 
+                                                      <label>Urutan</label>                     
+                                                  </div>
+                                                  <div class="form-group col-xs-3">                        
+                                                    <div class="input-group" style="width: 100%;">
+                                                        <input type="text" class="form-control" name="urutan" value="<?php echo $value; ?>" />
+                                                    </div>                 
+                                                  </div> 
+                                                </div> 
+                                            <?php endif; ?>
+                                        <?php else: ?>
+                                        <?php echo Former::text($key)->value($value)->class('form-control small-form')->state($data->errors->is_invalid($key) ? 'error' : ''); ?>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </div>
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="reset" class="btn">Reset</button>
+                                </div><!-- /.input group -->
+                            <?php echo Former::close(); ?>
+                        </div><!-- /.box-body -->
+                    </div>
+                </div><!-- /.col -->
+            </div>
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

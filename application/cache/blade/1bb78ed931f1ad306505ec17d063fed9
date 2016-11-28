@@ -1,0 +1,148 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+    <aside class="right-side">
+        <section class="content-header">
+            <h1>
+                Master Data
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#"> Fit &amp; Proper</a></li>
+            </ol>
+        </section>
+
+        <section class="content">
+            <div class="row">
+                <div class="col-md-2">
+                    <a class="btn btn-custom btn-white actives" href="<?php echo $base_url; ?>fitnproper/master">Peserta</a>
+                </div><!-- /.col -->
+                <div class="col-md-2">
+                    <a class="btn btn-custom btn-white" href="<?php echo $base_url; ?>fitnproper/master/penguji">Penguji</a>
+                </div><!-- /.col -->
+
+            </div>
+        </section>
+
+        <!-- Main content -->
+        <section class="content" style="margin-top:-15px">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Data Peserta</h3>
+                        </div><!-- /.box-header -->
+
+                        <div class="box-body table-responsive">
+                            <?php foreach ($flash as $key => $value): ?>
+                            <?php if($value): ?>
+                            <div class="alert alert-<?php echo $key; ?> alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <?php echo $value; ?>
+                            </div>
+                            <?php endif; ?>
+                            <?php endforeach; ?>
+
+                            <a href="<?php echo $base_url.$uri_1; ?>/<?php echo $controller_name; ?>/create_peserta" class="btn btn-flat btn-primary">
+                                Tambah Peserta
+                            </a>
+
+                            <br/>
+                            <br/>
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nama</th>
+                                        <th>NIP</th>
+                                        <th>Unit</th>
+                                        <th>Grade</th>
+                                        <th>Jabatan</th>
+                                        <th>Tgl Presentasi</th>
+                                        <th>Penguji</th>
+                                        <th>Action Menu</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php if(isset($data)): ?>
+                                        <?php foreach ($data as $key => $element): ?>
+                                            <tr>
+                                                <?php echo e($c = $element->peserta); ?>
+                                                <?php echo e($p = $element->penguji); ?>
+                                                <td><?php echo $c->karyawan_peserta->nama; ?></td>
+                                                <td><?php echo $c->karyawan_peserta->nipeg; ?></td>
+                                                <td><?php echo $c->karyawan_peserta->kantor()->nama_kantor; ?></td>
+                                                <td><?php echo $c->karyawan_peserta->kode_grade; ?></td>
+                                                <td><?php echo $c->karyawan_peserta->jabatan->nama_jabatan; ?></td>
+                                                <td><?php echo readable_date($element->tgl_presentasi->format('Y-m-d')); ?></td>
+                                                <td>
+                                                    <?php foreach ($p as $el): ?>
+                                                        <a href="#" data-toggle="modal" data-target="#<?php echo $el->karyawan_penguji->nipeg; ?>"><button class="fa fa-user" title=""></button></a>
+                                                    <?php endforeach; ?>
+
+                                                </td>
+                                                <td>
+                                                    <!-- <a href="<?php echo $base_url; ?>fitnproper/master/edit_karyawan/<?php echo $element->peserta->kode_undangan; ?>"><button class="fa fa-pencil" title="edit"></button></a> -->
+                                                    <!-- <a href="<?php echo $base_url; ?>fitnproper/master/destroy_karyawan/<?php echo $element->kode_undangan; ?>" data-toggle="confirmation" data-placement="top" data-original-title="" title=""><button class="fa fa-times"  title="delete"></button></a> -->
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div>
+        </section><!-- /.content -->
+
+        <?php if(isset($penguji)): ?>
+        <?php foreach ($penguji as $key => $element): ?>
+            <div class="modal fade" id="<?php echo $element->nipeg; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Detail Penguji</h4>
+                  </div>
+                  <div class="modal-body">
+                    <table>
+                        <tr>
+                            <td>NAMA</td>
+                            <td> : </td>
+                            <td> <?php echo $element->nama; ?> </td>
+                        </tr>
+                        <tr>
+                            <td>NIP</td>
+                            <td> : </td>
+                            <td> <?php echo $element->nipeg; ?> </td>
+                        </tr>
+                        <tr>
+                            <td>KANTOR</td>
+                            <td> : </td>
+                            <td> PT. PLN (PERSERO) WILAYAH BANGKA BELITUNG</td>
+                        </tr>
+                        <tr>
+                            <td>UNIT</td>
+                            <td> : </td>
+                            <td> <?php echo $element->kantor()->nama_kantor; ?> </td>
+                        </tr>
+                        <tr>
+                            <td>JABATAN</td>
+                            <td> : </td>
+                            <td> <?php echo $element->jabatan->nama_jabatan; ?> </td>
+                        </tr>
+                    </table>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
+    </aside>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,80 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+   <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Job Enrichment
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="#">ADMP</a></li>
+                        <li><a href="#">Job Enrichment</a></li>
+                    </ol>
+                </section>
+
+
+                <section class="content">
+                    <div class="row">
+                        <?php echo $__env->make('includes.JobEnrichment', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                    </div>
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Data Job Enrichment </h3>                                    
+                                </div>
+                                <div class="box-body table-responsive">
+                                    
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Tanggal</th>
+                                                <th>Nama Peserta</th>
+                                                <th>Jenis Penugasan</th>
+                                                <th>Detail Penugasan</th>
+                                                <th>Hasil Pelaksanaan</th>
+                                                <th>Berkas Terkait</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php if(isset($data)): ?>
+                                             <?php foreach ($data as $key => $element): ?>
+                                            <tr>
+                                                <td><?php echo date_format($element->tanggal,'d-m-Y');; ?></td>
+                                                <td><?php echo $element->nama; ?></td>
+                                                <td><?php echo $element->jenis_penugasan; ?></td>
+                                                <td><?php echo $element->detail; ?></td>
+                                                <td><?php echo $element->hasil; ?></td>
+                                                <td><?php 
+                                  
+                                                    
+                         
+                                                 ?></td>
+                                                <td>
+                                                    <a href="<?php echo $base_url; ?>jobenrichment/jobenrichment/editPelaksanaan/<?php echo $element->kode; ?> "><button class="fa fa-pencil" title="ubah"></button></a>
+                                                    <a href="<?php echo $base_url; ?>jobenrichment/jobenrichment/destroy/<?php echo $element->kode; ?> " data-toggle="confirmation" data-placement="top" data-original-title="" title=""><button class="fa fa-times"  title="delete"></button></a>
+                                                </td>
+                                            </tr>
+                                              <?php endforeach; ?>
+                                           <?php endif; ?>
+                                        </tbody>
+                                    </table>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div><!-- /.col -->
+                    </div>
+
+
+                            
+
+                </section><!-- /.content -->
+            </asid
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

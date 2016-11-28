@@ -1,0 +1,394 @@
+<?php $__env->startSection('sidebar'); ?>
+<?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+<?php 
+    function cekDate($tglawal,$tglakhir,$cekawal,$cekakhir){
+        // $daterange1 = array($tglawal,$tglakhir);
+        // $daterange2 = array($cekawal, $cekakhir);
+
+        // $range_min = new DateTime(min($daterange1));
+        // $range_max = new DateTime(max($daterange1));
+
+        // $start = new DateTime(min($daterange2));
+        // $end = new DateTime(max($daterange2));
+
+        // if ($start >= $range_min && $end <= $range_max) {
+        //     echo 'class="bg-teal"';
+        // }else {
+        //     echo 'class=""';
+        // }
+        
+        $awal       = strtotime($tglawal);
+        $akhir      = strtotime($tglakhir);
+        $cekawal    = strtotime($cekawal);
+        $cekakhir   = strtotime($cekakhir);
+
+       
+        if (($awal >= $cekawal) AND ($awal <= $cekakhir) AND ($akhir >= $cekakhir)) {
+            echo 'class="bg-teal"';
+        }else if (($akhir >= $cekawal) AND ($akhir <= $cekakhir)) {
+            echo 'class="bg-teal"';
+        }else if (($awal <= $cekawal) AND ($akhir >= $cekakhir)) {
+            echo 'class="bg-teal"';
+        }else {
+            echo 'class=""';
+        }
+
+    }
+
+    function cekDate2($tglawal,$tglakhir,$cekawal,$cekakhir){
+        if ($tglakhir == "1970-01-01"){
+              echo 'class=""';
+
+        }else{
+            $awal       = strtotime($tglawal);
+            $akhir      = strtotime($tglakhir);
+            $cekawal    = strtotime($cekawal);
+            $cekakhir   = strtotime($cekakhir);
+
+            if ($akhir < $awal){
+                if (($akhir >= $cekawal) AND ($akhir <= $cekakhir)) {
+                    echo 'class="bg-green"';
+                }
+            }else{
+                if (($awal >= $cekawal) AND ($awal <= $cekakhir) AND ($akhir >= $cekakhir)) {
+                    echo 'class="bg-green"';
+                }else if (($akhir >= $cekawal) AND ($akhir <= $cekakhir)) {
+                    echo 'class="bg-green"';
+                }else if (($awal <= $cekawal) AND ($akhir >= $cekakhir)) {
+                    echo 'class="bg-green"';
+                }else {
+                    echo 'class=""';
+                }
+            }
+        }
+    }
+
+    $tahun = date("Y");
+
+?>
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Project Assignment
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">ADMP</a></li>
+            <li><a href="#">Project Assignment</a></li>
+        </ol>
+    </section>
+
+
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box box-info">
+                        <div class="box-header">
+                            <h3 class="box-title">Timeline Project Assignment</h3>
+                        </div>
+                        <div class="box-body">
+                           <div class="box-body table-responsive scrollWrapper">  
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="3"><center>No</center></th>
+                                        <th rowspan="3" style="min-width:200px;"><center>Activities</center></th>
+                                        <th rowspan="3" style="min-width:100px;"><center>Deadline</center></th>
+                                        <th rowspan="3"><center>Status</center></th>
+                                        <th colspan="48"><center>Timeline</center></th>
+                                        <th rowspan="3"><center>Status</center></th>
+                                        <th rowspan="3"><center>Progress</center></th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="4"><center>Januari</center></th>
+                                        <th colspan="4"><center>Februari</center></th>
+                                        <th colspan="4"><center>Maret</center></th>
+                                        <th colspan="4"><center>April</center></th>
+                                        <th colspan="4"><center>Mei</center></th>
+                                        <th colspan="4"><center>Juni</center></th>
+                                        <th colspan="4"><center>Juli</center></th>
+                                        <th colspan="4"><center>Agustus</center></th>
+                                        <th colspan="4"><center>Sebtember</center></th>
+                                        <th colspan="4"><center>October</center></th>
+                                        <th colspan="4"><center>November</center></th>
+                                        <th colspan="4"><center>Desember</center></th>
+                                    </tr>
+                                    <tr>
+                                        <th>1</th>
+                                        <th>2</th>
+                                        <th>3</th>
+                                        <th>4</th>
+
+                                        <th>1</th>
+                                        <th>2</th>
+                                        <th>3</th>
+                                        <th>4</th>
+
+                                        <th>1</th>
+                                        <th>2</th>
+                                        <th>3</th>
+                                        <th>4</th>
+
+                                        <th>1</th>
+                                        <th>2</th>
+                                        <th>3</th>
+                                        <th>4</th>
+
+                                        <th>1</th>
+                                        <th>2</th>
+                                        <th>3</th>
+                                        <th>4</th>
+
+                                        <th>1</th>
+                                        <th>2</th>
+                                        <th>3</th>
+                                        <th>4</th>
+
+                                         <th>1</th>
+                                        <th>2</th>
+                                        <th>3</th>
+                                        <th>4</th>
+
+                                        <th>1</th>
+                                        <th>2</th>
+                                        <th>3</th>
+                                        <th>4</th>
+
+                                        <th>1</th>
+                                        <th>2</th>
+                                        <th>3</th>
+                                        <th>4</th>
+
+                                        <th>1</th>
+                                        <th>2</th>
+                                        <th>3</th>
+                                        <th>4</th>
+
+                                        <th>1</th>
+                                        <th>2</th>
+                                        <th>3</th>
+                                        <th>4</th>
+
+                                        <th>1</th>
+                                        <th>2</th>
+                                        <th>3</th>
+                                        <th>4</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php if(isset($data)): ?>
+                                    <?php foreach ($data as $key => $element): ?>
+                                    
+                                    <tr>
+                                        <td rowspan="2"><?php echo $key+1; ?></td>
+                                        <td rowspan="2"><?php echo $element->aktifitas; ?></td>
+                                        <td rowspan="2"><?php 
+                                        $tAW = strtotime($element->tglawal);
+                                        $tAK = strtotime($element->tglakhir);
+                                        $tUP = strtotime($element->tglupload);
+
+                                        $tglAW= date('Y-m-d',$tAW);
+                                        $tglAK= date('Y-m-d',$tAK);
+                                        $tglUP= date('Y-m-d',$tUP);
+                                        $tglAKT= date('d-M-Y',$tAK);
+
+                                        echo $tglAKT; ?></td>
+                                        <td>Plan</td>
+
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-01-01',$tahun.'-01-08'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-01-09',$tahun.'-01-16'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-01-17',$tahun.'-01-24'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-01-25',$tahun.'-01-31'); ?>></td>
+
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-02-01',$tahun.'-02-08'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-02-09',$tahun.'-02-16'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-02-17',$tahun.'-02-24'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-02-25',$tahun.'-02-29'); ?>></td>
+
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-03-01',$tahun.'-03-08'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-03-09',$tahun.'-03-16'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-03-17',$tahun.'-03-24'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-03-25',$tahun.'-03-31'); ?>></td>
+
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-04-01',$tahun.'-04-08'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-04-09',$tahun.'-04-16'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-04-17',$tahun.'-04-24'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-04-25',$tahun.'-04-30'); ?>></td>
+
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-05-01',$tahun.'-05-08'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-05-09',$tahun.'-05-16'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-05-17',$tahun.'-05-24'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-05-25',$tahun.'-05-31'); ?>></td>
+
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-06-01',$tahun.'-06-08'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-06-09',$tahun.'-06-16'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-06-17',$tahun.'-06-24'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-06-25',$tahun.'-06-30'); ?>></td>
+
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-07-01',$tahun.'-07-08'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-07-09',$tahun.'-07-16'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-07-17',$tahun.'-07-24'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-07-25',$tahun.'-07-31'); ?>></td>
+
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-08-01',$tahun.'-08-08'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-08-09',$tahun.'-08-16'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-08-17',$tahun.'-08-24'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-08-25',$tahun.'-08-31'); ?>></td>
+
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-09-01',$tahun.'-09-08'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-09-09',$tahun.'-09-16'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-09-17',$tahun.'-09-24'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-09-25',$tahun.'-09-30'); ?>></td>
+
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-10-01',$tahun.'-10-08'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-10-09',$tahun.'-10-16'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-10-17',$tahun.'-10-24'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-10-25',$tahun.'-10-31'); ?>></td>
+
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-11-01',$tahun.'-11-08'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-11-09',$tahun.'-11-16'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-11-17',$tahun.'-11-24'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-11-25',$tahun.'-11-30'); ?>></td>
+
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-12-01',$tahun.'-12-08'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-12-09',$tahun.'-12-16'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-12-17',$tahun.'-12-24'); ?>></td>
+                                        <td <?php echo cekDate($tglAW,$tglAK,$tahun.'-12-25',$tahun.'-12-31'); ?>></td>
+
+                                        <td rowspan="2">
+                                            <center>
+                                        <?php
+                                            $akhir      = strtotime($tglAK);
+                                            $sekarang   = strtotime(date("Y-m-d"));
+
+                                            if ($sekarang <= $akhir){
+
+                                                if ($element->berkas != NULL ){
+                                                    if($element->status == "Pending Approval"){
+                                                        echo "<div class='bg-green' style='padding:3px;'>Sesuai Jadwal</div>";
+                                                    }elseif($element->status == "Approved"){
+                                                        echo "<div class='bg-blue' style='padding:3px;'>Sudah Dinilai</div>";
+                                                    }
+                                                }else{
+                                                    echo "<div class='bg-gray' style='padding:3px;'>Belum Dimulai</div>";
+                                                }
+                                            }else{
+                                                if ($element->berkas == NULL ){
+                                                    echo "<div class='bg-red' style='padding:3px;'>Progress Tidak Tercapai</div>";
+                                                }else{
+                                                    if($element->status == "Pending Approval"){
+                                                        echo "<div class='bg-green' style='padding:3px;'>Sesuai Jadwal</div>";
+                                                    }elseif($element->status == "Approved"){
+                                                        echo "<div class='bg-blue' style='padding:3px;'>Sudah Dinilai</div>";
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                            </center>
+                                        </td>
+                                        <td  rowspan="2">
+                                            <center>
+                                            <?php
+                                                $akhir      = strtotime($tglAK);
+                                                $sekarang   = strtotime(date("Y-m-d"));
+
+                                                if ($sekarang <= $akhir){
+                                                    if ($element->berkas != NULL ){
+                                                        echo "<a href='".base64_encode($element->berkas)."' target='_blank'><button class='fa fa-search ' title='Lihat Data'></button></a>";
+                                                    }else{
+                                                        echo "-";
+                                                    }
+                                                }else{
+                                                    echo "-";
+                                                }
+                                            ?>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Actual</td>
+
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-01-01',$tahun.'-01-08'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-01-09',$tahun.'-01-16'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-01-17',$tahun.'-01-24'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-01-25',$tahun.'-01-31'); ?>></td>
+
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-02-01',$tahun.'-02-08'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-02-09',$tahun.'-02-16'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-02-17',$tahun.'-02-24'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-02-25',$tahun.'-02-29'); ?>></td>
+
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-03-01',$tahun.'-03-08'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-03-09',$tahun.'-03-16'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-03-17',$tahun.'-03-24'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-03-25',$tahun.'-03-31'); ?>></td>
+
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-04-01',$tahun.'-04-08'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-04-09',$tahun.'-04-16'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-04-17',$tahun.'-04-24'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-04-25',$tahun.'-04-30'); ?>></td>
+
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-05-01',$tahun.'-05-08'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-05-09',$tahun.'-05-16'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-05-17',$tahun.'-05-24'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-05-25',$tahun.'-05-31'); ?>></td>
+
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-06-01',$tahun.'-06-08'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-06-09',$tahun.'-06-16'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-06-17',$tahun.'-06-24'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-06-25',$tahun.'-06-30'); ?>></td>
+                                        
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-07-01',$tahun.'-07-08'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-07-09',$tahun.'-07-16'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-07-17',$tahun.'-07-24'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-07-25',$tahun.'-07-31'); ?>></td>
+
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-08-01',$tahun.'-08-08'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-08-09',$tahun.'-08-16'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-08-17',$tahun.'-08-24'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-08-25',$tahun.'-08-31'); ?>></td>
+
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-09-01',$tahun.'-09-08'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-09-09',$tahun.'-09-16'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-09-17',$tahun.'-09-24'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-09-25',$tahun.'-09-30'); ?>></td>
+
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-10-01',$tahun.'-10-08'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-10-09',$tahun.'-10-16'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-10-17',$tahun.'-10-24'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-10-25',$tahun.'-10-31'); ?>></td>
+
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-11-01',$tahun.'-11-08'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-11-09',$tahun.'-11-16'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-11-17',$tahun.'-11-24'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-11-25',$tahun.'-11-30'); ?>></td>
+
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-12-01',$tahun.'-12-08'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-12-09',$tahun.'-12-16'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-12-17',$tahun.'-12-24'); ?>></td>
+                                        <td <?php echo cekDate2($tglAW,$tglUP,$tahun.'-12-25',$tahun.'-12-31'); ?>></td>
+
+
+                                    </tr>
+                                    <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </tbody>
+
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /.box -->
+            </div><!-- /.col -->
+        </div>
+    </section><!-- /.content -->>
+</aside><!-- /.right-side -->
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

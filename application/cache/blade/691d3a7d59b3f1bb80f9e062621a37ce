@@ -1,0 +1,141 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                ICP Self Employee
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>/"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="<?php echo $base_url; ?>careers"> Career System</a></li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+       <section class="content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box box-info">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Form Input Integrated Career Planning</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="callout callout-info">
+                                            <div class="form-group">
+                                                    <label >Nama Pegawai :</label>
+                                                    <label ><?php echo $karyawan->nama; ?></label>
+                                            </div>
+                                            <div class="form-group">
+                                                    <label >Nipeg :</label>
+                                                    <label ><?php echo $karyawan->nipeg; ?></label>
+                                            </div>
+                                            <div class="form-group">
+                                                    <label >Jabatan Sekarang :</label>
+                                                    <label >Disjaya</label>
+                                            </div>
+                                            <div class="form-group">
+                                                    <label >Career Planning :</label>
+                                                    <label ><?php echo $post['career_planning']; ?></label>
+                                            </div>
+                                            <div class="form-group">
+                                                    <label >Jabatan Planning :</label>
+                                                    <label ><?php echo $post['jabatan']; ?></label>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.box-body -->
+                                    <!-- end form --> 
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div><!-- /.col -->
+                        <!-- -->
+                        <div class="col-md-12" aria-hidden="true">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <h3 class="box-title">Data Penunjang</h3>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="callout-info">
+                                        <div class="box-body table-responsive">
+                                            <table class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Jenis Kompetensi</th>
+                                                        <th>GAP</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <?php if (isset($need)): ?>
+                                                    <?php foreach ($need as $key => $element): ?>
+                                                    <tr>
+                                                        <td><?php echo $key; ?></td>
+
+                                                        <td class="<?php echo ($element >= 0) ? 'bg-green' : 'bg-red'; ?>">
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                    <?php endforeach; ?>
+                                                <?php else: ?> 
+                                                    <tr class="odd"><td valign="top" colspan="5" class="dataTables_empty">No data available in table</td></tr>
+                                                <?php endif; ?>
+                                            </table>
+                                        </div><!-- /.box-body -->                                           
+                                    </div>
+
+                                <?php echo Former::open()->action($base_url.'career/icps/store'); ?>
+                                <div class="box-header">
+                                   	<h3 class="box-title">Pelatihan Yang Penunjang</h3>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <div class="col-xs-12">
+                                            <?php echo Former::select('diklat[]')->options($listdiklat)->class('form-control'); ?>
+                                        </div>
+                                   	</div>
+                                   	<div class="form-group">
+                                        <div class="col-xs-12">
+                                            <?php echo Former::select('diklat[]')->options($listdiklat)->class('form-control'); ?>
+                                        </div>
+                                   	</div>
+								<input type="hidden" name="kode_jabatan_icps" value="<?php echo isset($post['jabatan']) ? $post['jabatan'] : ''; ?>">
+                                <input type="hidden" name="jenis" value="<?php echo isset($post['career_planning']) ? $post['career_planning'] : ''; ?>">
+                                <div class="box-footer">
+                                	<button type="submit" class="btn btn-primary">Simpan</button>
+                                	<button type="reset" class="btn btn-primary">Reset</button>
+                            	</div><!-- /.input group -->
+                                </div>
+                            <?php echo Former::close(); ?>
+                        </div>
+
+
+							
+
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+    <div class="modal fade" id="uploads" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Insert data dari file excel</h4>
+          </div>
+          <div class="modal-body">
+            <form action="<?php echo $base_url; ?>career/icps/fileupload" method="post" enctype="multipart/form-data">
+                <input type="file" class="filestyle" data-buttonBefore="true" name="file">
+                <br >
+                <button type="submit" class="btn btn-success" style="margin-top:-15px">Submit</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

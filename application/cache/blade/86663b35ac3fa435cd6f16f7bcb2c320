@@ -1,0 +1,84 @@
+<?php $__env->startSection('sidebar'); ?>
+<?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Project Assignment
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">ADMP</a></li>
+            <li><a href="#">Project Assignment</a></li>
+            <li><a href="#">Pelaksanaan</a></li>
+        </ol>
+    </section>
+
+
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box box-info">
+                      <div class="box-header">
+                          <h3 class="box-title">Form Input Detail Timeline</h3>
+                      </div>
+                      <div class="box-body">
+                        <?php if(isset($data)): ?>
+                          <?php foreach ($data as $key => $value): ?>
+                            <?php if ($key == "aktifitas"): ?>
+                              <?php  $isi = $value; ?>
+                            <?php endif; ?>                            
+                          <?php endforeach; ?>
+
+                        <?php endif; ?>
+
+                        <?php if(isset($isi)): ?>
+                          <div class="alert alert-danger alert-dismissable">
+                              Anda tidak diizinkan untuk mengakses halaman ini.
+                          </div>
+                        <?php else: ?>
+
+                        <div class="alert alert-info alert-dismissable">
+                            Pastikan data yang Anda isi benar, karena setelah Submit Anda tidak dapat merubah data lagi.
+                        </div>
+                        <form action="<?php echo $base_url; ?>ProjectAssignment/ProjectAssignment/inputAktitifas/<?php echo $id; ?>" method="POST">
+                          <input id="jumlahaktivitas" type="number" name="jumlahaktivitas" min="0" readonly style="display:none">
+                          <table class="table table-bordered table-striped">
+                              <thead>
+                                  <tr>
+                                      <th>No</th>
+                                      <th>Nama Aktivitas</th>
+                                      <th>Tanggal Mulai</th>
+                                      <th>Tanggal Selesai</th>
+                                  </tr>
+                              </thead>
+                              <tbody id="Aktivitas">
+
+                              </tbody>
+                          </table>
+                          <br/>
+                          <input class="addRow btn btn-sm btn-primary" onclick="addNewRowAktivitas()" value="Tambah Baris"/>
+                          <input class="delRow btn btn-sm btn-danger" onclick="deleteRowAktivitas()" value="Hapus Baris"/>
+
+                          <br/>
+                          <br/>
+                          <div class="box-footer">
+                            <button type="submit" class="btn btn-success" id="buttonsubmit" disabled>Submit</button>
+                          </div>
+                        </form>  
+                        <?php endif; ?>
+
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+      </div>
+
+  </section>
+</aside>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.aktivitaspa', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

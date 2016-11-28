@@ -1,0 +1,6 @@
+<div class="col-md-2">
+    <a class="btn btn-custom btn-white <?php echo $cek_menu == 'Jabatan' ? 'actives' : ''; ?>" href="<?php echo $base_url; ?>career/icps/">Rencana Jabatan</a>
+</div>
+<div class="col-md-2">
+    <a class="btn btn-custom btn-white <?php echo $cek_menu == 'Kepakaran' ? 'actives' : ''; ?>" href="<?php echo $base_url; ?>career/icps/kepakaran">Rencana Kepakaran</a>
+</div>

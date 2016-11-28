@@ -1,0 +1,6 @@
+<?php foreach ($data as $element): ?>
+    <div class="control-group control-group-alone">
+    <?php echo Former::label("Kompetensi ".$element->kode_kompetensi.' ('.$element->nama_kompetensi.')'); ?>
+    <?php echo Former::select('kompetensi['.$element->kode_kompetensi.']')->options(array('0' => '0','1' => '1','2' => '2','3' => '3','4' => '4'))->class('form-control small-form')->raw(); ?>
+    </div>
+<?php endforeach; ?>

@@ -1,0 +1,42 @@
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+    <style type="text/css">
+        .error {
+            color: #c7254e;
+            font-weight: normal;
+            font-size: 14px;
+        }
+    </style>
+    <div class="form-box" id="login-box">
+        <div class="header">SI-AKATEL LOGIN</div>
+        <form action="<?php echo $base_url; ?>sessions/create" method="post">
+            <div class="body bg-gray">
+                <div style="height: 10px">
+                    <?php foreach ($flash as $key => $value): ?>
+                        <?php if($value): ?>
+                            <h4 class="error "><?php echo $value; ?></h4>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="email" class="form-control" placeholder="Email"/>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control" placeholder="Password"/>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" name="remember_me"/> Remember me
+                </div>
+            </div>
+            <div class="footer">
+                <button type="submit" class="btn bg-olive btn-block">Sign me in</button>
+
+                <p><a href="#">I forgot my password</a></p>
+
+            </div>
+        </form>
+
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.login', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,68 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Manejemen Akses
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#"> Manajemen Akses
+</a></li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Data User Role</h3>
+                        </div><!-- /.box-header -->
+
+                        <div class="box-body table-responsive">
+                            <?php foreach ($flash as $key => $value): ?>
+                            <?php if($value): ?>
+                            <div class="alert alert-<?php echo $key; ?> alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <?php echo $value; ?>
+                            </div>
+                            <?php endif; ?>
+                            <?php endforeach; ?>
+                            <table id="example" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th width="5%">#</th>
+                                        <th>Role</th>
+                                        <th width="15%">Action Menu</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php if(isset($data)): ?>
+                                        <?php foreach ($data as $key => $value): ?>
+                                            <tr>
+                                                <td><?php echo $key+1; ?></td>
+                                                <td><?php echo $value->name; ?></td>
+                                                <td>
+                                                    <a href="<?php echo $base_url; ?>access/setting/<?php echo $value->idx; ?>" class=""><button class="fa fa-pencil" title="edit"></button></a>
+
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div>
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

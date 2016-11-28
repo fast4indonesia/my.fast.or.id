@@ -1,0 +1,272 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        CMC
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="#">ADMP</a></li>
+                        <li><a href="#">CMC</a></li>
+                    </ol>
+                </section>
+
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <h3 class="box-title">Form Edit Peserta CMC</h3>
+                                </div>
+
+                                    <?php if($method == "display"): ?>
+                                        <?php echo Former::open()->action($base_url.'cmc/cmc/update'); ?>
+                                        <div class="box-body table-responsive scrollWrapper">
+                                            <input type="text" class="form-input" name="nipeg_atasan" value="<?php echo $nipeg; ?>" style="display:none"/>
+                                            <table id="example" class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="min-width:175px" rowspan="3"><center>Nama Pegawai</center></th>
+                                                        <th style="min-width:175px" rowspan="3"><center>Jenjang Jabatan</center></th>
+                                                        <th style="min-width:200px" rowspan="3"><center>Jabatan</center></th>
+                                                        <th style="min-width:125px" rowspan="3"><center>Indikator Kinerja</center></th>
+                                                        <th colspan="3"><center>PERSYARATAN KOMPETENSI DAN TINGKAT KEMAHIRAN</center></th>
+                                                        <th rowspan="3"><center>IHT</center></th>
+                                                        <th rowspan="3"><center>Internal</center></th>
+                                                        <th rowspan="3"><center>Eksternal</center></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th colspan="2"><center>Soft Competence</center></th>
+                                                        <th><center>Hard Competence</center></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="min-width:150px">Kompetensi Peran</th>
+                                                        <th style="min-width:150px">Kompetensi Unit</th>
+                                                        <th style="min-width:150px">Kompetensi Bidang</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <?php if(isset($pegawai)): ?>
+                                                        <?php foreach ($pegawai as $key => $value): ?>                                                       
+
+                                                            <td><?php echo $value->nama; ?><input type="text" class="form-input" name="nipeg_bawahan" value="<?php echo $value->nipeg; ?>"  style="display:none"/></td>
+                                                            <td><?php echo $value->nama_jenjang_jabatan; ?></td>
+                                                            <td><?php echo $value->nama_jabatan; ?></td>
+                                                            <td><center>-</center></td>
+
+                                                        <?php endforeach; ?>
+                                                        <?php endif; ?>
+
+                                                        <td>
+                                                            <?php if(isset($peran)): ?>
+                                                            <?php foreach ($peran as $key => $value): ?> 
+                                                                <?php echo $value->kode_kompetensi; ?> : <?php echo $value->nilai; ?> 
+                                                                <br/>
+                                                            <?php endforeach; ?>
+                                                            <?php endif; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php if(isset($utama)): ?>
+                                                            <?php foreach ($utama as $key => $value): ?> 
+                                                                <?php echo $value->kode_kompetensi; ?> : <?php echo $value->nilai; ?> 
+                                                                <br/>
+                                                            <?php endforeach; ?>
+                                                            <?php endif; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php if(isset($bidang)): ?>
+                                                            <?php foreach ($bidang as $key => $value): ?> 
+                                                                <?php echo $value->kode_kompetensi; ?> : <?php echo $value->nilai; ?> 
+                                                                <br/>
+                                                            <?php endforeach; ?>
+                                                            <?php endif; ?>
+                                                        </td>
+                                                        <td>
+                                                            <select class="form-input">
+                                                                <option value="">Pilih Pelatihan IHT</option>
+                                                                <option value="">Talent Manajemen System</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <select class="form-input">
+                                                                <option value="">Pilih Pelatihan Internal</option>
+                                                                <option value="">Diklat Administrasi SDM</option>
+                                                                <option value=""></option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <select class="form-input">
+                                                                <option value="">Pilih Pelatihan Eksternal</option>
+                                                                <option value="">Diklat Administrasi SDM</option>
+                                                                <option value=""></option>
+                                                            </select>
+                                                        </td>
+
+                                                </tbody>
+                                                <tbody>
+                                            </table>
+                                        </div><!-- /.box-body -->
+                                        <br/>
+                                        <br/>
+                                        <br/>
+
+                                        <div class="box-header">
+                                            <h3 class="box-title">Form Input Detail Pelaksanaan</h3>
+                                        </div>
+
+
+                                        <div class="box-body table-responsive scrollWrapper">
+                                            <table id="example" class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th rowspan="2"><center>Kekuatan Dan Kelemahan</center></th>
+                                                        <th rowspan="2"><center>Pengembangan</center></th>
+                                                        <th rowspan="2"><center>Rencana Tindakan</center></th>
+                                                        <th rowspan="2"><center>Waktu Pelaksanaan</center></th>
+                                                        <th rowspan="2"><center>Hasil yang Diharapkan</center></th>
+                                                    </tr>
+                                                  
+                                                </thead>
+                                                <tbody>
+                                                    <?php if(isset($data)): ?>
+                                                    <?php foreach ($data as $key => $value): ?>  
+                                                    <tr>
+                                                        <td>KEKUATAN</td>
+                                                        <td>KNOWLEGDE</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td rowspan="7"><textarea class="form-input" name="kekuatan"><?php echo $value->kekuatan; ?></textarea></td>
+                                                        <td><textarea class="form-input" value="" name="kekuatan_rencana_knowlegde"><?php echo $value->kekuatan_rencana_knowlegde; ?></textarea></td>
+                                                        <td><textarea class="form-input" value="" name="rencana_kek_knowlegde"><?php echo $value->rencana_kek_knowlegde; ?></textarea></td>
+                                                        <td><input type="date" class="form-input" value="<?php echo $value->awal_kek_knowlegde; ?>" name="awal_kek_knowlegde"/><br/> S/D <br/><input type="date" class="form-input" value="<?php echo $value->akhir_kek_knowlegde; ?>" name="akhir_kek_knowlegde"/></td>
+                                                        <td><textarea class="form-input" value="" name="hasil_kek_knowlegde"><?php echo $value->hasil_kek_knowlegde; ?></textarea></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>SKILL</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><textarea class="form-input" value=""  name="kekuatan_rencana_skill"></textarea></td>
+                                                        <td><textarea class="form-input" value=""  name="rencana_kek_skill"></textarea></td>
+                                                        <td><input type="date" class="form-input"  name="awal_kek_skill"/><br/> S/D <br/><input type="date" class="form-input" name="akhir_kek_skill"/></td>
+                                                        <td><textarea class="form-input" value=""  name="hasil_kek_skill"></textarea></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ATTITUDE</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><textarea class="form-input" value=""  name="kekuatan_rencana_attitude"></textarea></td>
+                                                        <td><textarea class="form-input" value=""  name="rencana_kek_attitude"></textarea></td>
+                                                        <td><input type="date" class="form-input"  name="awal_kek_attitude"/><br/> S/D <br/><input type="date" class="form-input" name="akhir_kek_attitude"/></td>
+                                                        <td><textarea class="form-input" value=""  name="hasil_kek_attitude"></textarea></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>PELATIHAN</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>    
+
+                                                        <td><textarea class="form-input" value="" name="kekuatan_rencana_pelatihan"></textarea></td>
+                                                        <td><textarea class="form-input" value="" name="rencana_kek_pelatihan"></textarea></td>
+                                                        <td><input type="date" class="form-input" name="awal_kek_pelatihan"/><br/> S/D <br/><input type="date" class="form-input" name="akhir_kek_pelatihan"/></td>
+                                                        <td><textarea class="form-input" value="" name="hasil_kek_pelatihan"></textarea></td>
+                                                    </tr>
+
+
+                                                    <tr>
+                                                        <td>KELEMAHAN</td>
+                                                        <td>KNOWLEGDE</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td rowspan="7"><textarea class="form-input" value="" name="kelemahan"></textarea></td>
+                                                        <td><textarea class="form-input" value="" name="kelemahan_rencana_knowlegde"></textarea></td>
+                                                        <td><textarea class="form-input" value="" name="rencana_kel_knowlegde"></textarea></td>
+                                                        <td><input type="date" class="form-input" name="awal_kel_knowlegde"/><br/> S/D <br/><input type="date" class="form-input" name="akhir_kel_knowlegde"/></td>
+                                                        <td><textarea class="form-input" value="" name="hasil_kel_knowlegde"></textarea></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>SKILL</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><textarea class="form-input" value=""  name="kelemahan_rencana_skill"></textarea></td>
+                                                        <td><textarea class="form-input" value=""  name="rencana_kel_skill"></textarea></td>
+                                                        <td><input type="date" class="form-input"  name="awal_kel_skill"/><br/> S/D <br/><input type="date" class="form-input" name="akhir_kel_skill"/></td>
+                                                        <td><textarea class="form-input" value=""  name="hasil_kel_skill"></textarea></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ATTITUDE</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><textarea class="form-input" value=""  name="kelemahan_rencana_attitude"></textarea></td>
+                                                        <td><textarea class="form-input" value=""  name="rencana_kel_attitude"></textarea></td>
+                                                        <td><input type="date" class="form-input"  name="awal_kel_attitude"/><br/> S/D <br/><input type="date" class="form-input" name="akhir_kel_attitude"/></td>
+                                                        <td><textarea class="form-input" value=""  name="hasil_kel_attitude"></textarea></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>PELATIHAN</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>    
+
+                                                        <td><textarea class="form-input" value="" name="kelemahan_rencana_pelatihan"></textarea></td>
+                                                        <td><textarea class="form-input" value="" name="rencana_kel_pelatihan"></textarea></td>
+                                                        <td><input type="date" class="form-input" name="awal_kel_pelatihan"/><br/> S/D <br/><input type="date" class="form-input" name="akhir_kel_pelatihan"/></td>
+                                                        <td><textarea class="form-input" value="" name="hasil_kel_pelatihan"></textarea></td>
+                                                    </tr>
+                                                    <?php endforeach; ?>
+                                                    <?php endif; ?>
+                                                </tbody>
+                                                <tbody>
+                                            </table>
+                                        </div><!-- /.box-body -->
+                                        <div class="box-footer">
+                                            <button type="submit" class="btn btn-info">Simpan Draft</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+
+                                        <?php echo Former::close(); ?>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </aside><!-- /.right-side -->
+ 
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

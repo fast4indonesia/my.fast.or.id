@@ -1,0 +1,128 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Master Jabatan
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="<?php echo $base_url; ?>master/jabatan"> Master Jabatan</a></li>
+                <li><a href="#"> Tambah Jabatan</a></li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                            <div class="box box-primary">
+                                <div class="box-header">
+                                    <h3 class="box-title">Upload Jabatan</h3>
+                                </div>
+                                <form action="<?php echo $base_url; ?>master/jabatan/saveupload" method="POST">
+                                <div class="box-body">
+                                <?php if(!empty($errors)): ?>
+                                        <div class="callout callout-danger">
+                                            <h4>Gagal menyimpan data karena kesalahan berikut:</h4>
+                                             <ul>
+                                                <?php foreach ($errors as $val): ?>
+                                                    <li><?php echo $val; ?></li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
+                                <?php endif; ?> 
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Kode Jabatan</th>
+                                                <th>Kode Group</th>
+                                                <th>Jenjang Jabatan</th>
+                                                <th>Kantor Unit</th>
+                                                <th>Nama</th>
+                                                <th>Keterangan</th>
+                                                <th>Position SAP</th>
+                                                <th>Jenjang Main GRP ID SAP</th>
+                                                <th>Jenjang Sub GRP ID SAP</th>
+                                                <th>Status</th>
+                                                <th>Pesan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php if(isset($data)): ?>
+                                                <?php foreach ($data as $key => $element): ?>
+                                                <tr>
+                                                    <td><?php echo $key+1; ?></td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][kode_jabatan]" value="<?php echo $element->kode_jabatan; ?>" class="form-control" <?php echo $element->is_valid() ? 'disabled' : ''; ?>>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][kode_jabatangroup]" value="<?php echo $element->kode_jabatangroup; ?>" class="form-control" <?php echo $element->is_valid() ? 'disabled' : ''; ?>>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][kode_jenjang_jabatan]" value="<?php echo $element->kode_jenjang_jabatan; ?>" class="form-control" <?php echo $element->is_valid() ? 'disabled' : ''; ?>>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][kode_kantor]" value="<?php echo $element->kode_kantor; ?>" class="form-control" <?php echo $element->is_valid() ? 'disabled' : ''; ?>>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][nama_jabatan]" value="<?php echo $element->nama_jabatan; ?>" class="form-control" <?php echo $element->is_valid() ? 'disabled' : ''; ?>>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][keterangan]" value="<?php echo $element->keterangan; ?>" class="form-control" <?php echo $element->is_valid() ? 'disabled' : ''; ?>>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][position_sap]" value="<?php echo $element->position_sap; ?>" class="form-control" <?php echo $element->is_valid() ? 'disabled' : ''; ?>>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][jenjang_main_grp_id_sap]" value="<?php echo $element->jenjang_main_grp_id_sap; ?>" class="form-control" <?php echo $element->is_valid() ? 'disabled' : ''; ?>>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][jenjang_sub_grp_id_sap]" value="<?php echo $element->jenjang_sub_grp_id_sap; ?>" class="form-control" <?php echo $element->is_valid() ? 'disabled' : ''; ?>>
+                                                    </td>
+                                                    <td>
+                                                        <?php if($element->is_valid()): ?>
+                                                            <span class="badge bg-green">Success</span>
+                                                        <?php else: ?>
+                                                            <span class="badge bg-red">Error</span>
+                                                        <?php endif; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php if ($element->is_valid()): ?>
+                                                            <div class="callout callout-success">
+                                                                <h4>Tidak Ada Kesalahan</h4>
+                                                            </div>
+                                                        <?php else: ?>
+                                                            <div class="callout callout-danger">
+                                                                <h4>Gagal menyimpan data karena kesalahan berikut:</h4>
+                                                                    <ul>
+                                                                        <li><?php echo $element->errors; ?></li>
+                                                                    </ul>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    </td>
+                                                </tr>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
+                                        </tbody>
+                                    </table>
+                                </div><!-- /.box-body -->
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="reset" class="btn btn-default">Reset</button>
+                                </div>
+                                </form>
+                            </div>
+                </div><!-- /.col -->
+            </div>
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

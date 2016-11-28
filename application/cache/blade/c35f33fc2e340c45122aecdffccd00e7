@@ -1,0 +1,82 @@
+<aside class="left-side sidebar-offcanvas">
+    <!-- sidebar: style can be found in sidebar.less -->
+
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="/assets/img/avatar3.png" class="img-circle" alt="User Image" />
+            </div>
+            <div class="pull-left info">
+                <p>Hy, Administrator</p>
+
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+        </div>
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+            <li class="">
+                <a href="<?php echo $base_url; ?>">
+                    <i class="fa fa-dashboard"></i> <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="profil.html">
+                    <i class="fa  fa-user"></i><span>Profil</span>
+                </a>
+            </li>
+            <li class="treeview <?php echo $uri_1 == 'master' ? 'active' : ''; ?>">
+                <a href="#">
+                    <i class="fa fa-suitcase"></i>
+                    <span>Master Data</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="<?php echo $controller_name == 'employee' ? 'active' : ''; ?>">
+                        <a href="<?php echo $base_url; ?>master/employee">
+                            <i class="fa fa-angle-double-right"></i>
+                            Employee</a></li>
+                    <li class="<?php echo $controller_name == 'institusi' ? 'active' : ''; ?>">
+                        <a href="<?php echo $base_url; ?>master/institusi">
+                            <i class="fa fa-angle-double-right"></i>
+                            Institusi</a></li>
+                    <li class="<?php echo $controller_name == 'jabatan' ? 'active' : ''; ?>">
+                        <a href="<?php echo $base_url; ?>master/jabatan">
+                            <i class="fa fa-angle-double-right"></i>
+                            Jabatan</a></li>
+                    <li class="<?php echo $controller_name == 'profesi' ? 'active' : ''; ?>">
+                        <a href="<?php echo $base_url; ?>master/profesi">
+                            <i class="fa fa-angle-double-right"></i>
+                            Profesi</a></li>
+                    <li class="<?php echo $controller_name == 'office' ? 'active' : ''; ?>">
+                        <a href="<?php echo $base_url; ?>master/office">
+                            <i class="fa fa-angle-double-right"></i>
+                            Kantor</a></li>
+                    <li class="<?php echo $controller_name == 'jenjangjabatan' ? 'active' : ''; ?>">
+                        <a href="<?php echo $base_url; ?>master/jenjangJabatan">
+                            <i class="fa fa-angle-double-right"></i>
+                            Jenjang Jabatan</a></li>
+                    <li class="<?php echo $controller_name == 'kkj' ? 'active' : ''; ?>">
+                        <a href="<?php echo $base_url; ?>master/kkj">
+                            <i class="fa fa-angle-double-right"></i>
+                            Peta Jenjang KKJ</a></li>
+                    <li class="<?php echo $controller_name == 'grades' ? 'active' : ''; ?>">
+                        <a href="<?php echo $base_url; ?>master/grades">
+                            <i class="fa fa-angle-double-right"></i>
+                            Level Kompetensi</a></li>
+                    <li class="<?php echo $controller_name == 'competencies' ? 'active' : ''; ?>">
+                        <a href="<?php echo $base_url; ?>master/competencies">
+                            <i class="fa fa-angle-double-right"></i>
+                            Kompetensi</a></li>
+                    <li class="<?php echo $controller_name == 'fitnproper' ? 'active' : ''; ?>">
+                        <a href="<?php echo $base_url; ?>master/fitnproper">
+                            <i class="fa fa-angle-double-right"></i>
+                            Fit & Proper</a></li>
+
+                </ul>
+            </li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

@@ -1,0 +1,128 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+    <aside class="right-side">
+        <section class="content-header">
+            <h1>
+                Profile
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#"> Profile</a></li>
+            </ol>
+        </section>
+        <br>
+        <!-- Main content -->
+        <section class="content">
+            <div class="col-md-6">
+                <div class="box box-info">
+                    <div class="box-header" style="cursor: move;">
+                        <i class="fa fa-info"></i>
+                        <h3 class="box-title">User Information</h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="callout callout-info">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Nama :</label>
+                                <label for="exampleInputEmail1">
+                                    <?php if($user->role == 'administrator'): ?>
+                                        Administrator
+                                    <?php else: ?>
+                                        <?php echo $user->employee()->nama; ?>
+                                    <?php endif; ?>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Aktivasi :</label>
+                                <label for="exampleInputEmail1">Aktif</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">User Status :</label>
+                                <label for="exampleInputEmail1">Online</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Last Login :</label>
+                                <label for="exampleInputEmail1">
+                                    <?php if ($user->last_login != null): ?>
+                                    <?php echo ($user->last_login->format('l, d-M-Y')); ?>
+                                    <?php endif; ?>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">IP Address :</label>
+                                <label for="exampleInputEmail1"><?php echo $user->last_ip; ?></label>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Organization ID :</label>
+                                <label for="exampleInputEmail1">
+                                    <?php if($user->role == 'administrator'): ?>
+                                        -
+                                    <?php else: ?>
+                                        <?php echo $user->employee()->kode_kantor; ?>
+                                    <?php endif; ?>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Organization :</label>
+                                <label for="exampleInputEmail1">
+                                    <?php if($user->role == 'administrator'): ?>
+                                        -
+                                    <?php else: ?>
+                                        <?php echo $user->employee()->kantor()->nama_kantor; ?>
+                                    <?php endif; ?>
+                                </label>
+                            </div>
+                        </div>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div><!-- /.col -->
+
+            <div class="col-md-6">
+                <div class="box box-info">
+                    <div class="box-header" style="cursor: move;">
+                        <i class="fa fa-cog"></i>
+                        <h3 class="box-title">Ubah Password</h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="box box-primary">
+                            <!-- form start -->
+                            <?php foreach ($flash as $key => $value): ?>
+                            <?php if($value): ?>
+                            <div class="alert alert-<?php echo $key; ?> alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <?php echo $value; ?>
+                            </div>
+                            <?php endif; ?>
+                            <?php endforeach; ?>
+
+                            <form role="form" action="<?php echo $base_url; ?>profiles/change_password" method="post">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Old Password</label>
+                                        <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Enter Old Password" name="old_password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">New Password</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter New Password" name="new_password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Repeat New Password</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Repeat New Password" name="new_password_2">
+                                    </div>
+                                </div><!-- /.box-body -->
+
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div><!-- /.box -->
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div><!-- /.col -->
+
+        </section>
+
+    </aside>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

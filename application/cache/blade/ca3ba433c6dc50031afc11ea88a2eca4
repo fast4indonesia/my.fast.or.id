@@ -1,0 +1,193 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                       Form Evaluasi Level 3 Diklat
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="#"> Diklat</a></li>
+                    </ol>
+                </section>
+
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Form Evaluasi Level 3 Diklat</h3>                                    
+                                </div><!-- /.box-header -->
+                                <br/>
+                                 <?php if(isset($survey)): ?>
+                                    <?php foreach ($survey as $key => $element): ?>
+                                 <form action="<?php echo $base_url; ?>diklat/survey/nilai4/<?php echo $element->kode_survey; ?>" method="POST" id="penilaian">
+                               
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label>Nama Lengkap</label>
+                                            <div class="input-group">
+                                                <p class="text-aqua"><?php echo $element->nama; ?></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>NIPEG</label>
+                                            <div class="input-group">
+                                                <p class="text-aqua"><?php echo $element->nipeg; ?></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Unit Induk</label>
+                                            <div class="input-group">
+                                                <p class="text-aqua"><?php echo $element->kantor; ?></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Judul Diklat</label>
+                                            <div class="input-group">
+                                                <p class="text-aqua"><?php echo $element->judul_diklat; ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box-body table-responsive">
+                                        <table class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th rowspan="2">No</th>
+                                                    <th rowspan="2"><center>Indikator Keberhasilan</center></th>
+                                                    <th colspan="5"><center>Dampak Perilaku Terhadap Kinerja Perusahaan</center></th>
+                                                </tr>
+                                                <tr>
+                                                    <th><center>Tidak Berdampak</center></th>
+                                                    <th><center>Kadang-Kadang</center></th>
+                                                    <th><center>Sering</center></th>
+                                                    <th><center>Sering Sekali</center></th>
+                                                    <th><center>Selalu</center></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Setelah mengikuti pelatihan seberapa banyak peningkatan pengetahuan/ketrampilan YBS </td>
+                                                    <td><b><center><input id="r1" type="radio" name="Set1" value="1" /></center></b></td>
+                                                    <td><b><center><input id="r2" type="radio" name="Set1" value="2" /></center></b></td>
+                                                    <td><b><center><input id="r3" type="radio" name="Set1" value="3" /></center></b></td>
+                                                    <td><b><center><input id="r4" type="radio" name="Set1" value="4" /></center></b></td>
+                                                    <td><b><center><input id="r5" type="radio" name="Set1" value="5" /></center></b></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Dalam melaksanakan tugas sehari-hari, seberapa banyak YBS menerapkan hasil yang diperoleh dari pelatihan </td>
+                                                    <td><b><center><input id="r1" type="radio" name="Set2" value="1" /></center></b></td>
+                                                    <td><b><center><input id="r2" type="radio" name="Set2" value="2" /></center></b></td>
+                                                    <td><b><center><input id="r3" type="radio" name="Set2" value="3" /></center></b></td>
+                                                    <td><b><center><input id="r4" type="radio" name="Set2" value="4" /></center></b></td>
+                                                    <td><b><center><input id="r5" type="radio" name="Set2" value="5" /></center></b></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Setelah mengikuti pelatihan, Seberapa banyak YBS melakukan perubahan cara kerjanya </td>
+                                                    <td><b><center><input id="r1" type="radio" name="Set3" value="1" /></center></b></td>
+                                                    <td><b><center><input id="r2" type="radio" name="Set3" value="2" /></center></b></td>
+                                                    <td><b><center><input id="r3" type="radio" name="Set3" value="3" /></center></b></td>
+                                                    <td><b><center><input id="r4" type="radio" name="Set3" value="4" /></center></b></td>
+                                                    <td><b><center><input id="r5" type="radio" name="Set3" value="5" /></center></b></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>Seberapa banyak peningkatan produktivitas kerja  YBS</td>
+                                                    <td><b><center><input id="r1" type="radio" name="Set4" value="1" /></center></b></td>
+                                                    <td><b><center><input id="r2" type="radio" name="Set4" value="2" /></center></b></td>
+                                                    <td><b><center><input id="r3" type="radio" name="Set4" value="3" /></center></b></td>
+                                                    <td><b><center><input id="r4" type="radio" name="Set4" value="4" /></center></b></td>
+                                                    <td><b><center><input id="r5" type="radio" name="Set4" value="5" /></center></b></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>Kesimpulan akhir seberapa banyak, dampak pelatihan bagi YBS dalam melaksanakan tugas sehari-heri</td>
+                                                    <td><b><center><input id="r1" type="radio" name="Set5" value="1" /></center></b></td>
+                                                    <td><b><center><input id="r2" type="radio" name="Set5" value="2" /></center></b></td>
+                                                    <td><b><center><input id="r3" type="radio" name="Set5" value="3" /></center></b></td>
+                                                    <td><b><center><input id="r4" type="radio" name="Set5" value="4" /></center></b></td>
+                                                    <td><b><center><input id="r5" type="radio" name="Set5" value="5" /></center></b></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td colspan="2"><b><center>Jumlah</center></b></td>
+                                                    <td><b><center></center></b></td>
+                                                    <td><b><center></center></b></td>
+                                                    <td><b><center></center></b></td>
+                                                    <td><b><center></center></b></td>
+                                                    <td><b><center></center></b></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td colspan="2"><b><center>Rata-Rata</center></b></td>
+                                                    <td colspan="5"><b><center><input id="total" type="text" name="total" value=" " /></center></b></td>
+                                                </tr>
+                                             <?php endforeach; ?>
+                                          <?php endif; ?> 
+                                          </tbody>      
+                                        </table>
+                                    </div><!-- /.box-body -->
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="reset" class="btn btn-primary">Reset</button>
+                                    </div><!-- /.input group -->
+                                </form>  
+                            </div><!-- /.box -->
+                        </div><!-- /.col -->
+                    </div>                      
+                </section><!-- /.content -->
+ 
+            </aside>
+
+
+
+<script type="text/javascript">
+
+function setRadios()
+{
+    function sumRadios()
+    {
+        var total = 0, i = 1, oForm = this.form;
+        while (radgrp = oForm.elements['Set' + (i++)])
+        {
+            j = radgrp.length;
+            do
+                if (radgrp[--j].checked)
+                {
+                    total += Number(radgrp[j].value);
+                    break;
+                }
+            while (j);
+        }
+        oForm.elements.total.value = total.toFixed(0)/5;
+    }
+    
+    var i = 0, input, inputs = document.getElementById('penilaian').getElementsByTagName('input');
+    while (input = inputs.item(i++))
+        if (input.name.match(/^Set\d+$/))
+            input.onclick = sumRadios;
+}
+
+onload = setRadios;
+
+</script>
+
+ 
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application2', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

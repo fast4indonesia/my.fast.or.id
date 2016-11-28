@@ -1,0 +1,390 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+ <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Master Data Employee
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="<?php echo local_path('') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="<?php echo local_path('master/employee') ?>">Master Data</a></li>
+                        <li><a href="<?php echo local_path('master/employee') ?>">Employee</a></li>
+                    </ol>
+                </section>
+
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <h3 class="box-title">Form Input Data Employee</h3>
+                                </div>
+                                <br/>
+                               <?php echo Former::open()->action($base_url.'master/employee/store'); ?>
+                                <div class="box-body">
+                                    <?php if(!empty($flashdata)): ?>
+                                        <div class="callout callout-danger">
+                                            <h4>Gagal menyimpan data karena kesalahan berikut:</h4>
+                                             <ul>
+                                                <?php foreach ($flashdata as $val): ?>
+                                                    <li><?php echo $val; ?></li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
+                                    <?php endif; ?> 
+
+                                    <?php foreach ($data->attributes() as $key => $value): ?>
+                                        <?php if ($method == 'create'): ?>
+                                        	<?php if ($key == 'nipeg'): ?>
+                                                <div class="col-xs-12">
+                                                  <div class="form-group col-xs-2"> 
+                                                      <label>Nipeg</label>                     
+                                                  </div>
+                                                  <div class="form-group col-xs-3">                        
+                                                    <div class="input-group" style="width: 100%;">
+                                                        <input type="text" class="form-control" required name="nipeg" value="<?php echo $value; ?>" />
+                                                    </div>                 
+                                                  </div> 
+                                                </div>                                                 
+                                            <?php elseif ($key == 'nama'): ?>                                            
+                                                <div class="col-xs-12">
+                                                  <div class="form-group col-xs-2"> 
+                                                      <label>Nama</label>                     
+                                                  </div>
+                                                  <div class="form-group col-xs-3">                        
+                                                    <div class="input-group" style="width: 100%;">
+                                                        <input type="text" class="form-control" required name="nama" value="<?php echo $value; ?>" />
+                                                    </div>                 
+                                                  </div> 
+                                                </div>
+                                            <?php elseif ($key == 'gelar'): ?>       
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Gelar</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <select class="select2-drop-mask form-control" required name="gelar">
+                                                                <?php foreach ($listgelar as $gelar => $valuegelar): ?>
+                                                                    <option value="<?php echo $gelar; ?>"><?php echo $valuegelar; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+                                                        </div>                 
+                                                    </div> 
+                                                </div>
+                                            <?php elseif ($key == 'kelompok_pendidikan'): ?>                                        
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Pendidikan</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <select class="select2-drop-mask form-control" required name="kelompok_pendidikan">
+                                                                <?php foreach ($listgelar as $gelar => $valuegelar): ?>
+                                                                    <option value="<?php echo $gelar; ?>"><?php echo $valuegelar; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+                                                        </div>                 
+                                                    </div> 
+                                                </div>
+                                            <?php elseif ($key == 'kode_posisi'): ?>                                        
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Bidang</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <select class="select2-drop-mask form-control" required name="kode_posisi">
+                                                                <?php foreach ($listposisi as $bidang => $valuebidang): ?>
+                                                                    <option value="<?php echo $bidang; ?>"><?php echo $valuebidang; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+                                                        </div>                 
+                                                    </div>                                                  
+                                                </div>
+                                            <?php elseif ($key == 'kode_kantor'): ?>                                        
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Bidang</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <select class="select2-drop-mask form-control" required name="kode_kantor">
+                                                                <?php foreach ($listkantor as $kantor => $valuekantor): ?>
+                                                                    <option value="<?php echo $kantor; ?>"><?php echo $valuekantor; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+                                                        </div>                 
+                                                    </div>                                                  
+                                                </div>
+                                            <?php elseif ($key == 'kode_jabatan'): ?>
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2">
+                                                        <label>Jabatan</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <select class="select2-drop-mask form-control" required name="kode_jabatan">
+                                                                <?php foreach ($listjabatan as $jabatan  => $valuejabatan ): ?>
+                                                                    <option value="<?php echo $jabatan; ?>"><?php echo $valuejabatan; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+                                                        </div>                 
+                                                    </div>                                                   
+                                                </div>
+                                            <?php elseif ($key == 'tgl_masuk'): ?>                              
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Tanggal Masuk</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <input type="date" class="form-control" required name="tgl_masuk" value="<?php echo $value; ?>" />
+                                                        </div>                 
+                                                    </div>                                                  
+                                                </div>
+                                            <?php elseif ($key == 'tgl_capeg'): ?>                              
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Tanggal Capeg</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <input type="date" class="form-control" required name="tgl_capeg" value="<?php echo $value; ?>" />
+                                                        </div>                 
+                                                    </div>                                                  
+                                                </div>
+                                            <?php elseif ($key == 'tgl_tetap'): ?>                              
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Tanggal Tetap</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <input type="date" class="form-control" required name="tgl_tetap" value="<?php echo $value; ?>" />
+                                                        </div>                 
+                                                    </div>                                                  
+                                                </div>
+                                            <?php elseif ($key == 'jenis_pegawai'): ?>                           
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Jenis Pegawai</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <select class="select2-drop-mask form-control" name="jenis_pegawai">
+                                                                <?php foreach ($listjenis as $jenis  => $valuejenis ): ?>
+                                                                    <option value="<?php echo $jenis; ?>"><?php echo $valuejenis; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+                                                        </div>                 
+                                                    </div>                                               
+                                                </div>
+                                            <?php elseif ($key == 'tgl_lahir'): ?>                         
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Tanggal Lahir</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <input type="date" class="form-control" required name="tgl_lahir" value="<?php echo $value; ?>" />
+                                                        </div>                 
+                                                    </div>                                                  
+                                                </div>
+                                            <?php elseif ($key == 'tempat_lahir'): ?>                        
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Tempat Lahir</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <input type="text" class="form-control" required name="tempat_lahir" value="<?php echo $value; ?>" />
+                                                        </div>                 
+                                                    </div>                                                  
+                                                </div>
+                                            <?php elseif ($key == 'jns_kelamin'): ?>                   
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Jenis Kelamin</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                       
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <select class="select2-drop-mask form-control" required name="jns_kelamin">
+                                                                <?php foreach ($listgender as $gender  => $valuegender ): ?>
+                                                                    <option value="<?php echo $gender; ?>"><?php echo $valuegender; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+                                                        </div>                
+                                                    </div>                                                  
+                                                </div>
+                                            <?php elseif ($key == 'gol_darah'): ?>               
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Golongan Darah</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                       
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <select class="select2-drop-mask form-control" required name="gol_darah">
+                                                                <?php foreach ($listgolongandarah as $golongandarah  => $valuegolongandarah ): ?>
+                                                                    <option value="<?php echo $golongandarah; ?>"><?php echo $valuegolongandarah; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+                                                        </div>                
+                                                    </div>                                                  
+                                                </div>
+                                            <?php elseif ($key == 'agama'): ?>         
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Agama</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                       
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <select class="select2-drop-mask form-control" required name="agama">
+                                                                <?php foreach ($listagama as $agama  => $valueagama ): ?>
+                                                                    <option value="<?php echo $agama; ?>"><?php echo $valueagama; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+                                                        </div>                
+                                                    </div>                                                  
+                                                </div>
+                                            <?php elseif ($key == 'status_perkawinan'): ?>  
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Matrial Status</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                       
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <select class="select2-drop-mask form-control" required name="status_perkawinan">
+                                                                <?php foreach ($listperkawinan as $perkawinan  => $valueperkawinan ): ?>
+                                                                    <option value="<?php echo $perkawinan; ?>"><?php echo $valueperkawinan; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+                                                        </div>                
+                                                    </div>                                                  
+                                                </div>
+                                            <?php elseif ($key == 'alamat_rumah'): ?>
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Alamat</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <textarea class="form-control" name="alamat_rumah"><?php echo $value; ?></textarea>
+                                                        </div>  
+                                                    </div>                                                  
+                                                </div>
+                                            <?php elseif ($key == 'kota_tinggal'): ?>
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Kota tinggal</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <input type="text" class="form-control" name="kota_tinggal" value="<?php echo $value; ?>" />
+                                                        </div>  
+                                                    </div>                                                  
+                                                </div>
+                                            <?php elseif ($key == 'kode_grade'): ?>
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Grade</label>                     
+                                                    </div>      
+                                                    <div class="form-group col-xs-3">                 
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <select class="select2-drop-mask form-control" required name="kode_grade">
+                                                                <?php foreach ($listgrade as $grade  => $valuegrade ): ?>
+                                                                    <option value="<?php echo $grade; ?>"><?php echo $valuegrade; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+                                                        </div>                                                 
+                                                    </div>                                                 
+                                                </div>
+                                            <?php elseif ($key == 'email'): ?>
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Email</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <input type="text" class="form-control" required name="email" value="<?php echo $value; ?>" />
+                                                        </div>  
+                                                    </div>                                                  
+                                                </div>
+                                                <hr></hr>
+                                            <?php elseif ($key == 'pers_no_sap'): ?>
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Pers No SAP</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <span class="input-group-addon">SAP</span>
+                                                            <input type="text" class="form-control" required name="pers_no_sap" value="<?php echo $value; ?>" />
+                                                        </div>  
+                                                    </div>                                                  
+                                                </div>
+                                            <?php elseif ($key == 'org_unit_sap'): ?>
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Org Unit SAP</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <span class="input-group-addon">SAP</span>
+                                                            <input type="text" class="form-control" name="org_unit_sap" value="<?php echo $value; ?>" />
+                                                        </div>  
+                                                    </div>                                                  
+                                                </div>
+                                            <?php elseif ($key == 'position_sap'): ?>
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Position SAP</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <span class="input-group-addon">SAP</span>
+                                                            <input type="text" class="form-control" name="position_sap" value="<?php echo $value; ?>" />
+                                                        </div>  
+                                                    </div>                                                  
+                                                </div>
+                                            <?php elseif ($key == 'pers_no_superior_sap'): ?>
+                                                <div class="col-xs-12">
+                                                    <div class="form-group col-xs-2"> 
+                                                        <label>Pers No Superior SAP</label>                     
+                                                    </div>
+                                                    <div class="form-group col-xs-3">                        
+                                                        <div class="input-group" style="width: 100%;">
+                                                            <span class="input-group-addon">SAP</span>
+                                                            <input type="text" class="form-control" name="pers_no_superior_sap" value="<?php echo $value; ?>" />
+                                                        </div>  
+                                                    </div>                                                  
+                                                </div>
+                                            <?php endif; ?>
+
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+
+                                    
+                                    
+                                </div>
+                            <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="reset" class="btn">Reset</button>
+                            </div><!-- /.input group -->
+                            <?php echo Former::close(); ?>
+
+                    </div>
+                </section>
+            </aside>
+           
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

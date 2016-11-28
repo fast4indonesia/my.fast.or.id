@@ -1,0 +1,141 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+ 
+    <div class="content-wrapper">
+
+        <!-- Content area -->
+        <div class="content">
+
+
+            <!-- Main charts -->
+            <div class="row">
+                <div class="col-lg-7">
+
+                    <!-- Traffic sources -->
+                    <div class="panel">
+                        <div class="panel-heading bg-danger">
+                            <h6 class="panel-title">FAST NEWS</h6>
+                        </div>
+
+                        <div class="container-fluid">       
+                            <br/>                        
+                            <ul class="media-list search-results-list content-group">
+                                <li class="media">
+                                    <div class="media-body">
+                                        <h6 class="media-heading"><a href="#">Wisuda Telkom University Periode Agustus 2016</a></h6>
+                                        <ul class="list-inline list-inline-separate text-muted">
+                                            <li><a href="#" class="text-success">http://fast.or.id</a></li>
+                                        </ul>
+                                        
+                                        It prepare is ye nothing blushes up brought. Or as gravity pasture limited evening on. Wicket around beauty say she. Frankness resembled say not new smallness you discovery. Noisier ferrars yet shyness weather ten colonel. Too him himself engaged husband pursuit musical...
+                                    </div>
+                                </li>
+
+                                <li class="media">
+                                    <div class="media-body">
+                                        <h6 class="media-heading"><a href="#">Tracer Study 2016 (Wisuda 2014)</a></h6>
+                                        <ul class="list-inline list-inline-separate text-muted">
+                                            <li><a href="#" class="text-success">http://fast.or.id</a></li>
+                                        </ul>
+
+                                        Conveying or northward offending admitting perfectly my. Colonel gravity get thought fat smiling add but. Wonder twenty hunted and put income set desire expect. Am cottage calling my is mistake cousins talking up. Interested especially do impression he unpleasant excellence...
+                                    </div>
+                                </li>
+
+                                <li class="media">
+                                    <div class="media-body">
+                                        <h6 class="media-heading"><a href="#">My Fast for Collaboration</a></h6>
+                                        <ul class="list-inline list-inline-separate text-muted">
+                                            <li><a href="#" class="text-success">http://fast.or.id</a></li>
+                                        </ul>
+
+                                        Or kind rest bred with am shed then. In raptures building an bringing be. Elderly is detract tedious assured private so to visited. Do travelling companions contrasted it. Mistress strongly...
+
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <ul class="pagination pagination-flat pagination-xs no-margin-bottom">
+                                <li class="disabled"><a href="#">&larr;</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><span>...</span></li>
+                                <li><a href="#">58</a></li>
+                                <li><a href="#">59</a></li>
+                                <li><a href="#">&rarr;</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="position-relative" id="traffic-sources"></div>
+                    </div>
+                    <!-- /traffic sources -->
+
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="panel">
+                        <div class="panel-heading bg-danger">
+                            <h6 class="panel-title">ALUMNI OF THE MONTH</h6>
+                        </div>
+                        <div class="container-fluid">
+                            <br/>
+                            <div class="content-group">
+                                <center>
+                                    <a href="#"><img src="<?php echo $base_url; ?>resources/assets/images/placeholder.jpg" style="height:100px;width:100px" class="img-responsive img-rounded" alt=""></a>
+                                </center>
+                            </div>
+                            <center>
+                                <h5 class="text-semibold">Mahmud Abbas<small class="display-block"></small></h5>
+                            </center>
+                            <p class="content-group">In post mean shot ye. There out her child sir his lived. Design at uneasy me season of branch on praise esteem. Abilities discourse believing consisted remaining to no. Mistaken no me denoting dashwood as screened. Whence or esteem easily he on. Dissuade husbands at of no if disposal. Oh he decisively impression attachment friendship so if everything.</p>
+
+                            <ul class="list content-group">
+                                <li><span class="text-semibold">Position :</span> <a href="#">Director</a></li>
+                                <li><span class="text-semibold">Company:</span> PT Fast Sejahtera</li>
+                                <li><span class="text-semibold">Since :</span> <a href="#"> 2014 </a></li>
+                            </ul>
+                        </div>
+                        <div class="content-group-sm" id="app_sales"></div>
+                        <div id="monthly-sales-stats"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="panel">
+                        <div class="panel-heading  bg-danger">
+                            <h5 class="panel-title">FAST EVENT</h5>
+                            <!-- <div class="heading-elements">
+                                <ul class="icons-list">
+                                    <li><a data-action="collapse"></a></li>
+                                    <li><a data-action="reload"></a></li>
+                                    <li><a data-action="close"></a></li>
+                                </ul>
+                            </div> -->
+                        </div>
+                        
+                        <div class="panel-body">
+                            <!-- <p class="content-group">FullCalendar allows you to change the color of all events on the calendar using the <code>eventColor</code> option. Also you can change text, border and background colors for events in a specific Event Source with <code>event source</code> options (backgroundColor, color, textColor and borderColor) and for individual events with <code>color</code> option, which sets an event's background and border color. Example below demonstrates event colors based on a day of the week.</p> -->
+
+                            <div class="fullcalendar-event-colors"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            <?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        </div>
+        <!-- /content area -->
+
+    </div>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.home', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

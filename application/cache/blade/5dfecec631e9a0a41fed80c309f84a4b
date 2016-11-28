@@ -1,0 +1,12 @@
+<?php if(isset($jabatan)): ?>
+    <?php if($jabatan == "Struktural"): ?>
+<div class="col-md-2">
+    <a class="btn btn-custom btn-white <?php echo $cek_menu == 'Peserta' ? 'actives' : ''; ?>" href="<?php echo $base_url; ?>jobenrichment/jobenrichment/">Peserta</a>
+</div>
+    <?php endif; ?>
+<?php endif; ?>
+<?php if($role == "karyawan"): ?>
+<div class="col-md-2">
+    <a class="btn btn-custom btn-white <?php echo $cek_menu == 'Pelaksanaan' ? 'actives' : ''; ?>" href="<?php echo $base_url; ?>jobenrichment/jobenrichment/pelaksanaan">Pelaksanaan</a>
+</div>
+<?php endif; ?>

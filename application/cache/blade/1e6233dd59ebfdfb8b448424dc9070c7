@@ -1,0 +1,103 @@
+<?php $__env->startSection('sidebar'); ?>
+	<?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+			<aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                         FTK Pegawai
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="#">FTK</a></li>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">                        
+                    <form action="<?php echo $base_url; ?>ftk/dataftk/getftk" method="post">
+                        <div class="col-lg-1">
+                            <div class="form-group">
+                                <label>Kantor :</label>                                    
+                            </div><!-- /.form group -->  
+                        </div> 
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <select class="form-control" name="kode_kantor" >
+                                    <?php if(isset($kantor)): ?>
+                                        <?php foreach ($kantor as $key => $element): ?>
+                                            <option value="<?php echo $element->kode_kantor; ?>"><?php echo $element->nama_kantor; ?></option>                              
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </select>                                    
+                            </div><!-- /.form group -->  
+                        </div>     
+                        <div class="col-lg-2">                      
+                            <div class="input-group">
+                                <button type='submit' class="btn btn-flat btn-info"><i class="fa fa-search"></i> Lihat</button>
+                            </div>            
+                        </div>     
+                        <br/>
+                        <br/>                     
+                    </form>
+                    <div class="col-md-12"></div>
+                    <div class="col-md-12"></div>
+                    <div class="col-md-12"></div>
+                    <div class="row">
+                       
+                        <?php if(isset($method)): ?>
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title"> Data FTK <?php echo $nama_kantor; ?></h3>                                    
+                                </div>
+                                <div class="box-body table-responsive ">
+                                    <table id="example1" class=" right table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th><center>No</center></th>
+                                                <th><center>Sebutan Jabatan</center></th>
+                                                <th><center>FTK Unit</center></th>
+                                                <th><center>FTK Existing</center></th>
+                                                <th><center>%</center></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                                $no = 1;
+                                                $isiftk = 1;
+                                            ?>
+                                            <?php if(isset($ftk)): ?>
+                                                <?php foreach ($ftk as $key => $element): ?>
+                                                <?php
+                                                    $persen = ($element->jumlah / $isiftk)*100
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $no++; ?></td>
+                                                    <?php if ($element->nama_jenjang_jabatan == "Manajemen Atas" || $element->nama_jenjang_jabatan == "Manajemen Menengah"  || $element->nama_jenjang_jabatan == "Manajemen Dasar"): ?>
+                                                        <td><b><?php echo $element->nama_jabatan; ?></b></td>
+                                                        <td><b><?php echo $element->jumlah; ?></b></td>
+                                                        <td><b><?php echo $isiftk; ?></b></td>
+                                                        <td><b><?php echo $persen; ?> %</b></td>
+                                                    <?php else: ?>
+                                                        <td><?php echo $element->nama_jabatan; ?></td>
+                                                        <td><?php echo $element->jumlah; ?></td>
+                                                        <td><?php echo $isiftk; ?></td>
+                                                        <td><?php echo $persen; ?> %</td>
+                                                    <?php endif; ?>
+                                                </tr>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                </section>
+
+            </aside>
+        </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

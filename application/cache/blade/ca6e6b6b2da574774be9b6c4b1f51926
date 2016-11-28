@@ -1,0 +1,102 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+    <aside class="right-side strechss">
+        <section class="content-header">
+            <h1>
+                Atur Struktur Organisasi
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#"> Atur Struktur Organisasi</a></li>
+            </ol>
+        </section>
+
+
+        <ul id="org" style="display:none">
+            <?php if(!empty($atas)): ?>
+            <li data-kode="<?php echo $atas->kode_self; ?>" data-jabatan="<?php echo $atas->kode_jabatan; ?>" class="uniq1 root nrow" id="<?php echo substr(md5(rand()), 0, 7); ?>">
+                <p class="titles"><?php echo $atas->jabatan()->nama_jabatan; ?></p>
+                <?php echo RecurseArray($atas, $kode, 1); ?>
+            </li>
+            <?php endif; ?>
+        </ul>
+        <br>
+        <div class="row wrappers">
+            <div class="col-md-6">
+                <div class="box box-solid">
+                    <div class="box-header">
+                        <h3 class="box-title">Data Karyawan Kantor Pusat</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="input-group">
+                            <span class="input-group-addon">Pilih Kantor</span>
+                            <?php echo Former::select('kantor')->options($office)->class('form-control')->id('officeSel')->raw(); ?>
+                        </div>
+                        <br>
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Kode Jabatan</th>
+                                    <th>Nama</th>
+                                    <th>Kantor</th>
+                                    <th>Nama Jabatan</th>
+                                    <th>Action Menu</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php if(isset($jabatan)): ?>
+                                    <?php foreach ($jabatan as $key => $element): ?>
+                                        <tr>
+                                            <td><?php echo $element->kode_jabatan; ?></td>
+                                            <td><?php echo $element->nama; ?></td>
+                                            <td><?php echo $element->nama_kantor; ?></td>
+                                            <td><?php echo $element->nama_jabatan; ?></td>
+                                            <td>
+                                                <button class="adds"><i class="fa fa-plus"></i></button>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div><!-- /.box-body -->
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box box-solid">
+                    <div class="box-header">
+                        <h3 class="box-title" style="padding: 10px 0px 0 10px">Data Jabatan u/ Struktur Organisasi</h3>
+                        <p class="detail" style="clear:both; padding-left:10px; font-style:italic">Drag n Drop data jabatan dibawah ini kedalam diagram struktur organisasi</p>
+                    </div>
+                    <div class="box-body">
+                        <ul id="upload-chart">
+
+                        </ul>
+                    </div><!-- /.box-body -->
+                </div>
+
+            </div>
+
+            <div class="col-md-12">
+                <div class="box box-solid">
+                    <div class="box-header">
+                        <h3 class="box-title" style="padding: 10px 0px 0 10px">
+                            <button id="getjson" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
+                            <a href="<?php echo $base_url; ?>organization/settings/reset/<?php echo $kode; ?>" class="btn btn-primary"><i class="fa fa-times"></i> Reset Struktur Organisasi</a>
+                        </h3>
+                    </div>
+                    <div class="box-body">
+
+                <div id="chart" class="orgChart"></div>
+            </div>
+            </div>
+        </div>
+
+        <span id="kodes" class="hide"><?php echo $kode; ?></span>
+        <span id="urls" class="hide"><?php echo $base_url; ?></span>
+        <a href="" id="links" class="hide"></a>
+    </aside>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.orgs', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

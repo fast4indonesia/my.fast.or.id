@@ -1,0 +1,4 @@
+<div class="control-group control-group-alone">
+<?php echo Former::label('Pilih '.$label); ?>
+<?php echo Former::select('peserta')->options($data)->class('form-control small-form')->raw(); ?>
+</div>

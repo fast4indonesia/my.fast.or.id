@@ -1,0 +1,15 @@
+
+<?php if(($jabatan == "Struktural")): ?>
+<div class="col-md-2">
+    <a class="btn btn-custom btn-white <?php echo $cek_menu == 'Peserta' ? 'actives' : ''; ?>" href="<?php echo $base_url; ?>ProjectAssignment/ProjectAssignment/">Peserta</a>
+</div><!-- /.col -->
+
+<?php endif; ?>
+<?php if($role == "karyawan"): ?>
+<div class="col-md-2">
+    <a class="btn btn-custom btn-white <?php echo $cek_menu == 'Pelaksanaan' ? 'actives' : ''; ?>" href="<?php echo $base_url; ?>ProjectAssignment/ProjectAssignment/pelaksanaan">Pelaksanaan</a>
+</div><!-- /.col -->
+<?php endif; ?>
+<div class="col-md-2">
+    <a class="btn btn-custom btn-white <?php echo $cek_menu == 'Penilaian' ? 'actives' : ''; ?>" href="<?php echo $base_url; ?>ProjectAssignment/ProjectAssignment/penilaian">Penilaian</a>
+</div><!-- /.col -->

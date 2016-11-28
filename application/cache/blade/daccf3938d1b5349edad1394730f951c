@@ -1,0 +1,80 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+     <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Job Enlargement
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="<?php echo $base_url; ?>JobEnlargement/JobEnlargement/Pelaksanaan"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="<?php echo $base_url; ?>">ADMP</a></li>
+                        <li><a href="<?php echo $base_url; ?>JobEnlargement/JobEnlargement/">Job Enlargement</a></li>
+                        <li><a href="<?php echo $base_url; ?>JobEnlargement/JobEnlargement/Pelaksanaan">Pelaksanaan</a></li>
+                    </ol>
+                </section>
+
+
+                <section class="content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box box-info">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Form Input Pelaksanaan Job Enlargement</h3>
+                                    </div>
+                                    <form action="<?php echo $base_url; ?>JobEnlargement/JobEnlargement/edit_pelaksanaan/<?php echo $dataDetail->id_job_enlargement; ?>" method="post" enctype="multipart/form-data">
+                                        <div class="box">
+                                            <div class="box-body">              
+                                                <div class="form-group">
+                                                    <label>Tanggal</label>
+                                                    <div class="input-group">
+                                                        <input type="text" readonly class="form-control small-form" value="<?php echo substr($dataDetail->tanggal,0,16); ?>"/>
+                                                    </div>
+                                                </div>                  
+                                                <div class="form-group">
+                                                    <label>Nama Peserta</label>
+                                                    <div class="input-group">
+                                                        <input type="text" readonly class="form-control small-form" value="<?php echo $dataDetail->nama; ?>"/>
+                                                    </div>
+                                                </div>       
+                                                <div class="form-group">
+                                                    <label>Perintah Penugasan</label>
+                                                    <div class="input-group">
+                                                        <textarea readonly class="form-control small-form" value=""><?php echo $dataDetail->perintah_penugasan; ?></textarea>
+                                                    </div>
+                                                </div>                
+                                                <div class="form-group">
+                                                    <label>Hasil Pelaksanaan</label>
+                                                    <div class="input-group">
+                                                        <textarea class="form-control small-form" name="hasil_pelaksanaan" value=""><?php echo $dataDetail->hasil_pelaksanaan; ?></textarea>
+                                                    </div>
+                                                </div>          
+                                                <div class="form-group">
+                                                    <label>Berkas Terkait</label>
+                                                    <div class="input-group">
+                                                        <input type="file" class="form-control small-form" name="berkas"/>
+                                                    </div>
+                                                </div>     
+                                            </div>
+                                        </div>
+                                        <div class="box-footer">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="reset" class="btn btn-primary">Reset</button>
+                                        </div>
+                                    </form>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </aside>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

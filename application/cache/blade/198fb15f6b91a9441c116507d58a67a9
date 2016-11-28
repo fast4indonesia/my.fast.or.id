@@ -1,0 +1,162 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        CMC
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="#">ADMP</a></li>
+                        <li><a href="#">CMC</a></li>
+                    </ol>
+                </section>
+
+
+                <section class="content">
+                    <?php echo $__env->make('includes.cmc', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Data Grafik CMC</h3>                                    
+                                </div>
+                                <div class="box box-info">
+                                    <form action="" method="post">
+                                        <div class="box-body col-xs-3">
+                                            <div class="form-group">
+                                                <label>Tahun</label>
+                                                <div class="input-group">
+                                                    <select class="form-control" >
+                                                        <option value="2012">2011</option>
+                                                        <option value="2012">2012</option>
+                                                        <option value="2013">2013</option>
+                                                        <option value="2014">2014</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box-body col-xs-3">
+
+                                            <div class="form-group">
+                                                <label>Triwulan</label>
+                                                <div class="input-group">
+                                                    <select class="form-control" >
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="2">3</option>
+                                                        <option value="2">4</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box-body col-xs-3">
+                                            <div class="form-group">
+                                                <label>Semester</label>
+                                                <div class="input-group">
+                                                    <select class="form-control" >
+                                                        <option value="">1</option>
+                                                        <option value="">2</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box-body col-xs-3">
+                                            <div class="form-group">
+                                                <label>Organisasi</label>
+                                                <div class="input-group">
+                                                    <select class="form-control" >
+                                                        <option value="">Area Bandengan</option>
+                                                        <option value="">Area Bulungan</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box-footer">
+                                            <button type="submit" class="btn btn-primary ">Filter</button>
+                                        </div>
+                                    </form>  
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="box box-solid">
+                                            <div class="box-header center">
+                                                <h3 class="box-title">
+                                                    <center>Laporan Pemantauan Monitoring Pengisian CMC</center>
+                                                </h3>
+                                            </div>
+                                        <div class="box-body">
+                                            <p>Semester : </p>
+                                            <p>Tahun    : </p>
+                                            <p>Organisasi : </p>
+                                            <p>Jumlah Struktural : </p>
+                                            <p>Jumlah Struktural Yang Melaksanakan CMC : ... Orang = ... %</p>
+                                        </div><!-- /.box-body -->
+                                    </div><!-- /.box -->
+                                </div><!-- ./col -->
+                                <div class="box-body table-responsive scrollWrapper">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th rowspan="2"><center>Nama Atasan</center></th>
+                                                <th rowspan="2"><center>Nipeg Atasan</center></th>
+                                                <th rowspan="2"><center>Organisasi Atasan</center></th>
+                                                <th rowspan="2"><center>Nama Bawahan</center></th>
+                                                <th rowspan="2"><center>Jabatan</center></th>
+                                                <th rowspan="2"><center>Organisasi</center></th>
+                                                <th colspan="4"><center>Perencanaan CMC</center></th>
+                                                <th colspan="4"><center>Realisasi CMC</center></th>
+                                                <th rowspan="2"><center>%</center></th>
+                                            </tr>
+                                            <tr>
+                                                <th>Mingguan</th>
+                                                <th>Bulanan</th>
+                                                <th>Triwulan</th>
+                                                <th>Semester</th>
+
+                                                <th>Mingguan</th>
+                                                <th>Bulanan</th>
+                                                <th>Triwulan</th>
+                                                <th>Semester</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                    </table>
+                                </div><!-- /.box-body -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </aside><!-- /.right-side -->
+ 
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

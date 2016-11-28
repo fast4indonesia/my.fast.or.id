@@ -1,0 +1,70 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Tambah Pengajuan Diklat
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="<?php echo $base_url; ?>master/hasil"> Master Posisi</a></li>
+                <li><a href="#"> Tambah Rencana Diklat</a></li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box box-danger">
+                            <div class="box-header">
+                                <h3 class="box-title">Form Input Rencana Diklat</h3>
+                            </div>
+                            <?php echo Former::open()->action($base_url.'diklat/hasil/store'); ?>
+                                <div class="box-body">
+                                    <?php if(!empty($flashdata)): ?>
+                                        <div class="callout callout-danger">
+                                            <h4>Gagal menyimpan data karena kesalahan berikut:</h4>
+                                             <ul>
+                                                <?php foreach ($flashdata as $val): ?>
+                                                    <li><?php echo $val; ?></li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
+                                    <?php endif; ?>
+                                    
+                                    <?php echo Former::select(diklat)->options($listdiklat)->class('form-control small-form'); ?> 
+                                    <?php echo Former::text(permintaan_diklat)->value($value)->class('form-control small-form'); ?>
+                                    <?php echo Former::text(pelaksanaan_diklat)->value($value)->class('form-control small-form'); ?>
+                                    <?php echo Former::text(pelaksana)->value($value)->class('form-control small-form'); ?>
+                                    <?php echo Former::text(mulai)->label('Tanggal Mulai')->class('form-control small-form dates')->value(); ?>
+                                    <?php echo Former::text(selesai)->label('Tanggal Selesai')->class('form-control small-form dates')->value(); ?>  
+                                    <?php echo Former::select(nama)->options($listkaryawan)->class('form-control small-form'); ?> 
+                                    <?php echo Former::text(hadir)->value($value)->class('form-control small-form'); ?>
+                                    <?php echo Former::text(keterangan_hadir)->value($value)->class('form-control small-form'); ?>
+                                    <?php echo Former::text(lulus)->value($value)->class('form-control small-form'); ?>
+                                    <?php echo Former::text(nilai)->value($value)->class('form-control small-form'); ?>
+                                    <?php echo Former::text(rangking)->value($value)->class('form-control small-form'); ?>
+                                    <?php echo Former::text(kode_sertifikat)->value($value)->class('form-control small-form'); ?>
+                                    <?php echo Former::text(copy_sertifikat)->value($value)->class('form-control small-form'); ?>
+
+                                 </div>
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="reset" class="btn">Reset</button>
+                                </div><!-- /.input group -->
+                            <?php echo Former::close(); ?>
+                        </div><!-- /.box-body -->
+                    </div>
+                </div><!-- /.col -->
+            </div>
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

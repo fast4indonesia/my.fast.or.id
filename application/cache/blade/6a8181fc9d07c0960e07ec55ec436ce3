@@ -1,0 +1,117 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Master Kompetensi
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="<?php echo $base_url; ?>master/competencies"> Master Kompetensi</a></li>
+                <li><a href="#"> Tambah Kompetensi</a></li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                            <div class="box box-danger">
+                                <div class="box-header">
+                                    <h3 class="box-title">Upload Kompetensi</h3>
+                                </div>
+                                <form action="<?php echo $base_url; ?>master/competencies/saveupload" method="POST">
+                                <div class="box-body">
+                                    <div class="table-responsive">
+                                    <table class="table table-bordered table-striped scrollWrapper">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th width="150px">Kode Kompetensi</th>
+                                                <th>Nama Kompetensi</th>
+                                                <th width="110px">Kategori</th>
+                                                <th width="310px">Deskripsi</th>
+                                                <th width="310px">Level 0</th>
+                                                <th width="310px">Level 1</th>
+                                                <th width="310px">Level 2</th>
+                                                <th width="310px">Level 3</th>
+                                                <th width="310px">Level 4</th>
+                                                <th width="310px">Level 5</th>
+                                                <th width="310px">Level 6</th>
+                                                <th width="310px">Status </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php if(isset($data)): ?>
+                                                <?php foreach ($data as $key => $element): ?>
+                                                <tr>
+                                                    <td><?php echo $key+1; ?></td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][kode_kompetensi]" value="<?php echo $element->kode_kompetensi; ?>" class="form-control" <?php echo $element->is_valid() ? 'disabled' : ''; ?>>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][nama_kompetensi]" value="<?php echo $element->nama_kompetensi; ?>" class="form-control" <?php echo $element->is_valid() ? 'disabled' : ''; ?>>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $dis = $element->is_valid() ? true : false;
+                                                            echo my_select($element->select_data, "data[".$key."][kategori]", $element->kategori, $dis);; ?>
+                                                        <!-- <input type="text" name="data[<?php echo $key; ?>][kategori]" value="<?php echo $element->kategori; ?>" class="form-control" <?php echo $element->is_valid() ? 'disabled' : ''; ?>> -->
+                                                    </td>
+                                                    <td>
+                                                        <textarea name="data[<?php echo $key; ?>][deskripsi]" class="form-control" <?php echo $element->is_valid() ? 'disabled' : ''; ?>><?php echo $element->deskripsi; ?> </textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea name="data[<?php echo $key; ?>][level_0]" class="form-control" <?php echo $element->is_valid() ? 'disabled' : ''; ?>><?php echo $element->level_0; ?> </textarea>
+                                                    </td>
+
+                                                    <td>
+                                                        <textarea name="data[<?php echo $key; ?>][level_1]" class="form-control" <?php echo $element->is_valid() ? 'disabled' : ''; ?>><?php echo $element->level_1; ?> </textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea name="data[<?php echo $key; ?>][level_2]" class="form-control" <?php echo $element->is_valid() ? 'disabled' : ''; ?>><?php echo $element->level_2; ?> </textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea name="data[<?php echo $key; ?>][level_3]" class="form-control" <?php echo $element->is_valid() ? 'disabled' : ''; ?>><?php echo $element->level_3; ?> </textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea name="data[<?php echo $key; ?>][level_4]" class="form-control" <?php echo $element->is_valid() ? 'disabled' : ''; ?>><?php echo $element->level_4; ?> </textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea name="data[<?php echo $key; ?>][level_5]" class="form-control" <?php echo $element->is_valid() ? 'disabled' : ''; ?>><?php echo $element->level_5; ?> </textarea>
+                                                    </td>
+                                                    <td>
+                                                        <textarea name="data[<?php echo $key; ?>][level_6]" class="form-control" <?php echo $element->is_valid() ? 'disabled' : ''; ?>><?php echo $element->level_6; ?> </textarea>
+                                                    </td>
+
+                                                    <td>
+                                                        <?php if($element->is_valid()): ?>
+                                                            <span class="badge bg-green">Success</span>
+                                                        <?php else: ?>
+                                                            <span class="badge bg-red">Error</span>
+                                                        <?php endif; ?>
+                                                    </td>
+                                                </tr>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                </div><!-- /.box-body -->
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="reset" class="btn btn-default">Reset</button>
+                                </div>
+                                </form>
+                            </div>
+                </div><!-- /.col -->
+            </div>
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,106 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+ <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Talent Mapping Hard Competency
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="<?php echo local_path() ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="<?php echo local_path('talent/talentMapping/') ?>">Talent</a></li>
+                    </ol>
+                </section>
+
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <h3 class="box-title">Form Input Talent Mapping Hard Competency</h3>
+                                </div>
+                                 <?php echo form_open('talent/talentMapping/storehard'); ?>
+                                <div class="box-body">
+                                    <?php if(!empty($flashdata)): ?>
+                                        <div class="callout callout-danger">
+                                            <h4>Gagal menyimpan data karena kesalahan berikut:</h4>
+                                             <ul>
+                                                <?php foreach ($flashdata as $val): ?>
+                                                    <li><?php echo $val; ?></li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
+                                    <?php endif; ?>
+
+
+                                    <div class="form-group">
+                                        <label>Pilih Jabatan</label>
+                                        <div class="input-group">
+                                            <select class="form-control small-form" name="kode_jabatan" id="">
+                                                <option value="">Silahkan pilih Jabatan</option>
+                                                <?php
+
+                                                    foreach ($jabatan as $key => $value){
+                                                        //$angga = $key_banding == $key ? 'selected="selected"' : '';
+                                                    echo '<option value="'.$value->kode_jabatan.'">'.$value->nama_jabatan.'</option>';
+                                                    }
+
+                                                ?>
+                                            </select></div></div>
+
+                                    <div class="form-group">
+                                        <label>Jumlah Hard Kompetensi</label>
+                                        <div class="input-group" id="classAdd">
+                                            <input type="text" style="margin-bottom:20px" class="form-control small-form" name="" value="" placeholder="" id="jumlah_hard_kompetensi">
+                                            <a href="#" style="position: absolute;right: 0;" class="btn btn-flat btn-primary" id="generate_hard">
+                                                Generate Hard
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="reset" class="btn">Reset</button>
+                            </div><!-- /.input group -->
+                            <?php echo form_close(); ?>
+
+                    </div>
+                </section>
+            </aside>
+            <div id="holders" class="hide">
+
+                        <div class="form-group">
+                                        <label>Pilih Hard Kompetensi</label>
+                                        <div class="input-group">
+                                            <select class="form-control small-form idx" name="kode_kompetensi[]" id="">
+                                                <option value="">Silahkan pilih Hard Kompetensi</option>
+                                                <?php
+
+                                                    foreach ($kompetensi as $key => $value)
+                                                    {
+                                                        //$angga = $key_banding == $key ? 'selected="selected"' : '';
+                                                    echo '<option value="'.$value->kode_kompetensi.'">'.$value->nama_kompetensi.'</option>';
+                                                    }
+
+                                                ?>
+                                            </select>
+                                        </div>
+                        </div>
+
+                         <div class="form-group">
+                                        <label>Nilai Hard Kompetensi</label>
+                                        <div class="input-group" id="">
+                                            <input type="text" class="form-control small-form" name="nilai_hard_kompetensi[]" value="" placeholder="" id="">
+                                        </div>
+                                    </div>
+        </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

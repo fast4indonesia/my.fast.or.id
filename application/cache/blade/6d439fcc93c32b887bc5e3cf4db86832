@@ -1,0 +1,110 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                ICP SDM
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>/"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="<?php echo $base_url; ?>careers"> Career System</a></li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Data ICP SDM</h3>                                    
+                        </div>                              
+                    </div>
+
+                    <div class="box box-info">
+                        <form action="" method="post">
+                            <div class="box-body col-xs-4">
+
+                                <div class="form-group">
+                                    <label>Profesi</label>
+                                    <div class="input-group">
+                                        <select class="form-control" >
+                                            <option value="1">Unit Perencaan</option>
+                                            <option value="1">Unit SDM</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-body col-xs-4">
+
+                                <div class="form-group">
+                                    <label>Jabatan Sekarang</label>
+                                    <div class="input-group">
+                                        <select class="form-control" >
+                                            <option value="">JA EVALUASI KINERJA SDM</option>
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-body col-xs-4">
+
+                                <div class="form-group">
+                                    <label>Jabatan Proyeksi</label>
+                                    <div class="input-group">
+                                        <select class="form-control" >
+                                            <option value="">JA EVALUASI KINERJA SDM</option>
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary ">Filter</button>
+                            </div>
+                        </form>  
+                    </div><!-- /.box-body -->
+                    <div class="box">
+                        <div class="box-body table-responsive">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>Kantor</th>
+                                        <th>Jabatan</th>
+                                        <th>Lihat Detail</th>
+                                        <th>Action Menu </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Dwi Putri Resmiati M</td>
+                                        <td>Kantor Distribusi</td>
+                                        <td>Asman Distribusi</td>
+                                        <td>
+                                            <a href="carrer-view-icpm.html"><button class="fa fa-user" title="Staf 1"></button></a>
+                                        </td>
+                                        <td>
+                                            <a href="carrer-setting-icpm.html"><button class="fa fa-pencil" title="edit"></button></a>
+                                            <a href=""><button class="fa fa-times"  title="delete"></button></a>
+                                        </td>
+                                    </tr>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div>
+
+        </section>
+
+    </aside>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

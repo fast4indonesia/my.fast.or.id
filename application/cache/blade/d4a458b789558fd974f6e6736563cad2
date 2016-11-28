@@ -1,0 +1,390 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>   
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Report MKTP
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>/"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="<?php echo $base_url; ?>mktp/mktpGrafik"> Report MKTP</a></li>
+            </ol>
+        </section>
+        <!-- Main content -->
+        <section class="content">    
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Data Report MKTP</h3>                                    
+                        </div>
+                        <br/>
+                        <div class="box-body">
+                            <form action="<?php echo $base_url; ?>mktp/mktpReport/getgrafik" method="post">
+                                <div class="box-body col-xs-12">
+
+                                    <div class="form-group">
+                                        <label>Tahun</label>
+                                        <div class="input-group">
+                                            <select class="form-control" name="tahun">
+                                                <option value="2016">2016</option>
+                                                <option value="2017">2017</option>
+                                                <option value="2018">2018</option>
+                                                <option value="2019">2019</option>
+                                                <option value="2020">2020</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary ">Lihat</button>
+                                </div>
+                            </form>  
+                            <div class="box">
+                                <div class="box-body">
+                                    <div class="box-body table-responsive">      
+                                        <?php
+                                            if (isset($method)){
+                                        ?>                                             
+                                        <div id="kategori" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <div id="status" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <div id="rating" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <div id="waktu" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                        <?php 
+                                            }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </aside>
+
+    <?php
+
+        $nomor = 1;
+        $datak = "";
+        $datas = "";
+
+        foreach ($kategori as $key => $value) {
+
+            // echo $key." | ".$value."\n"; 
+
+            $kategori = "{name: '".$value->nama_keluhan."',data: [".$value->january.",".$value->february.",".$value->march.",".$value->april.",".$value->may.",".$value->june.",".$value->july.",".$value->august.",".$value->september.",".$value->october.",".$value->november.",".$value->december."]}";
+
+            if ($nomor == 1){
+                $datak = $kategori;
+            }else{
+                $datak  = $datak.",".$kategori;
+            }
+
+            $nomor++;
+        }
+
+        $nomor = 1;
+        $datas = "";
+
+        foreach ($status as $key => $value) {
+
+            $status = "{name: '".$value->status."',data: [".$value->january.",".$value->february.",".$value->march.",".$value->april.",".$value->may.",".$value->june.",".$value->july.",".$value->august.",".$value->september.",".$value->october.",".$value->november.",".$value->december."]}";
+
+            if ($nomor == 1){
+                $datas = $status;
+            }else{
+                $datas  = $datas.",".$status;
+            }
+
+            $nomor++;
+        }
+
+
+        $nomor = 1;
+        $datar = "";
+        foreach ($rating as $key => $value) {
+            // $rating = "{name: 'Rating',data: [".$value->january.",".$value->february.",".$value->march.",".$value->april.",".$value->may.",".$value->june.",".$value->july.",".$value->august.",".$value->september.",".$value->october.",".$value->november.",".$value->december."]}";
+
+            if ($nomor == 1){
+                $bulan = $value->avg_rating;
+            }else{
+                $bulan  = $bulan.",".$value->avg_rating;
+            }
+
+            $nomor++;
+        }
+
+        $datar = "{name: 'Rating',data: [".$bulan."]}";
+
+
+        $nomor = 1;
+        $dataw = "";
+        foreach ($waktu as $key => $value) {
+            // $waktu = "{name: 'Waktu',data: [".$value->january.",".$value->february.",".$value->march.",".$value->april.",".$value->may.",".$value->june.",".$value->july.",".$value->august.",".$value->september.",".$value->october.",".$value->november.",".$value->december."]}";
+
+            if ($nomor == 1){
+                $bulan = $value->avg_waktu;
+            }else{
+                $bulan  = $bulan.",".$value->avg_waktu;
+            }
+
+            $nomor++;
+        }
+
+        $dataw = "{name: 'Waktu',data: [".$bulan."]}";
+
+
+    ?>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#kategori').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Grafik Jumlah Keluhan Berdasarkan Kategori Tahun <?php echo $tahun; ?>'
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: [
+                        'Jan',
+                        'Feb',
+                        'Mar',
+                        'Apr',
+                        'May',
+                        'Jun',
+                        'Jul',
+                        'Aug',
+                        'Sep',
+                        'Oct',
+                        'Nov',
+                        'Dec'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Jumlah Keluhan'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.1f} keluhan</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [<?=$datak;?>]
+            });
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $('#status').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Grafik Status Penyelesaian Tahun <?php echo $tahun; ?>'
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: [
+                        'Jan',
+                        'Feb',
+                        'Mar',
+                        'Apr',
+                        'May',
+                        'Jun',
+                        'Jul',
+                        'Aug',
+                        'Sep',
+                        'Oct',
+                        'Nov',
+                        'Dec'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Jumlah Keluhan'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.1f} Keluhan</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [<?=$datas;?>]
+            });
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $('#rating').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Grafik Rating Penilaian terhadap Penyelesaian Keluhan Tahun <?php echo $tahun; ?>'
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: [
+                        'Jan',
+                        'Feb',
+                        'Mar',
+                        'Apr',
+                        'May',
+                        'Jun',
+                        'Jul',
+                        'Aug',
+                        'Sep',
+                        'Oct',
+                        'Nov',
+                        'Dec'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Score'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.1f} Star</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                // series: [{
+                //     name: 'Rating',
+                //     data: [4, 4, 3, 5, 4.8, 5, 4.6, 5, 4.9, 5, 5, 5]
+
+                // }]
+                series: [<?=$datar;?>]
+            });
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $('#waktu').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Grafik Waktu Rata-Rata Penyelesaian Keluhan Tahun <?php echo $tahun; ?>'
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: [
+                        'Jan',
+                        'Feb',
+                        'Mar',
+                        'Apr',
+                        'May',
+                        'Jun',
+                        'Jul',
+                        'Aug',
+                        'Sep',
+                        'Oct',
+                        'Nov',
+                        'Dec'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Hari'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.1f} Hari</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                // series: [{
+                //     name: 'Waktu',
+                //     data: [5, 4, 10, 14, 6, 8, 9, 10, 11, 12, 15, 8]
+
+                // }]
+                series: [<?=$dataw;?>]
+            });
+        });
+    </script>
+    <script src="<?php echo $base_url; ?>assets/highchart/js/highcharts.js"></script>
+    <script src="<?php echo $base_url; ?>assets/highchart/js/modules/exporting.js"></script>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.grafikmktp', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,143 @@
+<?php $__env->startSection('sidebar'); ?>
+    <?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+    <style type="text/css">
+        .pegawai-excel{
+            min-width: 200px;
+        }
+    </style>
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Master Pegawai
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $base_url; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="<?php echo $base_url; ?>master/employee"> Master Data</a></li>
+                <li><a href="<?php echo $base_url; ?>master/employee"> Employee</a></li>
+                <li><a href="#"> Upload Data Excel</a></li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                            <div class="box box-danger">
+                                <div class="box-header">
+                                    <h3 class="box-title">Upload Pegawai</h3>
+                                </div>
+                                <form action="<?php echo $base_url; ?>master/employee/saveupload" method="POST">
+                                <div class="box-body table-responsive scrollWrapper">
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th class="pegawai-excel">Nipeg</th>
+                                                <th class="pegawai-excel">Pers No SAP</th>
+                                                <th class="pegawai-excel">Nama</th>
+                                                <th class="pegawai-excel">Kode Grade</th>
+                                                <th class="pegawai-excel">Kode Jabatan</th>
+                                                <th class="pegawai-excel">Kode Posisi</th>
+                                                <th class="pegawai-excel">Jenis Pegawai</th>
+                                                <th class="pegawai-excel">Nama Kantor</th>
+                                                <th class="pegawai-excel">Jenis Kelamin</th>
+                                                <th class="pegawai-excel">Tempat Lahir</th>
+                                                <th class="pegawai-excel">Status Perkawinan</th>
+                                                <th class="pegawai-excel">Email</th>
+                                                <th class="pegawai-excel">Agama</th>
+                                                <th class="pegawai-excel">Tanggal Lahir</th>                                              
+                                                <th class="pegawai-excel">Tanggal Masuk</th>
+                                                <th class="pegawai-excel">Tanggal Capeg</th>
+                                                <th class="pegawai-excel">Tanggal Tetap</th>                                              
+                                                <th class="pegawai-excel">Kelompok Pendidikan</th>
+                                                <th>Status</th>
+                                                <th>Pesan</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php if(isset($data)): ?>
+                                                <?php foreach ($data as $key => $element): ?>
+                                                <tr>
+                                                    <td><?php echo $key+1; ?></td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][nipeg]" value="<?php echo $element->nipeg; ?>" class="form-control" >
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][pers_no_sap]" value="<?php echo $element->kode_pers_no_sap; ?>" class="form-control" >
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][nama]" value="<?php echo $element->nama; ?>" class="form-control" >
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][kode_grade]" value="<?php echo $element->kode_grade; ?>" class="form-control" >
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][kode_jabatan]" value="<?php echo $element->kode_jabatan; ?>" class="form-control" >
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][kode_posisi]" value="<?php echo $element->kode_posisi; ?>" class="form-control" >
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][jenis_pegawai]" value="<?php echo $element->jenis_pegawai; ?>" class="form-control" >
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][nama_kantor]" value="<?php echo $element->nama_kantor; ?>" class="form-control" >
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][jns_kelamin]" value="<?php echo $element->jns_kelamin; ?>" class="form-control" >
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][tempat_lahir]" value="<?php echo $element->tempat_lahir; ?>" class="form-control" >
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][status_perkawinan]" value="<?php echo $element->status_perkawinan; ?>" class="form-control" >
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][email]" value="<?php echo $element->email; ?>" class="form-control" >
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][agama]" value="<?php echo $element->agama; ?>" class="form-control" >
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][tgl_lahir]" value="<?php echo $element->tgl_lahir; ?>" class="form-control" >
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][tgl_masuk]" value="<?php echo $element->tgl_masuk; ?>" class="form-control" >
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][tgl_capeg]" value="<?php echo $element->tgl_capeg; ?>" class="form-control" >
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][tgl_tetap]" value="<?php echo $element->tgl_tetap; ?>" class="form-control" >
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="data[<?php echo $key; ?>][kelompok_pendidikan]" value="<?php echo $element->kelompok_pendidikan; ?>" class="form-control" >
+                                                    </td>
+                                                    <td>
+                                                    </td>
+                                                    <td>
+                                                </tr>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
+                                        </tbody>
+                                    </table>
+                                </div><!-- /.box-body -->
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="reset" class="btn btn-default">Reset</button>
+                                </div>
+                                </form>
+                            </div>
+                </div><!-- /.col -->
+            </div>
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,88 @@
+<?php $__env->startSection('sidebar'); ?>
+<?php echo $__env->make('includes.sidebar_sdm', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Hasil Evaluasi Diklat
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#"> Diklat</a></li>
+        </ol>
+    </section>
+
+     <section class="content">
+            <div class="row">
+                <div class="col-md-2">
+                    <a class="btn btn-custom btn-white " href="<?php echo $base_url; ?>diklat/survey/">Evaluasi 3</a>
+                </div><!-- /.col -->
+                <div class="col-md-2">
+                    <a class="btn btn-custom btn-white " href="<?php echo $base_url; ?>diklat/survey/evaluasi4">Evaluasi 4</a>
+                </div><!-- /.col -->
+                 <div class="col-md-2">
+                    <a class="btn btn-custom btn-white actives" href="<?php echo $base_url; ?>diklat/survey/result">Result</a>
+                </div><!-- /.col -->
+
+            </div>
+        </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <br/>
+                    </div><!-- /.box-header -->
+                    <div class="box-body table-responsive">
+                        <table id="example1" class=" right table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th><center>No</center></th>
+                                    <th><center>Nipeg</center></th>
+                                    <th><center>Nama Pegawai</center></th>
+                                    <th><center>Tanggal Diklat</center></th>
+                                    <th><center>Jenis Diklat</center></th>
+                                    <th><center>Tempat</center></th>
+                                    <th><center>Nama Surveyor</center></th>
+                                    <th><center>Jabatan</center></th>
+                                    <th><center>Jenis Survey</center></th>
+                                    <th><center>Hasil Evaluasi 3</center></th>
+                                    <th><center>Hasil Evaluasi 4</center></th>
+                                </tr>
+                            </thead>
+                            <tbody>   
+                             <?php if(isset($data)): ?>
+                                <?php foreach ($data as $key => $element): ?>
+                                <tr>
+                                    <td><?php echo $key+1; ?></td>
+                                    <td><?php echo $element->nipeg; ?></td>
+                                    <td><?php echo $element->nama; ?></td>
+                                    <td><?php echo substr($element->mulai, 0, -15); ?></td>
+                                    <td><?php echo $element->jenis; ?></td>
+                                    <td><?php echo $element->tempat; ?></td>
+                                    <td>xxxxxxx</td>
+                                    <td><?php echo $element->jabatan; ?></td>
+                                    <td>?</td>
+                                    <td><?php echo $element->nilai/100; ?></td>
+                                    <td><?php echo $element->nilai4; ?></td>
+                     
+                                </tr>
+                                <?php endforeach; ?>
+                                <?php endif; ?>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div>
+
+        </section><!-- /.content -->
+
+    </aside><!-- /.right-side -->
+    <?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.application', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

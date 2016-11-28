@@ -1,0 +1,64 @@
+
+<!-- content -->
+<?php $__env->startSection('content'); ?>
+
+        <form action="<?php echo $base_url; ?>sessions/create" method="post" id="loginForm" class="form-signin-1 form-validate ">
+            <div class="form-signin-heading text-center">
+                <img src="<?php echo $base_url; ?>assets/img/logo.png" alt=""/>
+                <center>
+                    <div class="title-login">
+                        <h4>Aplikasi Kaderisasi dan Manajemen Talent Pool</h4>
+                    </div>
+                </center>
+            </div>
+            <div class="control-group" style="background-color:transparent; display:block;">
+                <div class="controls" style="border-left:none;">                    
+                    <?php foreach ($flash as $key => $value): ?>
+                        <?php if($value): ?>
+                            <div class="alert alert-error">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Warning!</strong> <?php echo $value; ?>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <div class="login-wrap">    
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="text" name="email" id="email" class="hov form-control" placeholder="Email" autofocus data-rule-required="true"  data-rule-email="true">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="password" name="password" id="password" class="hov form-control" placeholder="Password" data-rule-required="true" >
+                    </div>
+                </div>
+                <input type="hidden" name="send_dologin" value="yes"/>
+                <button class="btn btn-lg btn-login btn-block" type="submit">
+                    <i class="fa fa-check"></i>
+                </button>
+
+                <!-- <div class="registration">
+                    Silahkan Baca Pentunjuk 
+                    <a href="#modal-1" role="button" class="daftar" data-toggle="modal">
+                        DISINI
+                    </a>
+                </div> -->
+
+            </div>
+
+        </form>
+        
+<!--     <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <footer>
+
+                <div class="copyright">
+                    <center>&copy; Copyright 2014 PT. PLN (Persero) Distribusi Jakarta Raya dan Tangerang &nbsp; <img src="images/icon-footer.png" alt=""  class="icon-footer"></center>
+                </div>
+            </footer>
+        </div>
+    </div> -->
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.login', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
